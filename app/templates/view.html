@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Ticket ###</h1>
+    <div>
+        <div>
+            <h3>Type</h3>
+            <p>Support</p>
+        </div>
+        <div>
+            <h3>Priority</h3>
+            <p>Low</p>
+        </div>
+    </div>
+    <div>
+        <h3>Summery</h3>
+        <p>A short overview of the ticket...</p>
+    </div>
+    <div>
+        <h3>Description</h3>
+        <p>More detail for the ticket...</p>
+    </div>
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+    
+        <div class="mb-3">
+            {{ form.comment.label(class="form-label") }}
+            {{ form.comment(class="form-control", size=32) }}
+            {% for error in form.comment.errors %}
+            <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn button-primary">Add Comment</button>
+        </div>
+
+{% endblock %}

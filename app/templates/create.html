@@ -3,5 +3,39 @@
 {% block content %}
     <body>
         <h1>Create</h1>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="mb-1">
+                {{form.issue_type.label(class="form-label") }}<br>
+                {{form.issue_type(class="form-control") }}<br>
+                {% for error in form.issue_type.errors %}
+                <span style="color: red">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="mb-1">
+                {{ form.priority.label(class="form-label") }}<br>
+                {{ form.priority(class="form-control") }}<br>
+                {% for error in form.priority.errors %}
+                <span style="color: red">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="mb-1">
+                {{ form.summary.label(class="form-label") }}<br>
+                {{ form.summary(class="form-control", size=32) }}<br>
+                {% for error in form.summary.errors %}
+                <span style="color: red">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="mb-1">
+                {{ form.details.label(class="form-label") }}<br>
+                {{ form.details(class="form-control", size=32) }}<br>
+                {% for error in form.details.errors %}
+                <span style="color: red">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn button-primary">Submit</button>
+            </div>
+        </div>
     </body>
 {% endblock %}
