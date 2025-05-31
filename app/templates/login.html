@@ -17,12 +17,12 @@
 
     </head>
     <body>
-        <div class="container-fluid login-background" >
+        <div class="container-fluid blue-background" >
             <div class="login-flex-container">
                 <div>
                     <h1 style="color: var(--primary-color-2);">Support Hub</h1>
                 </div>
-                <div class="login-card p-4">
+                <div class="card p-4">
                     <h1 class="text-center">Login</h1>
                     <form action="" method="post" novalidate>
                     {{ form.hidden_tag() }}
@@ -62,7 +62,7 @@
                     <hr>
 
                     <div class="d-flex justify-content-center mt-3">
-                        <button type="button" class="btn button-secondary" onclick="window.location.href='{{ url_for('index') }}'">
+                        <button type="button" class="btn button-secondary" onclick="window.location.href='{{ url_for('register') }}'">
                             Create an account
                         </button>
                     </div>
