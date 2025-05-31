@@ -7,6 +7,8 @@ from flask_login import UserMixin
 from app import login
 import enum
 
+#Types
+
 class IssueType(enum.Enum):
     incident = 'Incident'
     request = 'Request'
@@ -18,6 +20,12 @@ class PriorityType(enum.Enum):
     high = 'High'
     critical = 'Critical'
 
+class StatusType(enum.Enum):
+    open = 'Open'
+    closed = 'Closed'
+    in_progress = 'In Progress'
+
+# Tables
 
 class error_logging(db.Model):
     error_id: so.Mapped[int] = so.mapped_column(primary_key=True)
@@ -34,6 +42,8 @@ class tickets(db.Model):
     priority: so.Mapped[sa.Enum] = so.mapped_column(sa.Enum(PriorityType), nullable=False)
     isClosed: so.Mapped[bool] = so.mapped_column(sa.Boolean, default=False)
     ticket_summary: so.Mapped[str] = so.mapped_column(sa.String(40), nullable=False)
+    status: so.Mapped[sa.Enum] = so.mapped_column(sa.Enum(StatusType), nullable=False, default=StatusType.open)
+    needs_attention: so.Mapped[bool] = so.mapped_column(sa.Boolean, nullable=False, default=False)
 
 class ticket_comments(db.Model):
     comment_id: so.Mapped[int] = so.mapped_column(primary_key=True)

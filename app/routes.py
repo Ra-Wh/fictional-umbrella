@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, CreateTicketForm, AddCommentForm
 from app import app, db
 from flask_login import current_user, logout_user, login_required, login_user
 import sqlalchemy as sa
@@ -52,7 +52,14 @@ def register():
         db.session.commit()
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/create')
+@app.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
-    return render_template('create.html', title="create ticket")
+    form=CreateTicketForm()
+    return render_template('create.html', title="create ticket", form=form)
+
+@app.route('/view', methods=['GET', 'POST'])
+@login_required
+def view():
+    form=AddCommentForm()
+    return render_template('view.html', title='view ticket', form=form)
