@@ -2,10 +2,40 @@
 
 {% block content %}
     <body>
-        <h1>Welcome to Support Hub, {{ current_user.username }}</h1>
-        <button type="button" class="btn button-secondary" onclick="window.location.href='{{ url_for('create') }}'">
-            Create a new ticket
-        </button>
+
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: top;">
+
+                <!-- Summary table -->
+                <div style=" gap: 5vw; align-items: center;">
+                    <h2>Summary</h2>
+                    <div>
+                        <table class="table table-striped">
+                        <thead>
+                            <tr style="text-align: center">
+                            <th scope="col">Open</th>
+                            <th scope="col">In Progress</th>
+                            <th scope="col">Closed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="text-align: center">
+                            <th scope="row">1</th>
+                            <td>0</td>
+                            <td>4</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Create ticket button -->
+                <button type="button" class="btn button-secondary" style="align-self: flex-start;" onclick="window.location.href='{{ url_for('create') }}'">
+                    Create a new ticket
+                </button>
+
+            </div>
+        </div>
         
         <!-- Open tickets table -->
         <div>
