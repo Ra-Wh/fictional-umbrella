@@ -51,3 +51,8 @@ def register():
         db.session.add(login)
         db.session.commit()
     return render_template('register.html', title='Register', form=form)
+
+@app.route('/create')
+@login_required
+def create():
+    return render_template('create.html', title="create ticket")
