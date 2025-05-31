@@ -1,0 +1,112 @@
+/* Colour Scheme */
+
+:root {
+    --primary-color-1: #00201f;
+    --primary-color-2: #0a5754;
+    --primary-color-3: #2b7a77;
+    --primary-color-4: #6faba9;
+    --primary-color-5: #eaf1f1;
+
+    --secondary-color-1: #351700;
+    --secondary-color-2: #8f4810;
+    --secondary-color-3: #c98047;
+    --secondary-color-4: #ffcda5;
+    --secondary-color-5: #fffbf7;
+    
+    --tertiary-color-1: #340001;
+    --tertiary-color-2: #8e1013;
+    --tertiary-color-3: #c74649;
+    --tertiary-color-4: #fda4a6;
+    --tertiary-color-5: #fff7f7;
+}
+
+/* Buttons */
+
+.button-primary {
+    background-color: var(--primary-color-2);
+    color: white;
+    border-radius: 5px;
+}
+
+.button-primary:hover {
+    background-color: var(--primary-color-2) !important;
+    color: white !important;
+    box-shadow: 0px 0px 10px var(--primary-color-3) !important;
+}
+
+.button-secondary {
+    background-color: var(--secondary-color-2);
+    color: white;
+    border-radius: 5px;
+}
+
+.button-secondary:hover {
+    background-color: var(--secondary-color-2) !important;
+    color: white !important;
+    box-shadow: 0px 0px 10px var(--secondary-color-3) !important;
+}
+
+/* Login Page */
+
+.login-background {
+    background-color: var(--primary-color-5) !important;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    background-color: white;
+    width: 40%;
+    border-radius: 10px;
+}
+
+.login-flex-container {
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+.login-alert {
+    background-color: var(--tertiary-color-4);
+    color: var(--tertiary-color-2);
+}
+
+/* Navigation Bar */
+
+.navbar-bg {
+    display: flex;
+    width: 100%;
+    background-color: var(--primary-color-2);
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.navbar-text {
+    color: white;
+}
+
+.navbar-text:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.navbar-heading {
+    color: var(--secondary-color-3);
+}
+
+.navbar-flex-container {
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
