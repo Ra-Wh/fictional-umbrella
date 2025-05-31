@@ -1,5 +1,112 @@
 {% extends "base.html" %}
 
 {% block content %}
-        <h1>Welcome to Support Hub, {{ current_user.username }}</h1>
+    <body>
+
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: top;">
+
+                <!-- Summary table -->
+                <div style=" gap: 5vw; align-items: center;">
+                    <h2>Summary</h2>
+                    <div>
+                        <table class="table table-striped">
+                        <thead>
+                            <tr style="text-align: center">
+                            <th scope="col">Open</th>
+                            <th scope="col">In Progress</th>
+                            <th scope="col">Closed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="text-align: center">
+                            <th scope="row">1</th>
+                            <td>0</td>
+                            <td>4</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Create ticket button -->
+                <button type="button" class="btn button-secondary" style="align-self: flex-start;" onclick="window.location.href='{{ url_for('create') }}'">
+                    Create a new ticket
+                </button>
+
+            </div>
+        </div>
+        
+        <!-- Open tickets table -->
+        <div>
+            <h2>Open Tickets</h2>
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Ticket ID</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Category</th>
+                <th scope="col">Overview</th>
+                <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                </tr>
+                <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                </tr>
+                <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                </tr>
+            </tbody>
+            </table>
+
+            <!-- Closed tickets table -->
+        <div>
+            <h2>Closed Tickets</h2>
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Ticket ID</th>
+                <th scope="col">Date Closed</th>
+                <th scope="col">Category</th>
+                <th scope="col">Overview</th>
+                <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                </tr>
+                <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                </tr>
+                <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </body>
 {% endblock %}
