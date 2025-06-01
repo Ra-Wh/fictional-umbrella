@@ -8,7 +8,6 @@ from wtforms.widgets import Select
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(max=50)])
     password = PasswordField('Password', validators=[DataRequired(), Length(max=50)])
-    remember_me = BooleanField('Remeber Me')
     submit = SubmitField('Login')
 
 class RegistrationForm(FlaskForm):
