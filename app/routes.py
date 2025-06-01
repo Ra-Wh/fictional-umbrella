@@ -24,10 +24,16 @@ def login():
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
-        login_user(user)
+        user_details = db. session.scalar(
+            sa.select(user_accounts).where(user_accounts.user_account_id == user.user_account_id)
+        )
+        login_user(user_details)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('index')
+            if current_user.is_admin:
+                next_page = url_for('admin_home')
+            else:
+                next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign in', form=form)
 
@@ -63,3 +69,12 @@ def create():
 def view():
     form=AddCommentForm()
     return render_template('view.html', title='view ticket', form=form)
+
+@app.route('/admin/home', methods=['GET', 'POST'])
+@login_required
+def admin_home():
+    if not current_user.is_admin:
+        flash('NOT AN ADMIN')
+    else:
+        flash('YAY')
+    return render_template('adminhome.html', title="admin home")
