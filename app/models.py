@@ -52,7 +52,7 @@ class ticket_comments(db.Model):
     created_date: so.Mapped[sa.DateTime] = so.mapped_column(sa.DateTime, default=sa.func.now(), nullable=False)
     comment_details: so.Mapped[sa.Text] = so.mapped_column(sa.Text, nullable=False)
 
-class user_accounts(db.Model):
+class user_accounts(UserMixin, db.Model):
     user_account_id: so.Mapped[int] = so.mapped_column(primary_key=True)
     first_name: so.Mapped[str] = so.mapped_column(sa.String(50), nullable=False)
     last_name: so.Mapped[str] = so.mapped_column(sa.String(50), nullable=False)
@@ -63,7 +63,7 @@ class user_accounts(db.Model):
     account_deleted_date: so.Mapped[sa.DateTime] = so.mapped_column(sa.DateTime, nullable=True)
     is_admin: so.Mapped[bool] = so.mapped_column(sa.Boolean, nullable=False, default=0)
 
-class login_details(UserMixin, db.Model):
+class login_details(db.Model):
     login_id: so.Mapped[int] =so.mapped_column(primary_key=True)
     user_account_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('user_accounts.user_account_id', ondelete='CASCADE'), nullable=False)
     username: so.Mapped[str] = so.mapped_column(sa.String(50), index=True, unique=True, nullable=False)

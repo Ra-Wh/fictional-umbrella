@@ -17,3 +17,15 @@ Activate the venv
 Install requirements from requirements.txt
 
 ~ pip install -r requirements.txt
+
+## Sample user accounts
+
+Basic User:
+
+ - Username: User1
+ - Password: 1234
+
+Admin User:
+
+ - Username: Admin2
+ - Password: 4321
