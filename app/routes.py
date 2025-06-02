@@ -6,12 +6,15 @@ import sqlalchemy as sa
 from app.models import login_details, user_accounts
 from urllib.parse import urlsplit
 from flask import session
+from utils.template_utils import get_base_template
+
 
 @app.route('/')
 @app.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title='Home')
+    return render_template('index.html', title='Home', base_template=get_base_template())
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -30,10 +33,7 @@ def login():
         login_user(user_details)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
-            if current_user.is_admin:
-                next_page = url_for('admin_home')
-            else:
-                next_page = url_for('index')
+            next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign in', form=form)
 
@@ -62,19 +62,10 @@ def register():
 @login_required
 def create():
     form=CreateTicketForm()
-    return render_template('create.html', title="create ticket", form=form)
+    return render_template('create.html', title="create ticket", form=form, base_template=get_base_template())
 
 @app.route('/view', methods=['GET', 'POST'])
 @login_required
 def view():
     form=AddCommentForm()
-    return render_template('view.html', title='view ticket', form=form)
-
-@app.route('/admin/home', methods=['GET', 'POST'])
-@login_required
-def admin_home():
-    if not current_user.is_admin:
-        flash('NOT AN ADMIN')
-    else:
-        flash('YAY')
-    return render_template('adminhome.html', title="admin home")
+    return render_template('view.html', title='view ticket', form=form, base_template=get_base_template())
