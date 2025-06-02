@@ -19,7 +19,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return render_template('login.html', title='Sign in', form=form)
     form = LoginForm()
     if form.validate_on_submit():
         user = db.session.scalar(
@@ -37,7 +37,7 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title='Sign in', form=form)
 
-@app.route('/logout')
+@app.route('/logout', methods=['POST'])
 def logout():
     logout_user()
     session.clear()
