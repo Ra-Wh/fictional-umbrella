@@ -52,7 +52,7 @@ class ticket_comments(db.Model):
     created_date: so.Mapped[sa.DateTime] = so.mapped_column(sa.DateTime, default=sa.func.now(), nullable=False)
     comment_details: so.Mapped[sa.Text] = so.mapped_column(sa.Text, nullable=False)
 
-class user_accounts(db.Model):
+class user_accounts(UserMixin, db.Model):
     user_account_id: so.Mapped[int] = so.mapped_column(primary_key=True)
     first_name: so.Mapped[str] = so.mapped_column(sa.String(50), nullable=False)
     last_name: so.Mapped[str] = so.mapped_column(sa.String(50), nullable=False)
@@ -62,8 +62,11 @@ class user_accounts(db.Model):
     is_deleted: so.Mapped[bool] = so.mapped_column(sa.Boolean, nullable=False, default=0)
     account_deleted_date: so.Mapped[sa.DateTime] = so.mapped_column(sa.DateTime, nullable=True)
     is_admin: so.Mapped[bool] = so.mapped_column(sa.Boolean, nullable=False, default=0)
+  
+    def get_id(self):
+        return str(self.user_account_id)
 
-class login_details(UserMixin, db.Model):
+class login_details(db.Model):
     login_id: so.Mapped[int] =so.mapped_column(primary_key=True)
     user_account_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('user_accounts.user_account_id', ondelete='CASCADE'), nullable=False)
     username: so.Mapped[str] = so.mapped_column(sa.String(50), index=True, unique=True, nullable=False)
@@ -72,9 +75,6 @@ class login_details(UserMixin, db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
-    
-    def get_id(self):
-        return str(self.login_id)
 
     def set_password(self, password):
         if password:
@@ -87,4 +87,4 @@ class login_details(UserMixin, db.Model):
 
 @login.user_loader
 def load_user(id):
-    return db.session.get(login_details, int(id))
+    return db.session.get(user_accounts, int(id))
