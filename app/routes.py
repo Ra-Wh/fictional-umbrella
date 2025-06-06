@@ -88,3 +88,8 @@ def create():
 def view():
     form=AddCommentForm()
     return render_template('view.html', title='view ticket', form=form, base_template=get_base_template())
+
+@app.route('/open-tickets', methods=['GET', 'POST'])
+@login_required
+def open_tickets():
+    return render_template('open.html', title='Open Tickets', base_template=get_base_template())
