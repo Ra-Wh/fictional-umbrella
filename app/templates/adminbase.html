@@ -22,8 +22,9 @@
                 <h1 class="navbar-heading">Support Hub - Admin</h1>
             </div>
             <div style="display: flex; gap: 20px;">
-                        <a class="nav-link navbar-text" href="{{ url_for('logout') }}">Logout</a>
-                </ul>
+                <form action="{{ url_for('logout') }}" method="POST">
+                    <button class="button-tertiary" type="submit">Logout</button>
+                </form>
             </div>
             </div>
         </nav>

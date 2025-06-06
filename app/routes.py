@@ -3,7 +3,7 @@ from app.forms import LoginForm, RegistrationForm, CreateTicketForm, AddCommentF
 from app import app, db
 from flask_login import current_user, logout_user, login_required, login_user
 import sqlalchemy as sa
-from app.models import login_details, user_accounts
+from app.models import login_details, user_accounts, tickets
 from urllib.parse import urlsplit
 from flask import session
 from utils.template_utils import get_base_template
@@ -19,7 +19,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return render_template('login.html', title='Sign in', form=form)
     form = LoginForm()
     if form.validate_on_submit():
         user = db.session.scalar(
@@ -37,7 +37,7 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title='Sign in', form=form)
 
-@app.route('/logout')
+@app.route('/logout', methods=['POST'])
 def logout():
     logout_user()
     session.clear()
@@ -49,10 +49,18 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = user_accounts(first_name=form.first_name.data, last_name=form.last_name.data, phone_number=form.phone_number.data)
+        user = user_accounts(
+            first_name=form.first_name.data, 
+            last_name=form.last_name.data, 
+            phone_number=form.phone_number.data
+            )
         db.session.add(user)
         db.session.commit()
-        login = login_details(user_account_id=user.user_account_id, username=form.username.data, email_address=form.email.data)
+        login = login_details(
+            user_account_id=user.user_account_id, 
+            username=form.username.data, 
+            email_address=form.email.data
+            )
         login.set_password(form.password.data)
         db.session.add(login)
         db.session.commit()
@@ -62,6 +70,17 @@ def register():
 @login_required
 def create():
     form=CreateTicketForm()
+    if form.validate_on_submit():
+        new_ticket = tickets(
+            user_account_id=current_user.user_account_id, 
+            ticket_details=form.details.data, 
+            issue_type=form.issue_type.data, 
+            priority=form.priority.data,
+            ticket_summary=form.summary.data
+            )
+        db.session.add(new_ticket)
+        db.session.commit()
+        return render_template('index.html', title='Home', base_template=get_base_template())
     return render_template('create.html', title="create ticket", form=form, base_template=get_base_template())
 
 @app.route('/view', methods=['GET', 'POST'])
