@@ -20,8 +20,14 @@
         <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
             <div style="display: flex; justify-content: space-between; align-items: top; gap: 20px">
                 <h1 class="navbar-heading">Support Hub</h1>
+                <button class="btn button-navbar" type="button" onclick="window.location.href='{{ url_for('index') }}'">
+                    Home
+                </button>
                 <button class="btn button-navbar" type="button" onclick="window.location.href='{{ url_for('open_tickets') }}'">
                     Open Tickets
+                </button>
+                <button class="btn button-navbar" type="button" onclick="window.location.href='{{ url_for('closed_tickets') }}'">
+                    Closed Tickets
                 </button>
             </div>
             <div style="display: flex; gap: 20px;">
@@ -31,6 +37,7 @@
             </div>
             </div>
         </nav>
+
         
         <div class="container mt-3">
         {% with messages = get_flashed_messages() %}
