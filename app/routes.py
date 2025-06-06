@@ -93,3 +93,8 @@ def view():
 @login_required
 def open_tickets():
     return render_template('open.html', title='Open Tickets', base_template=get_base_template())
+
+@app.route('/closed-tickets', methods=['GET', 'POST'])
+@login_required
+def closed_tickets():
+    return render_template('closed.html', title='Open Tickets', base_template=get_base_template())
