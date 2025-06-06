@@ -18,8 +18,11 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light navbar-bg">
-            <div>
+            <div style="display: flex; justify-content: space-between; align-items: top; gap: 20px">
                 <h1 class="navbar-heading">Support Hub</h1>
+                <button class="btn button-navbar" type="button" onclick="window.location.href='{{ url_for('open_tickets') }}'">
+                    Open Tickets
+                </button>
             </div>
             <div style="display: flex; gap: 20px;">
                 <form action="{{ url_for('logout') }}" method="POST">

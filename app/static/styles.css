@@ -58,6 +58,15 @@
     box-shadow: 0px 0px 10px grey !important;
 }
 
+.button-navbar {
+    color: white
+}
+
+.button-navbar:hover {
+   text-decoration: underline;
+   color: white;
+}
+
 /* Backgrounds */
 
 .blue-background {
