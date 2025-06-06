@@ -80,6 +80,7 @@ def create():
             )
         db.session.add(new_ticket)
         db.session.commit()
+        return render_template('index.html', title='Home', base_template=get_base_template())
     return render_template('create.html', title="create ticket", form=form, base_template=get_base_template())
 
 @app.route('/view', methods=['GET', 'POST'])

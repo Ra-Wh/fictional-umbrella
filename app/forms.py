@@ -2,8 +2,13 @@ import sqlalchemy as sa
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
-from wtforms.validators import DataRequired, Email, EqualTo, Length, Regexp
+from wtforms.validators import DataRequired, Email, EqualTo, Length, Regexp, ValidationError
 from wtforms.widgets import Select
+
+def validate_issue_type(form, field):
+    valid_choices = ['incident', 'request', 'support']
+    if field.data not in valid_choices:
+        raise ValidationError('Invalid issue type selection.')
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(max=50)])
@@ -30,11 +35,26 @@ class CreateTicketForm(FlaskForm):
     issue_type = SelectField(
         'Issue Type',
         choices=[('incident', 'Incident'), ('request', 'Request'), ('support', 'Support')],
-        validators=[DataRequired()],
+        validators=[DataRequired(), validate_issue_type],
+        render_kw={"placeholder": "Select an issue type"}
     )
-    priority = SelectField('Priority', choices=[(1, 'Low'), (2, 'Medium'), (3, 'High'), (4, 'Critical')], validators=[DataRequired()], widget=Select())
-    summary = TextAreaField('Summary', validators=[DataRequired()])
-    details = TextAreaField('Details', validators=[DataRequired()])
+    priority = SelectField(
+        'Priority', 
+        choices=[(1, 'Low'), (2, 'Medium'), (3, 'High'), (4, 'Critical')], 
+        validators=[DataRequired()], 
+        widget=Select(),
+        render_kw={"placeholder": "Select priority level"}
+        )
+    summary = TextAreaField(
+        'Summary', 
+        validators=[DataRequired(), Length(min=1, max=40)],
+        render_kw={"placeholder": "Briefly summarize the issue."}
+        )
+    details = TextAreaField(
+        'Details', 
+        validators=[DataRequired(), Length(min=1, max=500)],
+        render_kw={"placeholder": "Provide detailed information about the issue"}
+        )
     submit = SubmitField('Submit')
 
 class AddCommentForm(FlaskForm):
