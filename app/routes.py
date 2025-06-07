@@ -13,7 +13,34 @@ from utils.template_utils import get_base_template
 @app.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title='Home', base_template=get_base_template())
+    recent_tickets = tickets.query.filter(
+        tickets.status != 'closed', 
+        tickets.user_account_id == current_user.user_account_id
+    ).limit(10).all()
+
+    count_open = tickets.query.filter(
+        tickets.status == 'open',
+        tickets.user_account_id == current_user.user_account_id
+    ).count()
+
+    count_in_progress = tickets.query.filter(
+        tickets.status == 'in_progress',
+        tickets.user_account_id == current_user.user_account_id
+    ).count()
+
+    count_closed = tickets.query.filter(
+        tickets.status == 'closed',
+        tickets.user_account_id == current_user.user_account_id
+    ).count()
+
+    return render_template(
+        'index.html', 
+        title='Home', 
+        base_template=get_base_template(), 
+        tickets=recent_tickets, 
+        open_tickets=count_open, 
+        in_progress_tickets=count_in_progress,
+        closed_tickets=count_closed)
 
 
 @app.route('/login', methods=['GET', 'POST'])
