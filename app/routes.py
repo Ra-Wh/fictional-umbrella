@@ -3,7 +3,7 @@ from app.forms import LoginForm, RegistrationForm, CreateTicketForm, AddCommentF
 from app import app, db
 from flask_login import current_user, logout_user, login_required, login_user
 import sqlalchemy as sa
-from app.models import login_details, user_accounts, tickets
+from app.models import login_details, user_accounts, tickets, ticket_comments
 from urllib.parse import urlsplit
 from flask import session
 from utils.template_utils import get_base_template
@@ -110,11 +110,24 @@ def create():
         return render_template('index.html', title='Home', base_template=get_base_template())
     return render_template('create.html', title="create ticket", form=form, base_template=get_base_template())
 
-@app.route('/view', methods=['GET', 'POST'])
+@app.route('/view', defaults={'ticket_id': None}, methods=['GET', 'POST'])
+@app.route('/view/<int:ticket_id>', methods=['GET', 'POST'])
 @login_required
-def view():
+def view(ticket_id):
+    ticket = tickets.query.filter(
+        tickets.ticket_id == ticket_id,
+        tickets.user_account_id == current_user.user_account_id
+    ).first()
     form=AddCommentForm()
-    return render_template('view.html', title='view ticket', form=form, base_template=get_base_template())
+    if form.validate_on_submit():
+        new_comment = ticket_comments(
+            ticket_id=ticket_id,
+            user_account_id=current_user.user_account_id,
+            comment_details=form.comment.data
+        )
+        db.session.add(new_comment)
+        db.session.commit
+    return render_template('view.html', title='view ticket', form=form, base_template=get_base_template(), ticket=ticket)
 
 @app.route('/open-tickets', methods=['GET', 'POST'])
 @login_required

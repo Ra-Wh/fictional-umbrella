@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Ticket ###</h1>
+    <h1>Ticket {{ ticket.ticket_id }}</h1>
     <div>
         <div>
             <h3>Type</h3>
-            <p>Support</p>
+            <p>{{ ticket.issue_type}}</p>
         </div>
         <div>
             <h3>Priority</h3>
-            <p>Low</p>
+            <p>{{ ticket.priority }}</p>
         </div>
     </div>
     <div>
         <h3>Summery</h3>
-        <p>A short overview of the ticket...</p>
+        <p>{{ ticket.ticket_summary}}</p>
     </div>
     <div>
         <h3>Description</h3>
-        <p>More detail for the ticket...</p>
+        <p>{{ ticket.ticket_details}}</p>
     </div>
 
     <form action="" method="post" novalidate>
