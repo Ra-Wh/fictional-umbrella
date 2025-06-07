@@ -40,7 +40,7 @@ class CreateTicketForm(FlaskForm):
     )
     priority = SelectField(
         'Priority', 
-        choices=[(1, 'Low'), (2, 'Medium'), (3, 'High'), (4, 'Critical')], 
+        choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High'), ('critical', 'Critical')], 
         validators=[DataRequired()], 
         widget=Select(),
         render_kw={"placeholder": "Select priority level"}

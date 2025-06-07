@@ -15,10 +15,10 @@ class IssueType(enum.Enum):
     support = 'Support'
 
 class PriorityType(enum.Enum):
-    low = 'Low'
-    medium = 'Medium'
-    high = 'High'
-    critical = 'Critical'
+    low = 'low'
+    medium = 'medium'
+    high = 'high'
+    critical = 'critical'
 
 class StatusType(enum.Enum):
     open = 'Open'
