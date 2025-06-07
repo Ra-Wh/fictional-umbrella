@@ -13,30 +13,20 @@
         </tr>
     </thead>
     <tbody>
+        {% for ticket in tickets %}
         <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td></td>
+        <th scope="row">{{ loop.index }}</th>
+        <td>{{ ticket.created_date }}</td>
+        <td>{{ ticket.issue_type.value }}</td>
+        <td>{{ ticket.ticket_summary }}</td>
+        <td>{{ ticket.status.value }}</td>
         <td>
             <button type="button" class="btn button-secondary" style="align-self: flex-start;" onclick="window.location.href='{{ url_for('view') }}'">
                 View
             </button>
         </td>
         </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        </tr>
+        {% endfor %}
     </tbody>
     </table>
 {% endblock %}

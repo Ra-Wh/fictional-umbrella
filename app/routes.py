@@ -92,7 +92,11 @@ def view():
 @app.route('/open-tickets', methods=['GET', 'POST'])
 @login_required
 def open_tickets():
-    return render_template('open.html', title='Open Tickets', base_template=get_base_template())
+    open_tickets = tickets.query.filter(
+        tickets.status != 'closed', 
+        tickets.user_account_id == current_user.user_account_id
+    ).all()
+    return render_template('open.html', title='Open Tickets', base_template=get_base_template(), tickets=open_tickets)
 
 @app.route('/closed-tickets', methods=['GET', 'POST'])
 @login_required
