@@ -15,7 +15,7 @@
     <tbody>
         {% for ticket in tickets %}
         <tr>
-        <th scope="row">{{ loop.index }}</th>
+        <th scope="row">{{ ticket.ticket_id }}</th>
         <td>{{ ticket.created_date }}</td>
         <td>{{ ticket.issue_type.value }}</td>
         <td>{{ ticket.ticket_summary }}</td>
