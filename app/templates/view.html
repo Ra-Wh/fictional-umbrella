@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends base_template %}
 
 {% block content %}
     <h1>Ticket {{ ticket.ticket_id }}</h1>
@@ -43,8 +43,19 @@
             {% endfor %}
         </div>
 
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn button-primary">Add Comment</button>
-        </div>
+        
+        {% if not current_user.is_admin %}
+            <button type="submit" class="btn button-primary" name="action" value="open">Add Comment</button>
+        {% endif %}
+
+        {% if current_user.is_admin %}
+            <button type="submit" class="btn button-primary" name="action" value="in_progress">
+                Comment and Mark In Progress
+            </button>
+
+            <button type="submit" class="btn button-primary" name="action" value="closed">
+                Comment and Close Ticket
+            </button>
+        {% endif %}
 
 {% endblock %}

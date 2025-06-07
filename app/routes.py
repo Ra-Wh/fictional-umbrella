@@ -107,7 +107,7 @@ def create():
             )
         db.session.add(new_ticket)
         db.session.commit()
-        return render_template('index.html', title='Home', base_template=get_base_template())
+        return redirect(url_for('index'))
     return render_template('create.html', title="create ticket", form=form, base_template=get_base_template())
 
 @app.route('/view', defaults={'ticket_id': None}, methods=['GET', 'POST'])
@@ -120,11 +120,13 @@ def view(ticket_id):
     ).first()
     form=AddCommentForm()
     if form.validate_on_submit():
+        action = request.form.get('action')
         new_comment = ticket_comments(
             ticket_id=ticket_id,
             user_account_id=current_user.user_account_id,
             comment_details=form.comment.data
         )
+        ticket.status=action
         db.session.add(new_comment)
         db.session.commit()
     comments = ticket_comments.query.filter_by(
