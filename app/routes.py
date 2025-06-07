@@ -126,8 +126,12 @@ def view(ticket_id):
             comment_details=form.comment.data
         )
         db.session.add(new_comment)
-        db.session.commit
-    return render_template('view.html', title='view ticket', form=form, base_template=get_base_template(), ticket=ticket)
+        db.session.commit()
+    comments = ticket_comments.query.filter_by(
+        ticket_id=ticket_id
+    )
+    username = login_details.query.filter_by(user_account_id=current_user.user_account_id).with_entities(login_details.username).scalar()
+    return render_template('view.html', title='view ticket', form=form, base_template=get_base_template(), ticket=ticket, comments=comments, username=username)
 
 @app.route('/open-tickets', methods=['GET', 'POST'])
 @login_required
