@@ -2,23 +2,34 @@
 
 {% block content %}
     <h1>Ticket {{ ticket.ticket_id }}</h1>
-    <div>
-        <div>
-            <h3>Type</h3>
-            <p>{{ ticket.issue_type}}</p>
+    <div style="display: flex; flex-direction: row">
+        <div class="border-end pe-3" style="width: 45vw">
+            <div>
+                <div>
+                    <h3>Type</h3>
+                    <p>{{ ticket.issue_type.value}}</p>
+                </div>
+                <div>
+                    <h3>Priority</h3>
+                    <p>{{ ticket.priority.value }}</p>
+                </div>
+            </div>
+            <div>
+                <h3>Summery</h3>
+                <p>{{ ticket.ticket_summary}}</p>
+            </div>
+            <div>
+                <h3>Description</h3>
+                <p>{{ ticket.ticket_details}}</p>
+            </div>
         </div>
-        <div>
-            <h3>Priority</h3>
-            <p>{{ ticket.priority }}</p>
+        <div style="padding-left: 10px">
+        <h3>Comments</h3>
+        {% for comment in comments %}
+            <p>{{ username }} &nbsp;-&nbsp; {{ comment.created_date }}</p>
+            <p>{{ comment.comment_details }}</p>
+        {% endfor %}
         </div>
-    </div>
-    <div>
-        <h3>Summery</h3>
-        <p>{{ ticket.ticket_summary}}</p>
-    </div>
-    <div>
-        <h3>Description</h3>
-        <p>{{ ticket.ticket_details}}</p>
     </div>
 
     <form action="" method="post" novalidate>
