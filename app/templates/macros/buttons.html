@@ -1,0 +1,10 @@
+{% macro view_button(ticket_id) %}
+<button 
+    type="button" 
+    class="btn button-secondary" 
+    style="align-self: flex-start;" 
+    onclick="window.location.href='{{ url_for('view', ticket_id=ticket_id) }}'"
+    >
+    View
+</button>
+{% endmacro %}
