@@ -7,31 +7,52 @@ from app.models import login_details, user_accounts, tickets, ticket_comments
 from urllib.parse import urlsplit
 from flask import session
 from utils.template_utils import get_base_template
+from datetime import datetime
+from sqlalchemy import or_
 
 
 @app.route('/')
 @app.route('/index')
 @login_required
 def index():
-    recent_tickets = tickets.query.filter(
-        tickets.status != 'closed', 
-        tickets.user_account_id == current_user.user_account_id
-    ).limit(10).all()
+    if current_user.is_admin:
+        recent_tickets = tickets.query.filter(
+            tickets.status != 'closed', 
+        ).limit(10).all()
 
-    count_open = tickets.query.filter(
-        tickets.status == 'open',
-        tickets.user_account_id == current_user.user_account_id
-    ).count()
+        count_open = tickets.query.filter(
+            tickets.status == 'open',
+        ).count()
 
-    count_in_progress = tickets.query.filter(
-        tickets.status == 'in_progress',
-        tickets.user_account_id == current_user.user_account_id
-    ).count()
+        count_in_progress = tickets.query.filter(
+            tickets.status == 'in_progress',
+        ).count()
 
-    count_closed = tickets.query.filter(
-        tickets.status == 'closed',
-        tickets.user_account_id == current_user.user_account_id
-    ).count()
+        count_closed = tickets.query.filter(
+            tickets.status == 'closed',
+        ).count()
+
+    else:
+
+        recent_tickets = tickets.query.filter(
+            tickets.status != 'closed', 
+            tickets.user_account_id == current_user.user_account_id
+        ).limit(10).all()
+
+        count_open = tickets.query.filter(
+            tickets.status == 'open',
+            tickets.user_account_id == current_user.user_account_id
+        ).count()
+
+        count_in_progress = tickets.query.filter(
+            tickets.status == 'in_progress',
+            tickets.user_account_id == current_user.user_account_id
+        ).count()
+
+        count_closed = tickets.query.filter(
+            tickets.status == 'closed',
+            tickets.user_account_id == current_user.user_account_id
+        ).count()
 
     return render_template(
         'index.html', 
@@ -115,9 +136,14 @@ def create():
 @login_required
 def view(ticket_id):
     ticket = tickets.query.filter(
-        tickets.ticket_id == ticket_id,
-        tickets.user_account_id == current_user.user_account_id
+        tickets.ticket_id == ticket_id
+    ).filter(
+        or_(current_user.is_admin, tickets.user_account_id == current_user.user_account_id)
     ).first()
+
+    if ticket is None:
+        flash("Ticket not found or you don't have permission to view it.", "danger")
+        return redirect(url_for("index"))
     
     form = AddCommentForm()
 
@@ -128,6 +154,8 @@ def view(ticket_id):
         valid_statuses = {"open", "in_progress", "closed"}
         if action in valid_statuses:
             ticket.status = action  # Update ticket status
+            if action is "closed":
+                ticket.closed_date = datetime.now()
             db.session.commit()
 
         # Add the comment to the database
@@ -149,17 +177,46 @@ def view(ticket_id):
 @app.route('/open-tickets', methods=['GET', 'POST'])
 @login_required
 def open_tickets():
-    open_tickets = tickets.query.filter(
-        tickets.status != 'closed', 
-        tickets.user_account_id == current_user.user_account_id
-    ).all()
+    if current_user.is_admin:
+        open_tickets = tickets.query.filter(
+            tickets.status != 'closed', 
+        ).all()
+    else:
+        open_tickets = tickets.query.filter(
+            tickets.status != 'closed', 
+            tickets.user_account_id == current_user.user_account_id
+        ).all()
     return render_template('open.html', title='Open Tickets', base_template=get_base_template(), tickets=open_tickets)
 
 @app.route('/closed-tickets', methods=['GET', 'POST'])
 @login_required
 def closed_tickets():
-    closed_tickets = tickets.query.filter(
-        tickets.status == 'closed', 
-        tickets.user_account_id == current_user.user_account_id
-    ).all()
+    if current_user.is_admin:
+        closed_tickets = tickets.query.filter(
+            tickets.status == 'closed',
+        ).all()
+    else:
+        closed_tickets = tickets.query.filter(
+            tickets.status == 'closed', 
+            tickets.user_account_id == current_user.user_account_id
+        ).all()
     return render_template('closed.html', title='Open Tickets', base_template=get_base_template(), tickets=closed_tickets)
+
+
+@app.route('/delete', defaults={'ticket_id': None}, methods=['GET', 'POST'])
+@app.route('/delete/<int:ticket_id>', methods=['GET', 'POST'])
+@login_required
+def delete(ticket_id):
+    if current_user.is_admin:
+        ticket = tickets.query.filter(
+            tickets.ticket_id == ticket_id
+        ).first()
+        db.session.delete(ticket)
+        db.session.commit()
+
+        flash("Ticket deleted successfully!", "success")
+        return redirect(url_for("index"))
+    
+    return redirect(url_for("index"))
+    
+
