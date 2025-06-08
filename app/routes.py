@@ -3,12 +3,14 @@ from app.forms import LoginForm, RegistrationForm, CreateTicketForm, AddCommentF
 from app import app, db
 from flask_login import current_user, logout_user, login_required, login_user
 import sqlalchemy as sa
+import sqlalchemy.orm
 from app.models import login_details, user_accounts, tickets, ticket_comments
 from urllib.parse import urlsplit
 from flask import session
 from utils.template_utils import get_base_template
 from datetime import datetime
 from sqlalchemy import or_
+from sqlalchemy.orm import joinedload
 
 
 @app.route('/')
@@ -218,5 +220,29 @@ def delete(ticket_id):
         return redirect(url_for("index"))
     
     return redirect(url_for("index"))
-    
 
+@app.route('/promote', methods=['GET', 'POST'])
+@login_required
+def promote(user_account_id):
+    return redirect(url_for("index"))
+    
+@app.route('/delete/user', methods=['GET', 'POST'])
+@login_required
+def delete_user(user_account_id):
+    return redirect(url_for("index"))
+
+@app.route('/users', methods=['GET', 'POST'])
+@login_required
+def users():
+    users = db.session.query(
+        user_accounts.user_account_id,
+        user_accounts.first_name,
+        user_accounts.last_name,
+        user_accounts.account_created_date,
+        user_accounts.is_deleted,
+        user_accounts.account_deleted_date,
+        user_accounts.is_admin,
+        login_details.username
+    ).join(login_details).all()
+
+    return render_template('users.html', title='Users', base_template=get_base_template(), users=users)

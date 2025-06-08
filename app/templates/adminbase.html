@@ -29,6 +29,9 @@
                 <button class="btn button-navbar" type="button" onclick="window.location.href='{{ url_for('closed_tickets') }}'">
                     Closed Tickets
                 </button>
+                <button class="btn button-navbar" type="button" onclick="window.location.href='{{ url_for('users') }}'">
+                    Users
+                </button>
             </div>
             <div style="display: flex; gap: 20px;">
                 <form action="{{ url_for('logout') }}" method="POST">
