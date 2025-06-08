@@ -34,7 +34,8 @@
 
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
-    
+
+        {% if ticket.status.value != "Closed" %}
         <div class="mb-3">
             {{ form.comment.label(class="form-label") }}
             {{ form.comment(class="form-control", size=32) }}
@@ -43,19 +44,15 @@
             {% endfor %}
         </div>
 
-        
-        {% if not current_user.is_admin %}
-            <button type="submit" class="btn button-primary" name="action" value="open">Add Comment</button>
+            {% if not current_user.is_admin %}
+                <button type="submit" class="btn button-primary" name="action" value="open">Add Comment</button>
+            {% endif %}
+
+            {% if current_user.is_admin %}
+                <button type="submit" class="btn button-primary" name="action" value="in_progress">Comment and Mark In Progress</button>
+                <button type="submit" class="btn button-primary" name="action" value="closed">Comment and Close Ticket</button>
+            {% endif %}
         {% endif %}
 
-        {% if current_user.is_admin %}
-            <button type="submit" class="btn button-primary" name="action" value="in_progress">
-                Comment and Mark In Progress
-            </button>
-
-            <button type="submit" class="btn button-primary" name="action" value="closed">
-                Comment and Close Ticket
-            </button>
-        {% endif %}
 
 {% endblock %}

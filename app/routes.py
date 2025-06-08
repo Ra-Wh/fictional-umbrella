@@ -118,22 +118,33 @@ def view(ticket_id):
         tickets.ticket_id == ticket_id,
         tickets.user_account_id == current_user.user_account_id
     ).first()
-    form=AddCommentForm()
+    
+    form = AddCommentForm()
+
     if form.validate_on_submit():
         action = request.form.get('action')
+
+        # Ensure action is valid before updating status
+        valid_statuses = {"open", "in_progress", "closed"}
+        if action in valid_statuses:
+            ticket.status = action  # Update ticket status
+            db.session.commit()
+
+        # Add the comment to the database
         new_comment = ticket_comments(
             ticket_id=ticket_id,
             user_account_id=current_user.user_account_id,
             comment_details=form.comment.data
         )
-        ticket.status=action
         db.session.add(new_comment)
         db.session.commit()
-    comments = ticket_comments.query.filter_by(
-        ticket_id=ticket_id
-    )
+
+        return redirect(url_for('view', ticket_id=ticket_id))  # Redirect to refresh template
+
+    comments = ticket_comments.query.filter_by(ticket_id=ticket_id).all()
     username = login_details.query.filter_by(user_account_id=current_user.user_account_id).with_entities(login_details.username).scalar()
-    return render_template('view.html', title='view ticket', form=form, base_template=get_base_template(), ticket=ticket, comments=comments, username=username)
+
+    return render_template('view.html', title='View Ticket', form=form, base_template=get_base_template(), ticket=ticket, comments=comments, username=username)
 
 @app.route('/open-tickets', methods=['GET', 'POST'])
 @login_required
@@ -147,4 +158,8 @@ def open_tickets():
 @app.route('/closed-tickets', methods=['GET', 'POST'])
 @login_required
 def closed_tickets():
-    return render_template('closed.html', title='Open Tickets', base_template=get_base_template())
+    closed_tickets = tickets.query.filter(
+        tickets.status == 'closed', 
+        tickets.user_account_id == current_user.user_account_id
+    ).all()
+    return render_template('closed.html', title='Open Tickets', base_template=get_base_template(), tickets=closed_tickets)
