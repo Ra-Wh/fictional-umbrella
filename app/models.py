@@ -40,7 +40,7 @@ class tickets(db.Model):
     ticket_details: so.Mapped[sa.Text] = so.mapped_column(sa.Text, nullable=False)
     issue_type: so.Mapped[sa.Enum] = so.mapped_column(sa.Enum(IssueType), nullable=False)
     priority: so.Mapped[sa.Enum] = so.mapped_column(sa.Enum(PriorityType), nullable=False)
-    isClosed: so.Mapped[bool] = so.mapped_column(sa.Boolean, default=False)
+    closed_date: so.Mapped[sa.DateTime] = so.mapped_column(sa.DateTime, default=None, nullable=True)
     ticket_summary: so.Mapped[str] = so.mapped_column(sa.String(40), nullable=False)
     status: so.Mapped[sa.Enum] = so.mapped_column(sa.Enum(StatusType), nullable=False, default=StatusType.open)
     needs_attention: so.Mapped[bool] = so.mapped_column(sa.Boolean, nullable=False, default=False)
