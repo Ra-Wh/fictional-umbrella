@@ -31,6 +31,17 @@
     </button>
 {% endmacro %}
 
+{% macro demote_user_button(ticket_id) %}
+    <button 
+        type="button" 
+        class="btn button-secondary" 
+        style="align-self: flex-start;" 
+        onclick="window.location.href='{{ url_for('demote', user_account_id=user_account_id) }}'"
+        >
+        Demote
+    </button>
+{% endmacro %}
+
 {% macro delete_user_button(ticket_id) %}
     <button 
         type="button" 

@@ -30,10 +30,11 @@
                 <td>{{ user.account_created_date }}</td>
                 {% if user.is_admin %}
                     <td>Admin</td>
+                    <td>{{ buttons.demote_user_button(user.user_account_id) }}</td>
                 {% else %}
                     <td>Standard</td>
+                    <td>{{ buttons.promote_user_button(user.user_account_id) }}</td>
                 {% endif %}
-                <td>{{ buttons.promote_user_button(user.user_account_id) }}</td>
                 <td>{{ buttons.delete_user_button(user.user_account_id) }}</td>
                 </tr>
                 {% endfor %}

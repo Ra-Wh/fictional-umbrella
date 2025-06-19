@@ -227,6 +227,11 @@ def delete(ticket_id):
 @login_required
 def promote(user_account_id):
     return redirect(url_for("index"))
+
+@app.route('/demote', methods=['GET', 'POST'])
+@login_required
+def demote(user_account_id):
+    return redirect(url_for("index"))
     
 @app.route('/delete/user', methods=['GET', 'POST'])
 @login_required
