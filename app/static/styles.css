@@ -103,6 +103,11 @@
     color: var(--tertiary-color-2);
 }
 
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
 /* Navigation Bar */
 
 .navbar-bg {

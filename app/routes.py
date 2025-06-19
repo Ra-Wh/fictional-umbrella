@@ -114,6 +114,8 @@ def register():
         login.set_password(form.password.data)
         db.session.add(login)
         db.session.commit()
+        flash('Registration Successful', 'success')
+        return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/create', methods=['GET', 'POST'])
