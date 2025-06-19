@@ -70,7 +70,26 @@ class user_accounts(UserMixin, db.Model):
     account_deleted_date: so.Mapped[sa.DateTime] = so.mapped_column(sa.DateTime, nullable=True)
     is_admin: so.Mapped[bool] = so.mapped_column(sa.Boolean, nullable=False, default=0)
 
-    login_details = db.relationship("login_details", backref="user_account", uselist=False, cascade="all, delete")
+    tickets = db.relationship(
+        "tickets",
+        backref="user",
+        cascade="all, delete-orphan",
+        passive_deletes=True
+    )
+
+    login_details = db.relationship(
+        "login_details",
+        backref="user",
+        cascade="all, delete-orphan",
+        passive_deletes=True
+    )
+
+    ticket_comments = db.relationship(
+        "ticket_comments",
+        backref="user",
+        cascade="all, delete-orphan",
+        passive_deletes=True
+)
   
     def get_id(self):
         return str(self.user_account_id)
