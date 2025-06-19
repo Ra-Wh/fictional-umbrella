@@ -223,15 +223,43 @@ def delete(ticket_id):
     
     return redirect(url_for("index"))
 
-@app.route('/promote', methods=['GET', 'POST'])
+@app.route('/promote', defaults={'user_account_id': None}, methods=['GET', 'POST'])
+@app.route('/promote/<int:user_account_id>', methods=['GET', 'POST'])
 @login_required
 def promote(user_account_id):
-    return redirect(url_for("index"))
+    if current_user.is_admin:
+        user = user_accounts.query.filter_by(user_account_id=user_account_id).first()
+        if user:
+            user.is_admin = True
+            db.session.commit()
+            flash("User promoted successfully", "success")
+        else:
+            flash("User not found.", "danger") # Change this to a generic error?
+    else:
+        flash("You do not have permission to perform this action.", "warning")
+    return redirect(url_for("users"))
 
-@app.route('/demote', methods=['GET', 'POST'])
+
+@app.route('/demote', defaults={'user_account_id': None}, methods=['GET', 'POST'])
+@app.route('/demote/<int:user_account_id>', methods=['GET', 'POST'])
 @login_required
 def demote(user_account_id):
-    return redirect(url_for("index"))
+    if not current_user.is_admin:
+        flash("You do not have permission to perform this action.", "warning")
+        return redirect(url_for("users"))
+
+    if user_account_id == current_user.user_account_id:
+        flash("You cannot demote yourself.", "warning")
+        return redirect(url_for("users"))
+
+    user = user_accounts.query.filter_by(user_account_id=user_account_id).first()
+    if user:
+        user.is_admin = False
+        db.session.commit()
+        flash("User demoted successfully.", "success")
+    else:
+        flash("Unable to process your request.", "danger")
+    return redirect(url_for("users"))
     
 @app.route('/delete/user', methods=['GET', 'POST'])
 @login_required

@@ -30,10 +30,13 @@
                 <td>{{ user.account_created_date }}</td>
                 {% if user.is_admin %}
                     <td>Admin</td>
-                    <td>{{ buttons.demote_user_button(user.user_account_id) }}</td>
+                    <td>{% if current_user.is_admin and current_user.user_account_id != user.user_account_id %}
+                        <button class="btn button-secondary" onclick="showDemoteConfirmation({{ user.user_account_id }})">Demote</button>
+                        {% endif %}
+                    </td>
                 {% else %}
                     <td>Standard</td>
-                    <td>{{ buttons.promote_user_button(user.user_account_id) }}</td>
+                    <td><button class="btn button-primary" onclick="showPromoteConfirmation('{{ user.user_account_id }}')">Promote</td>
                 {% endif %}
                 <td>{{ buttons.delete_user_button(user.user_account_id) }}</td>
                 </tr>
@@ -42,5 +45,59 @@
             </table>
         </div>
         </div>
+
+        <!-- Hidden promote confirmation-->
+        <div id="promoteConfirmation" class="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <p>Are you sure you want to promote this user?</p>
+                <div style="display: flex; flex-direction: row; gap: 5vw; justify-content: center">
+                <button class="btn button-primary" onclick="hidePromoteConfirmation()">Cancel</button>
+                <form id="promoteForm" method="post">
+                    <button type="submit" class="btn button-tertiary">Promote</button>
+                </form>
+                </div>
+            </div>
+        </div>
+
+    <!-- Hidden deomote confirmation-->
+        <div id="demoteConfirmation" class="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <p>Are you sure you want to demote this user?</p>
+                <div style="display: flex; flex-direction: row; gap: 5vw; justify-content: center">
+                <button class="btn button-primary" onclick="hideDemoteConfirmation()">Cancel</button>
+                <form id="demoteForm" method="post">
+                    <button type="submit" class="btn button-tertiary">Demote</button>
+                </form>
+                </div>
+            </div>
+            </div>
     </body>
+
+    <!-- Jacascript -->
+        <script>
+
+            //DONT WANT TO SHOW CONFIRMATIONS IF YOU SHOULDNT BE ABLE TO PROMOTE OR DEMOTE THE USER - SAME AS LOGIC ON ROUTE
+            //BUTTONS FOR PROMOTE AND DEMOTE NOT SHOWING PROPERLY
+
+            // Confirm demotion
+            function showDemoteConfirmation(userID) {
+                document.getElementById("demoteConfirmation").style.display = "block";
+                document.getElementById("demoteForm").setAttribute("action", `/demote/${userID}`);
+            }
+
+            function hideDemoteConfirmation() {
+                document.getElementById("demoteConfirmation").style.display = "none";
+            }
+
+            // Confirm promotion
+            function showPromoteConfirmation(userID) {
+                document.getElementById("promoteConfirmation").style.display = "block";
+                document.getElementById("promoteForm").setAttribute("action", `/promote/${userID}`);
+            }
+
+            function hidePromoteConfirmation() {
+                document.getElementById("promoteConfirmation").style.display = "none";
+            }
+        </script>
+
 {% endblock %}
