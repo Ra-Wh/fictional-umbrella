@@ -1,3 +1,5 @@
+{% import 'macros/buttons.html' as buttons %}
+
 {% extends base_template %}
 
 {% block content %}
@@ -10,28 +12,19 @@
             <th scope="col">Date Closed</th>
             <th scope="col">Category</th>
             <th scope="col">Overview</th>
-            <th scope="col">Status</th>
+            <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
+            {% for ticket in tickets %}
             <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">{{ ticket.ticket_id }}</th>
+            <td>{{ ticket.closed_date }}</td>
+            <td>{{ ticket.issue_type }}</td>
+            <td>{{ ticket.ticket_summary }}</td>
+            <td>{{ buttons.view_button(ticket.ticket_id) }}</td>
             </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            </tr>
+            {% endfor %}
         </tbody>
         </table>
 {% endblock %}

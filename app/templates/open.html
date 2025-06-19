@@ -1,3 +1,5 @@
+{% import 'macros/buttons.html' as buttons %}
+
 {% extends base_template %}
 
 {% block content %}
@@ -15,16 +17,12 @@
     <tbody>
         {% for ticket in tickets %}
         <tr>
-        <th scope="row">{{ loop.index }}</th>
+        <th scope="row">{{ ticket.ticket_id }}</th>
         <td>{{ ticket.created_date }}</td>
         <td>{{ ticket.issue_type.value }}</td>
         <td>{{ ticket.ticket_summary }}</td>
         <td>{{ ticket.status.value }}</td>
-        <td>
-            <button type="button" class="btn button-secondary" style="align-self: flex-start;" onclick="window.location.href='{{ url_for('view') }}'">
-                View
-            </button>
-        </td>
+        <td>{{ buttons.view_button(ticket.ticket_id) }}</td>
         </tr>
         {% endfor %}
     </tbody>
