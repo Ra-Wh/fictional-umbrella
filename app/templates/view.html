@@ -5,9 +5,11 @@
 {% block content %}
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
         <h1>Ticket {{ ticket.ticket_id }}</h1>
+        {% if current_user.is_admin %}
         <button class="btn button-tertiary" onclick="showDeleteConfirmation('{{ ticket.ticket_id }}')">
             Delete Ticket
         </button>
+        {% endif %}
     </div>
     <div style="display: flex; flex-direction: row">
         <div class="border-end pe-3" style="width: 45vw">
