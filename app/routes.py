@@ -211,16 +211,19 @@ def closed_tickets():
 @app.route('/delete/<int:ticket_id>', methods=['GET', 'POST'])
 @login_required
 def delete(ticket_id):
-    if current_user.is_admin:
-        ticket = tickets.query.filter(
-            tickets.ticket_id == ticket_id
-        ).first()
-        db.session.delete(ticket)
-        db.session.commit()
-
-        flash("Ticket deleted successfully!", "success")
+    if not current_user.is_admin:
+        flash("You do not have permission to perform this action.", "warning")
         return redirect(url_for("index"))
-    
+
+    ticket = tickets.query.filter_by(ticket_id=ticket_id).first()
+    if not ticket:
+        flash("Ticket not found.", "danger")
+        return redirect(url_for("index"))
+
+    db.session.delete(ticket)
+    db.session.commit()
+
+    flash("Ticket and associated comments deleted successfully!", "success")
     return redirect(url_for("index"))
 
 @app.route('/promote', defaults={'user_account_id': None}, methods=['GET', 'POST'])
