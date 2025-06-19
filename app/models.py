@@ -45,6 +45,13 @@ class tickets(db.Model):
     status: so.Mapped[sa.Enum] = so.mapped_column(sa.Enum(StatusType), nullable=False, default=StatusType.open)
     needs_attention: so.Mapped[bool] = so.mapped_column(sa.Boolean, nullable=False, default=False)
 
+    comments = db.relationship(
+        "ticket_comments",
+        backref="ticket",
+        cascade="all, delete-orphan",
+        passive_deletes=True
+    )
+
 class ticket_comments(db.Model):
     comment_id: so.Mapped[int] = so.mapped_column(primary_key=True)
     ticket_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('tickets.ticket_id', ondelete='CASCADE'), nullable=False)
