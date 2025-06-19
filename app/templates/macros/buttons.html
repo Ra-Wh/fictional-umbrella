@@ -20,7 +20,7 @@
     </button>
 {% endmacro %}
 
-{% macro promote_user_button(ticket_id) %}
+{% macro promote_user_button(user_account_id) %}
     <button 
         type="button" 
         class="btn button-primary" 
@@ -28,6 +28,17 @@
         onclick="window.location.href='{{ url_for('promote', user_account_id=user_account_id) }}'"
         >
         Promote
+    </button>
+{% endmacro %}
+
+{% macro demote_user_button(user_account_id) %}
+    <button 
+        type="button" 
+        class="btn button-secondary" 
+        style="align-self: flex-start;" 
+        onclick="window.location.href='{{ url_for('demote', user_account_id=user_account_id) }}'"
+        >
+        Demote
     </button>
 {% endmacro %}
 
