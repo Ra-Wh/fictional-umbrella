@@ -264,10 +264,24 @@ def demote(user_account_id):
         flash("Unable to process your request.", "danger")
     return redirect(url_for("users"))
     
-@app.route('/delete/user', methods=['GET', 'POST'])
+@app.route('/delete/user', defaults={'user_account_id': None}, methods=['GET', 'POST'])
+@app.route('/delete/user/<int:user_account_id>', methods=['GET', 'POST'])
 @login_required
 def delete_user(user_account_id):
-    return redirect(url_for("index"))
+    if not current_user.is_admin:
+        flash("You do not have permission to perform this action.", "warning")
+        return redirect(url_for("index"))
+        
+    user = user_accounts.query.filter_by(user_account_id=user_account_id).first()
+    if not user:
+        flash ("User not found.", "danger")
+        return redirect(url_for("index"))
+    
+    db.session.delete(user)
+    db.session.commit()
+
+    flash("User deleted successfully!", "success")
+    return redirect(url_for("users"))
 
 @app.route('/users', methods=['GET', 'POST'])
 @login_required
