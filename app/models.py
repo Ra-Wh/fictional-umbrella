@@ -77,20 +77,22 @@ class user_accounts(UserMixin, db.Model):
         passive_deletes=True
     )
 
-    login_details = db.relationship(
-        "login_details",
-        backref="user",
-        cascade="all, delete-orphan",
-        passive_deletes=True
-    )
-
     ticket_comments = db.relationship(
         "ticket_comments",
         backref="user",
         cascade="all, delete-orphan",
         passive_deletes=True
 )
-  
+    login: so.Mapped["login_details"] = so.relationship(
+        back_populates="user",
+        cascade="all, delete-orphan",
+        uselist=False
+)
+    
+    @property
+    def username(self):
+        return self.login.username if self.login else None
+
     def get_id(self):
         return str(self.user_account_id)
 
@@ -100,6 +102,8 @@ class login_details(db.Model):
     username: so.Mapped[str] = so.mapped_column(sa.String(50), index=True, unique=True, nullable=False)
     email_address: so.Mapped[str] = so.mapped_column(sa.String(120), nullable=False, index=True, unique=True)
     password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256), nullable=False)
+
+    user: so.Mapped["user_accounts"] = so.relationship(back_populates="login")
 
     def __repr__(self):
         return '<User {}>'.format(self.username)

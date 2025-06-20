@@ -3,16 +3,90 @@ from app.forms import LoginForm, RegistrationForm, CreateTicketForm, AddCommentF
 from app import app, db
 from flask_login import current_user, logout_user, login_required, login_user
 import sqlalchemy as sa
-import sqlalchemy.orm
 from app.models import login_details, user_accounts, tickets, ticket_comments
 from urllib.parse import urlsplit
 from flask import session
 from utils.template_utils import get_base_template
 from datetime import datetime
 from sqlalchemy import or_
-from sqlalchemy.orm import joinedload
+
+#Authentication Routes
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    #Handle user login request
+
+    #User already logged in - redirect to index
+    if current_user.is_authenticated:
+        return render_template('index.html', title='Home')
+
+    form = LoginForm()
+
+    #Validate login details on submission
+    if form.validate_on_submit():
+        
+        try:
+            user = db.session.scalar(
+                sa.select(login_details).where(login_details.username == form.username.data)
+            )
+        except Exception as e:
+            app.logger.error(f"Error retrieving login details for {form.username.data}: {e}")
+            flash('An internal error occurred. Please try again later.')
+            return redirect(url_for('login'))
+
+        #Check if user exists and password is correct   
+        if user is None or not user.check_password(form.password.data):
+            #Log failed login attempt adn inform user
+            app.logger.warning(f"Failed login attempt: {form.username.data}. Validation errors: {form.errors}")
+            flash('Invalid username or password')
+            return redirect(url_for('login'))
+
+        #Log successful login
+        app.logger.info(f"{form.username.data} authenticated")
+
+        #Get user details
+        try:
+            user_details = db.session.scalar(
+                sa.select(user_accounts).where(user_accounts.user_account_id == user.user_account_id)
+            )
+            if not user_details:
+                app.logger.error(f"Login details found, but user_account ID {user.user_account_id} not found.")
+                flash("An internal error occurred. Please try again.")
+                return redirect(url_for('login'))
+            login_user(user_details)
+        except Exception as e:
+            db.session.rollback()
+            app.logger.error(f"Error retrieving user account for login: {e}")
+            flash("An unexpected error occurred.")
+            return redirect(url_for('login'))
+
+        #Next page logic
+        next_page = request.args.get('next')
+        if not next_page or urlsplit(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
+
+    return render_template('login.html', title='Sign in', form=form)
 
 
+@app.route('/logout', methods=['POST'])
+def logout():
+    #handle user logout request
+    app.logger.info(f"{current_user.username} successfully logged out.")
+    flash("Successfully logged out.")
+    logout_user()
+    session.clear()
+    return redirect(url_for('login'))
+
+
+
+
+
+
+
+
+
+####################
 @app.route('/')
 @app.route('/index')
 @login_required
@@ -66,32 +140,7 @@ def index():
         closed_tickets=count_closed)
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        return render_template('login.html', title='Sign in', form=form)
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = db.session.scalar(
-            sa.select(login_details).where(login_details.username == form.username.data))
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
-        user_details = db. session.scalar(
-            sa.select(user_accounts).where(user_accounts.user_account_id == user.user_account_id)
-        )
-        login_user(user_details)
-        next_page = request.args.get('next')
-        if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('index')
-        return redirect(next_page)
-    return render_template('login.html', title='Sign in', form=form)
 
-@app.route('/logout', methods=['POST'])
-def logout():
-    logout_user()
-    session.clear()
-    return redirect(url_for('login'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
