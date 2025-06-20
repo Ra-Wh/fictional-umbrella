@@ -213,3 +213,27 @@ jinja2.exceptions.UndefinedError: 'base_template' is undefined
 [2025-06-20 22:06:41,749] INFO in routes: User1 accessed home page
 [2025-06-20 22:08:42,226] INFO in routes: User1 accessed home page
 [2025-06-20 22:10:02,637] INFO in routes: User1 accessed home page
+[2025-06-20 22:21:06,741] INFO in routes: User1 accessed home page
+[2025-06-20 22:21:06,746] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\routes.py", line 117, in index
+    count_open=count_open,
+               ^^^^^^^^^^
+NameError: name 'count_open' is not defined
+[2025-06-20 22:21:23,481] INFO in routes: User1 accessed home page
+[2025-06-20 22:21:27,693] INFO in routes: User1 successfully logged out.
+[2025-06-20 22:22:05,228] ERROR in routes: Error creating new user: 'user_accounts_id' is an invalid keyword argument for login_details
+[2025-06-20 22:22:05,228] INFO in routes: New user created: form.username
+[2025-06-20 22:24:12,391] ERROR in routes: Error creating new user: 'user_accounts_id' is an invalid keyword argument for login_details

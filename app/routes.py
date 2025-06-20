@@ -36,7 +36,7 @@ def login():
 
         #Check if user exists and password is correct   
         if user is None or not user.check_password(form.password.data):
-            #Log failed login attempt adn inform user
+            #Log failed login attempt and inform user
             app.logger.warning(f"Failed login attempt: {form.username.data}. Validation errors: {form.errors}")
             flash('Invalid username or password')
             return redirect(url_for('login'))
@@ -114,12 +114,52 @@ def index():
     return render_template(
         'index.html',
         tickets=recent_tickets,
-        count_open=count_open,
-        count_in_progress=count_in_progress,
-        count_closed=count_closed,
         base_template=get_base_template()
     )
 
+#Register new user
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+
+    #User already logged in - redirect to index
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    
+    form = RegistrationForm()
+
+    #Validate new user on submission
+    if form.validate_on_submit():
+
+        try:
+            user = user_accounts(
+                first_name=form.first_name.data, 
+                last_name=form.last_name.data, 
+                phone_number=form.phone_number.data
+                )
+            
+            login = login_details(
+                user_accounts_id=user.user_account_id, 
+                username=form.username.data, 
+                email_address=form.email.data
+                )
+            
+            #Hash password to store in db
+            login.set_password(form.password.data)
+            db.session.add(user, login)
+            db.session.commit()
+
+            #Direct user back to login
+            flash('Registration Successful', 'success')
+            app.logger.info(f"New user created: form.username")
+            return redirect(url_for('login'))
+
+        except Exception as e:
+            #Log failed login attempt and inform user
+            db.session.rollback()
+            app.logger.error(f"Error creating new user: {e}")
+            flash("An error occurred while creating your account. Please try again later.", "danger")
+
+    return render_template('register.html', title='Register', form=form)
 
 
 
@@ -132,30 +172,7 @@ def index():
 
 
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = user_accounts(
-            first_name=form.first_name.data, 
-            last_name=form.last_name.data, 
-            phone_number=form.phone_number.data
-            )
-        db.session.add(user)
-        db.session.commit()
-        login = login_details(
-            user_account_id=user.user_account_id, 
-            username=form.username.data, 
-            email_address=form.email.data
-            )
-        login.set_password(form.password.data)
-        db.session.add(login)
-        db.session.commit()
-        flash('Registration Successful', 'success')
-        return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+
 
 @app.route('/create', methods=['GET', 'POST'])
 @login_required
