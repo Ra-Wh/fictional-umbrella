@@ -17,10 +17,12 @@ from sqlalchemy.orm import joinedload
 @app.route('/index')
 @login_required
 def index():
+    app.logger.info(f"{current_user.username} accessed the index dashboard.")
     if current_user.is_admin:
         recent_tickets = tickets.query.filter(
             tickets.status != 'closed', 
         ).limit(10).all()
+
 
         count_open = tickets.query.filter(
             tickets.status == 'open',
@@ -75,8 +77,13 @@ def login():
         user = db.session.scalar(
             sa.select(login_details).where(login_details.username == form.username.data))
         if user is None or not user.check_password(form.password.data):
+            #Login error logging
+            app.logger.info(f"unable to authenticate {form.username.data}. Invalid username or password.")
+            #User error message
             flash('Invalid username or password')
             return redirect(url_for('login'))
+        #Successful login logging
+        app.logger.info(f"{current_user.username} authenticated")
         user_details = db. session.scalar(
             sa.select(user_accounts).where(user_accounts.user_account_id == user.user_account_id)
         )
@@ -89,6 +96,7 @@ def login():
 
 @app.route('/logout', methods=['POST'])
 def logout():
+    app.logger.info(f"{current_user.username} logged out")
     logout_user()
     session.clear()
     return redirect(url_for('login'))
@@ -114,13 +122,16 @@ def register():
         login.set_password(form.password.data)
         db.session.add(login)
         db.session.commit()
+        app.logger.info(f"{form.username.data} registration successful.")
         flash('Registration Successful', 'success')
         return redirect(url_for('login'))
+    app.logger.info(f"Registration unsuccessful for username: {form.username.data}. Validation errors: {form.errors}")
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
+    app.logger.info(f"{current_user.username} accessed ticket creation.")
     form=CreateTicketForm()
     if form.validate_on_submit():
         new_ticket = tickets(
@@ -132,13 +143,16 @@ def create():
             )
         db.session.add(new_ticket)
         db.session.commit()
+        app.logger.info(f"{current_user.username} created new ticket: {new_ticket.ticket_id}.")
         return redirect(url_for('index'))
+    app.logger.info(f"{current_user.username} ticket creation failed. Creation errors: {form.errors}")
     return render_template('create.html', title="create ticket", form=form, base_template=get_base_template())
 
 @app.route('/view', defaults={'ticket_id': None}, methods=['GET', 'POST'])
 @app.route('/view/<int:ticket_id>', methods=['GET', 'POST'])
 @login_required
 def view(ticket_id):
+    app.logger.info(f"{current_user.username} viewed ticket: {ticket_id}")
     ticket = tickets.query.filter(
         tickets.ticket_id == ticket_id
     ).filter(
@@ -146,33 +160,46 @@ def view(ticket_id):
     ).first()
 
     if ticket is None:
+        app.logger.error(f"{current_user.username} viewed ticket: {ticket_id} - ticket not found.")
         flash("Ticket not found or you don't have permission to view it.", "danger")
         return redirect(url_for("index"))
     
     form = AddCommentForm()
 
     if form.validate_on_submit():
+        app.logger.error(f"{current_user.username} added comment to ticket: {ticket_id}")
         action = request.form.get('action')
 
-        # Ensure action is valid before updating status
         valid_statuses = {"open", "in_progress", "closed"}
-        if action in valid_statuses:
-            ticket.status = action  # Update ticket status
-            if action is "closed":
-                ticket.closed_date = datetime.now()
-            db.session.commit()
 
-        # Add the comment to the database
-        new_comment = ticket_comments(
-            ticket_id=ticket_id,
-            user_account_id=current_user.user_account_id,
-            comment_details=form.comment.data
-        )
-        db.session.add(new_comment)
-        db.session.commit()
+        try:
+            if action in valid_statuses:
+                ticket.status = action
+                if action == "closed":
+                    ticket.closed_date = datetime.now()
+                db.session.commit()
+                app.logger.info(f"Ticket {ticket.ticket_id} status updated to '{action}' by {current_user.username}")
+        except Exception as e:
+            db.session.rollback()
+            app.logger.error(f"Failed to update ticket status for ticket {ticket.ticket_id}: {e}")
+
+        try:
+            new_comment = ticket_comments(
+                ticket_id=ticket_id,
+                user_account_id=current_user.user_account_id,
+                comment_details=form.comment.data
+            )
+            db.session.add(new_comment)
+            db.session.commit()
+            app.logger.info(f"Comment added to ticket {ticket_id} by {current_user.username}")
+        except Exception as e:
+            db.session.rollback()
+            app.logger.error(f"Failed to add comment to ticket {ticket_id}: {e}")
+
 
         return redirect(url_for('view', ticket_id=ticket_id))  # Redirect to refresh template
 
+    app.logger.error(f"{current_user.username} atempted to add comment to ticket: {ticket_id} errors: {form.errors}.")
     comments = ticket_comments.query.filter_by(ticket_id=ticket_id).all()
     username = login_details.query.filter_by(user_account_id=current_user.user_account_id).with_entities(login_details.username).scalar()
 
