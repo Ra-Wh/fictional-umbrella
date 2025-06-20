@@ -73,9 +73,9 @@ def login():
 def logout():
     #handle user logout request
     app.logger.info(f"{current_user.username} successfully logged out.")
-    flash("Successfully logged out.")
     logout_user()
     session.clear()
+    flash("Successfully logged out.")
     return redirect(url_for('login'))
 
 
