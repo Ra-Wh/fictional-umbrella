@@ -78,7 +78,47 @@ def logout():
     flash("Successfully logged out.")
     return redirect(url_for('login'))
 
+#Generic error page
+@app.route('/error')
+@login_required
+def error():
+    return render_template('error.html', title='Error')
 
+#User home page
+@app.route('/')
+@app.route('/index')
+@login_required
+def index():
+    app.logger.info(f"{current_user.username} accessed home page")
+
+    try:
+        #Load last 10 tickets created is user is admin
+        if current_user.is_admin:
+            recent_tickets = tickets.query.filter(
+                tickets.status != 'closed',
+            ).limit(10).all()
+
+        #otherwise load last 10 tickets created by user
+        else:
+            recent_tickets = tickets.query.filter(
+                tickets.status != 'closed',
+                tickets.user_account_id == current_user.user_account_id
+            ).limit(10).all()
+
+    #Show error page is something goes wrong
+    except Exception as e:
+        app.logger.error(f"Error retrieving ticket summary stats: {e}")
+        flash("There was a problem loading ticket data. Please try again later.", "danger")
+        return redirect(url_for('error'))
+
+    return render_template(
+        'index.html',
+        tickets=recent_tickets,
+        count_open=count_open,
+        count_in_progress=count_in_progress,
+        count_closed=count_closed,
+        base_template=get_base_template()
+    )
 
 
 
@@ -87,57 +127,7 @@ def logout():
 
 
 ####################
-@app.route('/')
-@app.route('/index')
-@login_required
-def index():
-    if current_user.is_admin:
-        recent_tickets = tickets.query.filter(
-            tickets.status != 'closed', 
-        ).limit(10).all()
 
-        count_open = tickets.query.filter(
-            tickets.status == 'open',
-        ).count()
-
-        count_in_progress = tickets.query.filter(
-            tickets.status == 'in_progress',
-        ).count()
-
-        count_closed = tickets.query.filter(
-            tickets.status == 'closed',
-        ).count()
-
-    else:
-
-        recent_tickets = tickets.query.filter(
-            tickets.status != 'closed', 
-            tickets.user_account_id == current_user.user_account_id
-        ).limit(10).all()
-
-        count_open = tickets.query.filter(
-            tickets.status == 'open',
-            tickets.user_account_id == current_user.user_account_id
-        ).count()
-
-        count_in_progress = tickets.query.filter(
-            tickets.status == 'in_progress',
-            tickets.user_account_id == current_user.user_account_id
-        ).count()
-
-        count_closed = tickets.query.filter(
-            tickets.status == 'closed',
-            tickets.user_account_id == current_user.user_account_id
-        ).count()
-
-    return render_template(
-        'index.html', 
-        title='Home', 
-        base_template=get_base_template(), 
-        tickets=recent_tickets, 
-        open_tickets=count_open, 
-        in_progress_tickets=count_in_progress,
-        closed_tickets=count_closed)
 
 
 
