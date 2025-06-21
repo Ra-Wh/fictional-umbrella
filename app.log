@@ -333,3 +333,25 @@ NameError: name 'count_open' is not defined
 [2025-06-21 14:23:49,138] INFO in routes: Admin1 accessed users page.
 [2025-06-21 14:23:52,744] INFO in routes: Admin1 successfully logged out.
 [2025-06-21 14:24:01,753] WARNING in routes: Failed login attempt: User2. Validation errors: {}
+[2025-06-21 21:30:55,912] INFO in routes: User1 authenticated
+[2025-06-21 21:30:55,924] INFO in routes: User1 accessed home page
+[2025-06-21 21:40:29,173] INFO in routes: testuser authenticated
+[2025-06-21 21:40:29,177] INFO in routes: testuser accessed home page
+[2025-06-21 21:40:29,270] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 21:40:29,600] INFO in routes: testuser authenticated
+[2025-06-21 21:40:29,602] INFO in routes: testuser accessed home page
+[2025-06-21 21:40:29,604] INFO in routes: testuser successfully logged out.
+[2025-06-21 21:41:27,887] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 21:41:52,602] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 21:42:00,671] INFO in routes: testuser authenticated
+[2025-06-21 21:42:00,676] INFO in routes: testuser accessed home page
+[2025-06-21 21:42:00,907] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 21:42:01,239] INFO in routes: testuser authenticated
+[2025-06-21 21:42:01,241] INFO in routes: testuser accessed home page
+[2025-06-21 21:42:01,243] INFO in routes: testuser successfully logged out.
+[2025-06-21 21:44:21,860] INFO in routes: testuser authenticated
+[2025-06-21 21:44:21,864] INFO in routes: testuser accessed home page
+[2025-06-21 21:44:21,956] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 21:44:22,288] INFO in routes: testuser authenticated
+[2025-06-21 21:44:22,290] INFO in routes: testuser accessed home page
+[2025-06-21 21:44:22,291] INFO in routes: testuser successfully logged out.
