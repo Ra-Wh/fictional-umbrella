@@ -1,0 +1,335 @@
+[2025-06-20 15:40:01,585] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-06-20 15:40:01,585] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-06-20 15:40:27,646] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-06-20 15:40:27,646] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-06-20 19:53:51,286] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-06-20 19:53:51,287] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-06-20 19:55:57,349] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-06-20 19:55:57,349] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-06-20 19:57:34,422] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-06-20 19:57:34,423] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-06-20 19:59:34,474] WARNING in routes: Failed login attempt: user1. Validation errors: {}
+[2025-06-20 19:59:40,703] INFO in routes: User1 authenticated
+[2025-06-20 19:59:42,884] INFO in routes: User1 successfully logged out.
+[2025-06-20 20:04:38,543] INFO in routes: User1 authenticated
+[2025-06-20 20:04:40,056] INFO in routes: User1 successfully logged out.
+[2025-06-20 20:06:29,865] INFO in routes: User1 authenticated
+[2025-06-20 20:06:30,765] INFO in routes: User1 successfully logged out.
+[2025-06-20 21:35:24,498] INFO in routes: User1 authenticated
+[2025-06-20 21:35:24,512] INFO in routes: User1 accessed home page
+[2025-06-20 21:35:24,514] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\routes.py", line 153, in index
+    tickets=recent_tickets,
+            ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'recent_tickets' where it is not associated with a value
+[2025-06-20 21:36:27,654] INFO in routes: User1 accessed home page
+[2025-06-20 21:36:27,655] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\routes.py", line 154, in index
+    tickets=recent_tickets,
+            ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'recent_tickets' where it is not associated with a value
+[2025-06-20 21:38:19,222] INFO in routes: User1 accessed home page
+[2025-06-20 21:38:19,223] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\routes.py", line 154, in index
+    tickets=recent_tickets,
+            ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'recent_tickets' where it is not associated with a value
+[2025-06-20 21:38:51,117] INFO in routes: User1 accessed home page
+[2025-06-20 21:38:51,118] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\routes.py", line 154, in index
+    tickets=recent_tickets,
+            ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'recent_tickets' where it is not associated with a value
+[2025-06-20 21:41:15,553] INFO in routes: User1 accessed home page
+[2025-06-20 21:41:15,554] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\routes.py", line 156, in index
+    tickets=recent_tickets,
+            ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'recent_tickets' where it is not associated with a value
+[2025-06-20 21:42:05,125] INFO in routes: User1 accessed home page
+[2025-06-20 21:42:05,126] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\routes.py", line 152, in index
+    tickets=recent_tickets,
+            ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'recent_tickets' where it is not associated with a value
+[2025-06-20 21:47:23,826] INFO in routes: User1 accessed home page
+[2025-06-20 21:47:23,826] ERROR in routes: Error retrieving ticket summary stats: type object 'tickets' has no attribute 'statis'
+[2025-06-20 21:50:24,884] INFO in routes: User1 accessed home page
+[2025-06-20 21:50:24,884] ERROR in routes: Error retrieving ticket summary stats: type object 'tickets' has no attribute 'statis'
+[2025-06-20 21:50:55,229] INFO in routes: User1 accessed home page
+[2025-06-20 21:50:55,271] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\routes.py", line 141, in index
+    return render_template(
+        'index.html',
+    ...<3 lines>...
+        count_closed=count_closed
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\templates\index.html", line 3, in top-level template code
+    {% extends base_template %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\templating.py", line 96, in _get_source_fast
+    return loader.get_source(environment, template)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\jinja2\loaders.py", line 197, in get_source
+    pieces = split_template_path(template)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\jinja2\loaders.py", line 30, in split_template_path
+    for piece in template.split("/"):
+                 ^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'base_template' is undefined
+[2025-06-20 21:53:33,814] INFO in routes: User1 accessed home page
+[2025-06-20 21:53:37,795] INFO in routes: User1 accessed home page
+[2025-06-20 22:03:35,035] INFO in routes: User1 accessed home page
+[2025-06-20 22:03:37,908] INFO in routes: User1 successfully logged out.
+[2025-06-20 22:03:42,344] INFO in routes: User1 authenticated
+[2025-06-20 22:03:42,351] INFO in routes: User1 accessed home page
+[2025-06-20 22:04:11,376] INFO in routes: User1 accessed home page
+[2025-06-20 22:04:43,219] INFO in routes: User1 accessed home page
+[2025-06-20 22:05:45,910] INFO in routes: User1 accessed home page
+[2025-06-20 22:05:55,567] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:00,056] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:02,441] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:03,755] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:04,515] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:04,852] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:05,013] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:05,164] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:05,309] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:05,441] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:05,597] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:05,740] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:05,893] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:06,026] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:07,203] INFO in routes: User1 successfully logged out.
+[2025-06-20 22:06:11,876] INFO in routes: User1 authenticated
+[2025-06-20 22:06:11,883] INFO in routes: User1 accessed home page
+[2025-06-20 22:06:41,749] INFO in routes: User1 accessed home page
+[2025-06-20 22:08:42,226] INFO in routes: User1 accessed home page
+[2025-06-20 22:10:02,637] INFO in routes: User1 accessed home page
+[2025-06-20 22:21:06,741] INFO in routes: User1 accessed home page
+[2025-06-20 22:21:06,746] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\routes.py", line 117, in index
+    count_open=count_open,
+               ^^^^^^^^^^
+NameError: name 'count_open' is not defined
+[2025-06-20 22:21:23,481] INFO in routes: User1 accessed home page
+[2025-06-20 22:21:27,693] INFO in routes: User1 successfully logged out.
+[2025-06-20 22:22:05,228] ERROR in routes: Error creating new user: 'user_accounts_id' is an invalid keyword argument for login_details
+[2025-06-20 22:22:05,228] INFO in routes: New user created: form.username
+[2025-06-20 22:24:12,391] ERROR in routes: Error creating new user: 'user_accounts_id' is an invalid keyword argument for login_details
+[2025-06-20 22:30:41,209] INFO in routes: User1 authenticated
+[2025-06-20 22:30:41,221] INFO in routes: User1 accessed home page
+[2025-06-20 22:30:56,753] ERROR in routes: Error creating new ticket: 'user_accounts_id' is an invalid keyword argument for tickets
+[2025-06-21 10:30:09,404] INFO in routes: User1 authenticated
+[2025-06-21 10:30:09,414] INFO in routes: User1 accessed home page
+[2025-06-21 11:05:37,558] INFO in routes: User1 accessed home page
+[2025-06-21 11:05:41,355] INFO in routes: User1 view ticket 1
+[2025-06-21 11:09:15,235] INFO in routes: User1 view ticket 1
+[2025-06-21 11:09:15,269] INFO in routes: Comment added successfully
+[2025-06-21 11:09:15,274] INFO in routes: User1 view ticket 1
+[2025-06-21 13:47:22,803] INFO in routes: User1 accessed home page
+[2025-06-21 13:47:24,739] INFO in routes: User1 successfully logged out.
+[2025-06-21 13:47:29,759] INFO in routes: Admin1 authenticated
+[2025-06-21 13:47:29,766] INFO in routes: Admin1 accessed home page
+[2025-06-21 13:48:15,409] INFO in routes: Admin1 accessed users page.
+[2025-06-21 13:48:16,435] INFO in routes: Admin1 accessed closed-tickets page.
+[2025-06-21 13:48:16,982] INFO in routes: Admin1 accessed open-tickets page.
+[2025-06-21 13:48:17,711] INFO in routes: Admin1 accessed closed-tickets page.
+[2025-06-21 13:48:18,188] INFO in routes: Admin1 accessed users page.
+[2025-06-21 13:52:33,305] INFO in routes: Admin1 accessed home page
+[2025-06-21 13:52:35,838] INFO in routes: Admin1 accessed users page.
+[2025-06-21 13:53:43,786] INFO in routes: Admin1 accessed home page
+[2025-06-21 13:53:44,790] INFO in routes: Admin1 accessed users page.
+[2025-06-21 13:53:47,474] INFO in routes: Admin1 accessed promote user page
+[2025-06-21 13:53:47,490] INFO in routes: User1 promoted to admin by Admin1
+[2025-06-21 13:53:47,496] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:02:42,439] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:02:50,961] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:02:52,902] INFO in routes: User1 demoted to standard user by Admin1
+[2025-06-21 14:02:52,910] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:11:27,597] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:11:29,781] INFO in routes: Admin1 successfully logged out.
+[2025-06-21 14:11:58,397] INFO in routes: New user created: form.username
+[2025-06-21 14:12:09,938] WARNING in routes: Failed login attempt: w. Validation errors: {}
+[2025-06-21 14:12:21,834] WARNING in routes: Failed login attempt: w. Validation errors: {}
+[2025-06-21 14:13:41,854] INFO in routes: New user created: form.username
+[2025-06-21 14:13:56,280] WARNING in routes: Failed login attempt: User2. Validation errors: {}
+[2025-06-21 14:17:51,777] INFO in routes: New user created: form.username
+[2025-06-21 14:18:05,929] INFO in routes: User2 authenticated
+[2025-06-21 14:18:05,938] INFO in routes: User2 accessed home page
+[2025-06-21 14:18:15,880] INFO in routes: New ticket created successfully 2
+[2025-06-21 14:18:15,886] INFO in routes: User2 accessed home page
+[2025-06-21 14:18:18,178] INFO in routes: User2 view ticket 2
+[2025-06-21 14:18:22,197] INFO in routes: User2 view ticket 2
+[2025-06-21 14:18:22,213] INFO in routes: Comment added successfully
+[2025-06-21 14:18:22,218] INFO in routes: User2 view ticket 2
+[2025-06-21 14:18:29,804] INFO in routes: User2 accessed open-tickets page.
+[2025-06-21 14:18:33,745] INFO in routes: User2 accessed closed-tickets page.
+[2025-06-21 14:18:37,463] INFO in routes: User2 successfully logged out.
+[2025-06-21 14:18:44,054] INFO in routes: Admin1 authenticated
+[2025-06-21 14:18:44,060] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:18:48,886] INFO in routes: Admin1 view ticket 2
+[2025-06-21 14:18:57,471] INFO in routes: Admin1 view ticket 2
+[2025-06-21 14:18:57,500] INFO in routes: Comment added successfully
+[2025-06-21 14:18:57,505] INFO in routes: Admin1 view ticket 2
+[2025-06-21 14:20:56,279] INFO in routes: Admin1 view ticket 2
+[2025-06-21 14:20:56,288] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:20:59,014] INFO in routes: Admin1 accessed open-tickets page.
+[2025-06-21 14:21:01,587] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:21:05,535] INFO in routes: New ticket created successfully 3
+[2025-06-21 14:21:05,542] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:21:06,677] INFO in routes: Admin1 view ticket 3
+[2025-06-21 14:21:08,574] INFO in routes: Admin1 view ticket 3
+[2025-06-21 14:21:08,585] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:21:11,815] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:21:18,323] INFO in routes: Admin1 accessed promote user page
+[2025-06-21 14:21:18,341] INFO in routes: User2 promoted to admin by Admin1
+[2025-06-21 14:21:18,351] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:21:20,321] INFO in routes: Admin1 successfully logged out.
+[2025-06-21 14:21:31,090] INFO in routes: User2 authenticated
+[2025-06-21 14:21:31,097] INFO in routes: User2 accessed home page
+[2025-06-21 14:21:38,007] INFO in routes: User2 accessed users page.
+[2025-06-21 14:21:41,810] INFO in routes: User2 successfully logged out.
+[2025-06-21 14:21:47,838] INFO in routes: Admin1 authenticated
+[2025-06-21 14:21:47,845] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:21:49,632] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:21:54,315] INFO in routes: User2 demoted to standard user by Admin1
+[2025-06-21 14:21:54,323] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:21:55,798] INFO in routes: Admin1 successfully logged out.
+[2025-06-21 14:22:05,766] INFO in routes: User2 authenticated
+[2025-06-21 14:22:05,773] INFO in routes: User2 accessed home page
+[2025-06-21 14:22:08,237] INFO in routes: User2 accessed open-tickets page.
+[2025-06-21 14:22:08,543] INFO in routes: User2 accessed home page
+[2025-06-21 14:22:08,838] INFO in routes: User2 accessed open-tickets page.
+[2025-06-21 14:22:09,132] INFO in routes: User2 accessed closed-tickets page.
+[2025-06-21 14:22:09,842] INFO in routes: User2 successfully logged out.
+[2025-06-21 14:22:20,001] INFO in routes: User2 authenticated
+[2025-06-21 14:22:20,007] INFO in routes: User2 accessed home page
+[2025-06-21 14:22:21,117] INFO in routes: User2 accessed closed-tickets page.
+[2025-06-21 14:23:31,255] INFO in routes: User2 successfully logged out.
+[2025-06-21 14:23:42,526] INFO in routes: Admin1 authenticated
+[2025-06-21 14:23:42,532] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:23:44,175] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:23:49,138] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:23:52,744] INFO in routes: Admin1 successfully logged out.
+[2025-06-21 14:24:01,753] WARNING in routes: Failed login attempt: User2. Validation errors: {}

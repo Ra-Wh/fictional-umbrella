@@ -1,3 +1,4 @@
+
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
@@ -15,6 +16,18 @@ def set_sqlite_pragma(dbapi_connection, connection_record):
 
 
 app = Flask(__name__)
+
+import logging
+from logging import FileHandler
+
+file_handler = FileHandler('app.log')
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(logging.Formatter(
+    '[%(asctime)s] %(levelname)s in %(module)s: %(message)s'
+))
+app.logger.addHandler(file_handler)
+app.logger.setLevel(logging.INFO)
+
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

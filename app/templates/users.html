@@ -98,7 +98,7 @@
             // Confirm demotion
             function showDemoteConfirmation(userID) {
                 document.getElementById("demoteConfirmation").style.display = "block";
-                document.getElementById("demoteForm").setAttribute("action", `/demote/${userID}`);
+                document.getElementById("demoteForm").setAttribute("action", `/user/demote/${userID}`);
             }
 
             function hideDemoteConfirmation() {
@@ -108,7 +108,7 @@
             // Confirm promotion
             function showPromoteConfirmation(userID) {
                 document.getElementById("promoteConfirmation").style.display = "block";
-                document.getElementById("promoteForm").setAttribute("action", `/promote/${userID}`);
+                document.getElementById("promoteForm").setAttribute("action", `/user/promote/${userID}`);
             }
 
             function hidePromoteConfirmation() {
