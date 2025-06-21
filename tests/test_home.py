@@ -64,15 +64,16 @@ def test_index_loads_with_data(client, test_user, create_tickets):
     assert b"Ticket 0" in response.data
     assert b"Recent Tickets" in response.data
 
+from unittest.mock import patch
+
 def test_db_error_shows_error_flash(client, test_user):
     login_helper(client)
 
-    # Patch the query to raise an exception when called
-    with patch('app.routes.tickets.query.filter') as mock_filter:
-        mock_filter.side_effect = Exception("Simulated DB failure")
-
+    # Patch the 'all' method to raise an exception when trying to load tickets
+    with patch('app.routes.tickets.query') as mock_query:
+        mock_query.filter.return_value.limit.return_value.all.side_effect = Exception("Simulated DB failure")
         response = client.get('/', follow_redirects=True)
-        print(response.data.decode())
+        print(response.data.decode())  # Optional: for debugging if the test fails
 
         assert response.status_code == 200
         assert b"There was a problem loading ticket data. Please try again later." in response.data
