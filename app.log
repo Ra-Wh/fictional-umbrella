@@ -237,3 +237,99 @@ NameError: name 'count_open' is not defined
 [2025-06-20 22:22:05,228] ERROR in routes: Error creating new user: 'user_accounts_id' is an invalid keyword argument for login_details
 [2025-06-20 22:22:05,228] INFO in routes: New user created: form.username
 [2025-06-20 22:24:12,391] ERROR in routes: Error creating new user: 'user_accounts_id' is an invalid keyword argument for login_details
+[2025-06-20 22:30:41,209] INFO in routes: User1 authenticated
+[2025-06-20 22:30:41,221] INFO in routes: User1 accessed home page
+[2025-06-20 22:30:56,753] ERROR in routes: Error creating new ticket: 'user_accounts_id' is an invalid keyword argument for tickets
+[2025-06-21 10:30:09,404] INFO in routes: User1 authenticated
+[2025-06-21 10:30:09,414] INFO in routes: User1 accessed home page
+[2025-06-21 11:05:37,558] INFO in routes: User1 accessed home page
+[2025-06-21 11:05:41,355] INFO in routes: User1 view ticket 1
+[2025-06-21 11:09:15,235] INFO in routes: User1 view ticket 1
+[2025-06-21 11:09:15,269] INFO in routes: Comment added successfully
+[2025-06-21 11:09:15,274] INFO in routes: User1 view ticket 1
+[2025-06-21 13:47:22,803] INFO in routes: User1 accessed home page
+[2025-06-21 13:47:24,739] INFO in routes: User1 successfully logged out.
+[2025-06-21 13:47:29,759] INFO in routes: Admin1 authenticated
+[2025-06-21 13:47:29,766] INFO in routes: Admin1 accessed home page
+[2025-06-21 13:48:15,409] INFO in routes: Admin1 accessed users page.
+[2025-06-21 13:48:16,435] INFO in routes: Admin1 accessed closed-tickets page.
+[2025-06-21 13:48:16,982] INFO in routes: Admin1 accessed open-tickets page.
+[2025-06-21 13:48:17,711] INFO in routes: Admin1 accessed closed-tickets page.
+[2025-06-21 13:48:18,188] INFO in routes: Admin1 accessed users page.
+[2025-06-21 13:52:33,305] INFO in routes: Admin1 accessed home page
+[2025-06-21 13:52:35,838] INFO in routes: Admin1 accessed users page.
+[2025-06-21 13:53:43,786] INFO in routes: Admin1 accessed home page
+[2025-06-21 13:53:44,790] INFO in routes: Admin1 accessed users page.
+[2025-06-21 13:53:47,474] INFO in routes: Admin1 accessed promote user page
+[2025-06-21 13:53:47,490] INFO in routes: User1 promoted to admin by Admin1
+[2025-06-21 13:53:47,496] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:02:42,439] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:02:50,961] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:02:52,902] INFO in routes: User1 demoted to standard user by Admin1
+[2025-06-21 14:02:52,910] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:11:27,597] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:11:29,781] INFO in routes: Admin1 successfully logged out.
+[2025-06-21 14:11:58,397] INFO in routes: New user created: form.username
+[2025-06-21 14:12:09,938] WARNING in routes: Failed login attempt: w. Validation errors: {}
+[2025-06-21 14:12:21,834] WARNING in routes: Failed login attempt: w. Validation errors: {}
+[2025-06-21 14:13:41,854] INFO in routes: New user created: form.username
+[2025-06-21 14:13:56,280] WARNING in routes: Failed login attempt: User2. Validation errors: {}
+[2025-06-21 14:17:51,777] INFO in routes: New user created: form.username
+[2025-06-21 14:18:05,929] INFO in routes: User2 authenticated
+[2025-06-21 14:18:05,938] INFO in routes: User2 accessed home page
+[2025-06-21 14:18:15,880] INFO in routes: New ticket created successfully 2
+[2025-06-21 14:18:15,886] INFO in routes: User2 accessed home page
+[2025-06-21 14:18:18,178] INFO in routes: User2 view ticket 2
+[2025-06-21 14:18:22,197] INFO in routes: User2 view ticket 2
+[2025-06-21 14:18:22,213] INFO in routes: Comment added successfully
+[2025-06-21 14:18:22,218] INFO in routes: User2 view ticket 2
+[2025-06-21 14:18:29,804] INFO in routes: User2 accessed open-tickets page.
+[2025-06-21 14:18:33,745] INFO in routes: User2 accessed closed-tickets page.
+[2025-06-21 14:18:37,463] INFO in routes: User2 successfully logged out.
+[2025-06-21 14:18:44,054] INFO in routes: Admin1 authenticated
+[2025-06-21 14:18:44,060] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:18:48,886] INFO in routes: Admin1 view ticket 2
+[2025-06-21 14:18:57,471] INFO in routes: Admin1 view ticket 2
+[2025-06-21 14:18:57,500] INFO in routes: Comment added successfully
+[2025-06-21 14:18:57,505] INFO in routes: Admin1 view ticket 2
+[2025-06-21 14:20:56,279] INFO in routes: Admin1 view ticket 2
+[2025-06-21 14:20:56,288] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:20:59,014] INFO in routes: Admin1 accessed open-tickets page.
+[2025-06-21 14:21:01,587] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:21:05,535] INFO in routes: New ticket created successfully 3
+[2025-06-21 14:21:05,542] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:21:06,677] INFO in routes: Admin1 view ticket 3
+[2025-06-21 14:21:08,574] INFO in routes: Admin1 view ticket 3
+[2025-06-21 14:21:08,585] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:21:11,815] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:21:18,323] INFO in routes: Admin1 accessed promote user page
+[2025-06-21 14:21:18,341] INFO in routes: User2 promoted to admin by Admin1
+[2025-06-21 14:21:18,351] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:21:20,321] INFO in routes: Admin1 successfully logged out.
+[2025-06-21 14:21:31,090] INFO in routes: User2 authenticated
+[2025-06-21 14:21:31,097] INFO in routes: User2 accessed home page
+[2025-06-21 14:21:38,007] INFO in routes: User2 accessed users page.
+[2025-06-21 14:21:41,810] INFO in routes: User2 successfully logged out.
+[2025-06-21 14:21:47,838] INFO in routes: Admin1 authenticated
+[2025-06-21 14:21:47,845] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:21:49,632] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:21:54,315] INFO in routes: User2 demoted to standard user by Admin1
+[2025-06-21 14:21:54,323] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:21:55,798] INFO in routes: Admin1 successfully logged out.
+[2025-06-21 14:22:05,766] INFO in routes: User2 authenticated
+[2025-06-21 14:22:05,773] INFO in routes: User2 accessed home page
+[2025-06-21 14:22:08,237] INFO in routes: User2 accessed open-tickets page.
+[2025-06-21 14:22:08,543] INFO in routes: User2 accessed home page
+[2025-06-21 14:22:08,838] INFO in routes: User2 accessed open-tickets page.
+[2025-06-21 14:22:09,132] INFO in routes: User2 accessed closed-tickets page.
+[2025-06-21 14:22:09,842] INFO in routes: User2 successfully logged out.
+[2025-06-21 14:22:20,001] INFO in routes: User2 authenticated
+[2025-06-21 14:22:20,007] INFO in routes: User2 accessed home page
+[2025-06-21 14:22:21,117] INFO in routes: User2 accessed closed-tickets page.
+[2025-06-21 14:23:31,255] INFO in routes: User2 successfully logged out.
+[2025-06-21 14:23:42,526] INFO in routes: Admin1 authenticated
+[2025-06-21 14:23:42,532] INFO in routes: Admin1 accessed home page
+[2025-06-21 14:23:44,175] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:23:49,138] INFO in routes: Admin1 accessed users page.
+[2025-06-21 14:23:52,744] INFO in routes: Admin1 successfully logged out.
+[2025-06-21 14:24:01,753] WARNING in routes: Failed login attempt: User2. Validation errors: {}

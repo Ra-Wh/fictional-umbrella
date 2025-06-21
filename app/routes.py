@@ -71,7 +71,7 @@ def login():
 
 @app.route('/logout', methods=['POST'])
 def logout():
-    #handle user logout request
+    #Handle user logout request
     app.logger.info(f"{current_user.username} successfully logged out.")
     logout_user()
     session.clear()
@@ -136,16 +136,18 @@ def register():
                 last_name=form.last_name.data, 
                 phone_number=form.phone_number.data
                 )
+            db.session.add(user)
+            db.session.commit()
             
             login = login_details(
-                user_accounts_id=user.user_account_id, 
+                user_account_id=user.user_account_id, 
                 username=form.username.data, 
                 email_address=form.email.data
                 )
             
             #Hash password to store in db
             login.set_password(form.password.data)
-            db.session.add(user, login)
+            db.session.add(login)
             db.session.commit()
 
             #Direct user back to login
@@ -161,196 +163,349 @@ def register():
 
     return render_template('register.html', title='Register', form=form)
 
+#Tickets
 
-
-
-
-
-####################
-
-
-
-
-
-
-
-@app.route('/create', methods=['GET', 'POST'])
+#Create a new ticket
+@app.route('/ticket/create', methods=['GET', 'POST'])
 @login_required
 def create():
+
     form=CreateTicketForm()
+
+    #Validate ticket on submission
     if form.validate_on_submit():
-        new_ticket = tickets(
-            user_account_id=current_user.user_account_id, 
-            ticket_details=form.details.data, 
-            issue_type=form.issue_type.data, 
-            priority=form.priority.data,
-            ticket_summary=form.summary.data
-            )
-        db.session.add(new_ticket)
-        db.session.commit()
-        return redirect(url_for('index'))
+
+        #Add new ticket details to db
+        try:
+            new_ticket = tickets(
+                user_account_id=current_user.user_account_id, 
+                ticket_details=form.details.data, 
+                issue_type=form.issue_type.data, 
+                priority=form.priority.data,
+                ticket_summary=form.summary.data
+                )
+            db.session.add(new_ticket)
+            db.session.commit()
+            app.logger.info(f"New ticket created successfully {new_ticket.ticket_id}")
+            flash("Ticket created successfully.", "success")
+            return redirect(url_for('index'))
+        
+        except Exception as e:
+            #Log failed ticket creation and inform user
+            db.session.rollback()
+            app.logger.error(f"Error creating new ticket: {e}")
+            flash("An error occurred while creating your ticket. Please try again later.", "danger")
+
     return render_template('create.html', title="create ticket", form=form, base_template=get_base_template())
 
-@app.route('/view', defaults={'ticket_id': None}, methods=['GET', 'POST'])
-@app.route('/view/<int:ticket_id>', methods=['GET', 'POST'])
+#View an existing ticket
+@app.route('/ticket/view', defaults={'ticket_id': None}, methods=['GET', 'POST'])
+@app.route('/ticket/view/<int:ticket_id>', methods=['GET', 'POST'])
 @login_required
 def view(ticket_id):
-    ticket = tickets.query.filter(
-        tickets.ticket_id == ticket_id
-    ).filter(
-        or_(current_user.is_admin, tickets.user_account_id == current_user.user_account_id)
-    ).first()
+    app.logger.info(f"{current_user.username} view ticket {ticket_id}")
 
+    form = AddCommentForm()
+
+    #Fetch ticket details from db
+    try:
+        ticket = tickets.query.filter(
+            tickets.ticket_id == ticket_id
+        ).filter(
+            or_(current_user.is_admin, tickets.user_account_id == current_user.user_account_id)
+        ).first()
+    
+    except Exception as e:
+            #Log failed ticket creation and inform user
+            db.session.rollback()
+            app.logger.error(f"Error retrieving ticket details: {e}")
+            flash("An error occurred while retrieving your ticket. Please try again later.", "danger")
+
+    #Check ticket exists
     if ticket is None:
         flash("Ticket not found or you don't have permission to view it.", "danger")
         return redirect(url_for("index"))
-    
-    form = AddCommentForm()
 
     if form.validate_on_submit():
         action = request.form.get('action')
 
         # Ensure action is valid before updating status
-        valid_statuses = {"open", "in_progress", "closed"}
-        if action in valid_statuses:
-            ticket.status = action  # Update ticket status
-            if action is "closed":
-                ticket.closed_date = datetime.now()
+        try:
+            valid_statuses = {"open", "in_progress", "closed"}
+            if action in valid_statuses:
+                ticket.status = action  # Update ticket status
+                if action == "closed":
+                    ticket.closed_date = datetime.now()
+                db.session.commit()
+
+            # Add the comment to the database
+            new_comment = ticket_comments(
+                ticket_id=ticket_id,
+                user_account_id=current_user.user_account_id,
+                comment_details=form.comment.data
+            )
+            db.session.add(new_comment)
             db.session.commit()
+            app.logger.info(f"Comment added successfully")
 
-        # Add the comment to the database
-        new_comment = ticket_comments(
-            ticket_id=ticket_id,
-            user_account_id=current_user.user_account_id,
-            comment_details=form.comment.data
-        )
-        db.session.add(new_comment)
-        db.session.commit()
+        except Exception as e:
+            #Log failed ticket creation and inform user
+            db.session.rollback()
+            app.logger.error(f"Error adding comment: {e}")
+            flash("An error occurred while edding comment. Please try again later.", "danger")
 
-        return redirect(url_for('view', ticket_id=ticket_id))  # Redirect to refresh template
+        #Reload page so show updated comments
+        return redirect(url_for('view', ticket_id=ticket_id))
 
-    comments = ticket_comments.query.filter_by(ticket_id=ticket_id).all()
-    username = login_details.query.filter_by(user_account_id=current_user.user_account_id).with_entities(login_details.username).scalar()
+    try:
+        comments = ticket_comments.query.filter_by(
+            ticket_id=ticket_id
+            ).all()
+        username = login_details.query.filter_by(
+            user_account_id=current_user.user_account_id
+            ).with_entities(
+                login_details.username
+                ).scalar()
+
+    except Exception as e:
+            #Log failed ticket creation and inform user
+            db.session.rollback()
+            app.logger.error(f"Error retrieving comments: {e}")
+            flash("An error occurred while retrieving comments. Please try again later.", "danger")
 
     return render_template('view.html', title='View Ticket', form=form, base_template=get_base_template(), ticket=ticket, comments=comments, username=username)
 
-@app.route('/open-tickets', methods=['GET', 'POST'])
-@login_required
-def open_tickets():
-    if current_user.is_admin:
-        open_tickets = tickets.query.filter(
-            tickets.status != 'closed', 
-        ).all()
-    else:
-        open_tickets = tickets.query.filter(
-            tickets.status != 'closed', 
-            tickets.user_account_id == current_user.user_account_id
-        ).all()
-    return render_template('open.html', title='Open Tickets', base_template=get_base_template(), tickets=open_tickets)
 
-@app.route('/closed-tickets', methods=['GET', 'POST'])
-@login_required
-def closed_tickets():
-    if current_user.is_admin:
-        closed_tickets = tickets.query.filter(
-            tickets.status == 'closed',
-        ).all()
-    else:
-        closed_tickets = tickets.query.filter(
-            tickets.status == 'closed', 
-            tickets.user_account_id == current_user.user_account_id
-        ).all()
-    return render_template('closed.html', title='Open Tickets', base_template=get_base_template(), tickets=closed_tickets)
-
-
-@app.route('/delete', defaults={'ticket_id': None}, methods=['GET', 'POST'])
-@app.route('/delete/<int:ticket_id>', methods=['GET', 'POST'])
+#Delete ticket
+@app.route('/ticket/delete', defaults={'ticket_id': None}, methods=['GET', 'POST'])
+@app.route('/ticket/delete/<int:ticket_id>', methods=['GET', 'POST'])
 @login_required
 def delete(ticket_id):
+
+    #Only admins can delete tickets
     if not current_user.is_admin:
         flash("You do not have permission to perform this action.", "warning")
+        app.logger.warning(f"{current_user.username} tried to delete a ticket without permission")
         return redirect(url_for("index"))
 
-    ticket = tickets.query.filter_by(ticket_id=ticket_id).first()
+    #Find and delete ticket
+    try:
+        ticket = tickets.query.filter_by(ticket_id=ticket_id).first()
+        db.session.delete(ticket)
+        db.session.commit()
+        app.logger.info(f"Ticket: {ticket_id}: deleted successfully")
+        flash("Ticket deleted successfully!", "success")
+
+    except Exception as e:
+        #Log failed ticket creation and inform user
+        db.session.rollback()
+        app.logger.error(f"Error retrieving comments: {e}")
+        flash("An error occurred while retrieving comments. Please try again later.", "danger")
+
     if not ticket:
+
         flash("Ticket not found.", "danger")
         return redirect(url_for("index"))
 
-    db.session.delete(ticket)
-    db.session.commit()
-
-    flash("Ticket and associated comments deleted successfully!", "success")
     return redirect(url_for("index"))
 
-@app.route('/promote', defaults={'user_account_id': None}, methods=['GET', 'POST'])
-@app.route('/promote/<int:user_account_id>', methods=['GET', 'POST'])
+
+#Get open tickets
+@app.route('/ticket/open-tickets', methods=['GET', 'POST'])
 @login_required
-def promote(user_account_id):
-    if current_user.is_admin:
-        user = user_accounts.query.filter_by(user_account_id=user_account_id).first()
-        if user:
-            user.is_admin = True
-            db.session.commit()
-            flash("User promoted successfully", "success")
+def open_tickets():
+
+    app.logger.info(f"{current_user.username} accessed open-tickets page.")
+
+    try:
+        #Get all open tickets
+        if current_user.is_admin:
+            open_tickets = tickets.query.filter(
+                tickets.status != 'closed', 
+            ).all()
+        #Get all open tickets associated with current user
         else:
-            flash("User not found.", "danger") # Change this to a generic error?
-    else:
-        flash("You do not have permission to perform this action.", "warning")
-    return redirect(url_for("users"))
+            open_tickets = tickets.query.filter(
+                tickets.status != 'closed', 
+                tickets.user_account_id == current_user.user_account_id
+            ).all()
+
+    except Exception as e:
+        #Log failed getting open tickets
+        db.session.rollback()
+        app.logger.error(f"Error retrieving open tickets: {e}")
+        flash("An error occurred while retrieving tickets. Please try again later.", "danger")
 
 
-@app.route('/demote', defaults={'user_account_id': None}, methods=['GET', 'POST'])
-@app.route('/demote/<int:user_account_id>', methods=['GET', 'POST'])
+    return render_template('open.html', title='Open Tickets', base_template=get_base_template(), tickets=open_tickets)
+
+#Get closed tickets
+@app.route('/closed-tickets', methods=['GET', 'POST'])
 @login_required
-def demote(user_account_id):
+def closed_tickets():
+
+    app.logger.info(f"{current_user.username} accessed closed-tickets page.")
+
+    try:
+        #Get all closed tickets
+        if current_user.is_admin:
+            closed_tickets = tickets.query.filter(
+                tickets.status == 'closed',
+            ).all()
+        #Get all closed tickets associated with current user
+        else:
+            closed_tickets = tickets.query.filter(
+                tickets.status == 'closed', 
+                tickets.user_account_id == current_user.user_account_id
+            ).all()
+
+    except Exception as e:
+        #Log failed getting closed tickets
+        db.session.rollback()
+        app.logger.error(f"Error retrieving closed tickets: {e}")
+        flash("An error occurred while retrieving tickets. Please try again later.", "danger")
+
+    return render_template('closed.html', title='Open Tickets', base_template=get_base_template(), tickets=closed_tickets)
+
+#Users
+
+#Fetch all users
+@app.route('/users', methods=['GET', 'POST'])
+@login_required
+def users():
+
+    #Only admins can view users
     if not current_user.is_admin:
         flash("You do not have permission to perform this action.", "warning")
+        app.logger.warning(f"{current_user.username} tried to view all users without permission")
+        return redirect(url_for("index"))
+    
+    app.logger.info(f"{current_user.username} accessed users page.")
+
+    try:
+        #Get all users from the db
+        users = db.session.query(
+            user_accounts.user_account_id,
+            user_accounts.first_name,
+            user_accounts.last_name,
+            user_accounts.account_created_date,
+            user_accounts.is_deleted,
+            user_accounts.account_deleted_date,
+            user_accounts.is_admin,
+            login_details.username
+        ).join(login_details).all()
+
+    except Exception as e:
+        #Log failed getting users
+        db.session.rollback()
+        app.logger.error(f"Error retrieving users: {e}")
+        flash("An error occurred while retrieving tickets. Please try again later.", "danger")
+
+    return render_template('users.html', title='Users', base_template=get_base_template(), users=users)
+
+#Promote user
+@app.route('/user/promote', defaults={'user_account_id': None}, methods=['GET', 'POST'])
+@app.route('/user/promote/<int:user_account_id>', methods=['GET', 'POST'])
+@login_required
+def promote(user_account_id):
+
+    #Only admins can promote users
+    if not current_user.is_admin:
+        flash("You do not have permission to perform this action.", "warning")
+        app.logger.warning(f"{current_user.username} tried to promote a user without permission")
+        return redirect(url_for("index"))
+    
+    app.logger.info(f"{current_user.username} accessed promote user page")
+    
+    if current_user.is_admin:
+        try:
+            #Promote user
+            user = user_accounts.query.filter_by(user_account_id=user_account_id).first()
+            if user:
+                user.is_admin = True
+                db.session.commit()
+                flash("User promoted successfully", "success")
+                app.logger.info(f"{user.username} promoted to admin by {current_user.username}")
+            else:
+                flash("User not found.", "danger")
+                return redirect(url_for("users"))
+
+        except Exception as e:
+            #Log promoting user
+            db.session.rollback()
+            app.logger.error(f"Error promoting user: {e}")
+            flash("An error occurred while promoting the user. Please try again later.", "danger")
+
+    return redirect(url_for("users"))
+
+#Demote user
+@app.route('/user/demote', defaults={'user_account_id': None}, methods=['GET', 'POST'])
+@app.route('/user/demote/<int:user_account_id>', methods=['GET', 'POST'])
+@login_required
+def demote(user_account_id):
+
+    #User must be an admin to perform this action
+    if not current_user.is_admin:
+        flash("You do not have permission to perform this action.", "warning")
+        app.logger.warning(f"{current_user.username} tried to demote a user without permission")
         return redirect(url_for("users"))
 
+    #Users cannot demote themselves
     if user_account_id == current_user.user_account_id:
         flash("You cannot demote yourself.", "warning")
+        app.logger.warning(f"{current_user.username} tried to demote themselves")
         return redirect(url_for("users"))
 
-    user = user_accounts.query.filter_by(user_account_id=user_account_id).first()
-    if user:
-        user.is_admin = False
-        db.session.commit()
-        flash("User demoted successfully.", "success")
-    else:
-        flash("Unable to process your request.", "danger")
+    try:
+        #Demote user
+        user = user_accounts.query.filter_by(user_account_id=user_account_id).first()
+        if user:
+            user.is_admin = False
+            db.session.commit()
+            flash("User demoted successfully.", "success")
+            app.logger.info(f"{user.username} demoted to standard user by {current_user.username}")
+        else:
+            flash("Unable to process your request.", "danger")
+
+    except Exception as e:
+            #Log error demoting user
+            db.session.rollback()
+            app.logger.error(f"Error demoting user: {e}")
+            flash("An error occurred while demoting the user. Please try again later.", "danger")
+
     return redirect(url_for("users"))
-    
+
+#Delete user
 @app.route('/delete/user', defaults={'user_account_id': None}, methods=['GET', 'POST'])
 @app.route('/delete/user/<int:user_account_id>', methods=['GET', 'POST'])
 @login_required
 def delete_user(user_account_id):
+
+    #user must be an admin to perform this action
     if not current_user.is_admin:
         flash("You do not have permission to perform this action.", "warning")
-        return redirect(url_for("index"))
-        
-    user = user_accounts.query.filter_by(user_account_id=user_account_id).first()
-    if not user:
-        flash ("User not found.", "danger")
+        app.logger.warning(f"{current_user.username} tried to delete a user without permission")
         return redirect(url_for("index"))
     
-    db.session.delete(user)
-    db.session.commit()
+    #Users cannot delete themselves
+    if user_account_id == current_user.user_account_id:
+        flash("You cannot delete yourself.", "warning")
+        app.logger.warning(f"{current_user.username} tried to delete themselves")
+        return redirect(url_for("users"))
+        
+    try:
+        user = user_accounts.query.filter_by(user_account_id=user_account_id).first()
+        db.session.delete(user)
+        db.session.commit()
+        if not user:
+            flash ("User not found.", "danger")
+            return redirect(url_for("index"))
+        
+    except Exception as e:
+        #Log error demoting user
+        db.session.rollback()
+        app.logger.error(f"Error deleting user: {e}")
+        flash("An error occurred while deleting the user. Please try again later.", "danger")
 
     flash("User deleted successfully!", "success")
     return redirect(url_for("users"))
-
-@app.route('/users', methods=['GET', 'POST'])
-@login_required
-def users():
-    users = db.session.query(
-        user_accounts.user_account_id,
-        user_accounts.first_name,
-        user_accounts.last_name,
-        user_accounts.account_created_date,
-        user_accounts.is_deleted,
-        user_accounts.account_deleted_date,
-        user_accounts.is_admin,
-        login_details.username
-    ).join(login_details).all()
-
-    return render_template('users.html', title='Users', base_template=get_base_template(), users=users)
