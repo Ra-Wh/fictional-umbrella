@@ -1475,3 +1475,218 @@ WHERE login_details.username = ?]
 [2025-06-22 17:28:20,287] INFO in routes: testuser accessed home page
 [2025-06-22 17:28:20,625] INFO in routes: New user created: form.username
 [2025-06-22 17:28:20,954] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 17:42:42,988] INFO in routes: testuser authenticated
+[2025-06-22 17:42:42,993] INFO in routes: testuser accessed home page
+[2025-06-22 17:42:43,220] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 17:42:43,654] INFO in routes: testuser authenticated
+[2025-06-22 17:42:43,656] INFO in routes: testuser accessed home page
+[2025-06-22 17:42:43,658] INFO in routes: testuser successfully logged out.
+[2025-06-22 17:42:44,071] INFO in routes: testuser authenticated
+[2025-06-22 17:42:44,073] INFO in routes: testuser accessed home page
+[2025-06-22 17:42:44,651] INFO in routes: testuser authenticated
+[2025-06-22 17:42:44,653] INFO in routes: testuser accessed home page
+[2025-06-22 17:42:44,655] INFO in routes: testuser accessed home page
+[2025-06-22 17:42:45,066] INFO in routes: testuser authenticated
+[2025-06-22 17:42:45,068] INFO in routes: testuser accessed home page
+[2025-06-22 17:42:45,070] INFO in routes: testuser accessed home page
+[2025-06-22 17:42:45,071] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 17:42:45,482] INFO in routes: testuser authenticated
+[2025-06-22 17:42:45,484] INFO in routes: testuser accessed home page
+[2025-06-22 17:42:45,825] INFO in routes: New user created: form.username
+[2025-06-22 17:42:46,160] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 17:44:17,340] INFO in routes: testuser authenticated
+[2025-06-22 17:44:17,344] INFO in routes: testuser accessed home page
+[2025-06-22 17:44:17,519] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 17:44:17,968] INFO in routes: testuser authenticated
+[2025-06-22 17:44:17,970] INFO in routes: testuser accessed home page
+[2025-06-22 17:44:17,971] INFO in routes: testuser successfully logged out.
+[2025-06-22 17:44:18,376] INFO in routes: testuser authenticated
+[2025-06-22 17:44:18,378] INFO in routes: testuser accessed home page
+[2025-06-22 17:44:18,953] INFO in routes: testuser authenticated
+[2025-06-22 17:44:18,955] INFO in routes: testuser accessed home page
+[2025-06-22 17:44:18,957] INFO in routes: testuser accessed home page
+[2025-06-22 17:44:19,367] INFO in routes: testuser authenticated
+[2025-06-22 17:44:19,369] INFO in routes: testuser accessed home page
+[2025-06-22 17:44:19,371] INFO in routes: testuser accessed home page
+[2025-06-22 17:44:19,371] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 17:44:19,790] INFO in routes: testuser authenticated
+[2025-06-22 17:44:19,792] INFO in routes: testuser accessed home page
+[2025-06-22 17:44:20,129] INFO in routes: New user created: form.username
+[2025-06-22 17:44:20,483] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 17:45:04,801] INFO in routes: testuser authenticated
+[2025-06-22 17:45:04,806] INFO in routes: testuser accessed home page
+[2025-06-22 17:45:04,984] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 17:45:05,422] INFO in routes: testuser authenticated
+[2025-06-22 17:45:05,424] INFO in routes: testuser accessed home page
+[2025-06-22 17:45:05,425] INFO in routes: testuser successfully logged out.
+[2025-06-22 17:45:05,838] INFO in routes: testuser authenticated
+[2025-06-22 17:45:05,840] INFO in routes: testuser accessed home page
+[2025-06-22 17:45:06,459] INFO in routes: testuser authenticated
+[2025-06-22 17:45:06,461] INFO in routes: testuser accessed home page
+[2025-06-22 17:45:06,463] INFO in routes: testuser accessed home page
+[2025-06-22 17:45:06,872] INFO in routes: testuser authenticated
+[2025-06-22 17:45:06,873] INFO in routes: testuser accessed home page
+[2025-06-22 17:45:06,876] INFO in routes: testuser accessed home page
+[2025-06-22 17:45:06,876] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 17:45:07,286] INFO in routes: testuser authenticated
+[2025-06-22 17:45:07,288] INFO in routes: testuser accessed home page
+[2025-06-22 17:45:07,650] INFO in routes: New user created: form.username
+[2025-06-22 17:45:07,994] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 17:47:20,386] INFO in routes: testuser authenticated
+[2025-06-22 17:47:20,390] INFO in routes: testuser accessed home page
+[2025-06-22 17:47:20,560] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 17:47:20,997] INFO in routes: testuser authenticated
+[2025-06-22 17:47:20,999] INFO in routes: testuser accessed home page
+[2025-06-22 17:47:21,000] INFO in routes: testuser successfully logged out.
+[2025-06-22 17:47:21,401] INFO in routes: testuser authenticated
+[2025-06-22 17:47:21,403] INFO in routes: testuser accessed home page
+[2025-06-22 17:47:21,985] INFO in routes: testuser authenticated
+[2025-06-22 17:47:21,987] INFO in routes: testuser accessed home page
+[2025-06-22 17:47:21,989] INFO in routes: testuser accessed home page
+[2025-06-22 17:47:22,399] INFO in routes: testuser authenticated
+[2025-06-22 17:47:22,401] INFO in routes: testuser accessed home page
+[2025-06-22 17:47:22,403] INFO in routes: testuser accessed home page
+[2025-06-22 17:47:22,404] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 17:47:22,813] INFO in routes: testuser authenticated
+[2025-06-22 17:47:22,815] INFO in routes: testuser accessed home page
+[2025-06-22 17:47:23,163] INFO in routes: New user created: form.username
+[2025-06-22 17:47:23,493] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 17:48:14,808] INFO in routes: testuser authenticated
+[2025-06-22 17:48:14,813] INFO in routes: testuser accessed home page
+[2025-06-22 17:48:14,996] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 17:48:15,402] INFO in routes: testuser authenticated
+[2025-06-22 17:48:15,406] INFO in routes: testuser accessed home page
+[2025-06-22 17:48:15,408] INFO in routes: testuser successfully logged out.
+[2025-06-22 17:48:15,816] INFO in routes: testuser authenticated
+[2025-06-22 17:48:15,818] INFO in routes: testuser accessed home page
+[2025-06-22 17:48:15,835] INFO in routes: New ticket created successfully 1
+[2025-06-22 17:48:15,838] INFO in routes: testuser accessed home page
+[2025-06-22 17:48:16,416] INFO in routes: testuser authenticated
+[2025-06-22 17:48:16,418] INFO in routes: testuser accessed home page
+[2025-06-22 17:48:16,420] INFO in routes: testuser accessed home page
+[2025-06-22 17:48:16,852] INFO in routes: testuser authenticated
+[2025-06-22 17:48:16,854] INFO in routes: testuser accessed home page
+[2025-06-22 17:48:16,856] INFO in routes: testuser accessed home page
+[2025-06-22 17:48:16,856] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 17:48:17,286] INFO in routes: testuser authenticated
+[2025-06-22 17:48:17,288] INFO in routes: testuser accessed home page
+[2025-06-22 17:48:17,632] INFO in routes: New user created: form.username
+[2025-06-22 17:48:17,974] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 17:49:05,470] INFO in routes: testuser authenticated
+[2025-06-22 17:49:05,474] INFO in routes: testuser accessed home page
+[2025-06-22 17:49:05,648] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 17:49:06,081] INFO in routes: testuser authenticated
+[2025-06-22 17:49:06,083] INFO in routes: testuser accessed home page
+[2025-06-22 17:49:06,085] INFO in routes: testuser successfully logged out.
+[2025-06-22 17:49:06,484] INFO in routes: testuser authenticated
+[2025-06-22 17:49:06,487] INFO in routes: testuser accessed home page
+[2025-06-22 17:49:06,505] INFO in routes: New ticket created successfully 1
+[2025-06-22 17:49:06,508] INFO in routes: testuser accessed home page
+[2025-06-22 17:49:06,939] INFO in routes: testuser authenticated
+[2025-06-22 17:49:06,941] INFO in routes: testuser accessed home page
+[2025-06-22 17:49:06,943] INFO in routes: testuser accessed home page
+[2025-06-22 17:49:07,356] INFO in routes: testuser authenticated
+[2025-06-22 17:49:07,358] INFO in routes: testuser accessed home page
+[2025-06-22 17:49:07,360] INFO in routes: testuser accessed home page
+[2025-06-22 17:49:07,360] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 17:49:07,781] INFO in routes: testuser authenticated
+[2025-06-22 17:49:07,782] INFO in routes: testuser accessed home page
+[2025-06-22 17:49:08,130] INFO in routes: New user created: form.username
+[2025-06-22 17:49:08,458] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 20:57:08,569] INFO in routes: testuser authenticated
+[2025-06-22 20:57:08,615] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:08,935] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 20:57:09,546] INFO in routes: testuser authenticated
+[2025-06-22 20:57:09,548] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:09,550] INFO in routes: testuser successfully logged out.
+[2025-06-22 20:57:10,152] INFO in routes: testuser authenticated
+[2025-06-22 20:57:10,154] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:10,222] INFO in routes: New ticket created successfully 1
+[2025-06-22 20:57:10,226] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:10,853] INFO in routes: testuser authenticated
+[2025-06-22 20:57:10,855] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:11,885] INFO in routes: testuser authenticated
+[2025-06-22 20:57:11,888] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:11,889] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:12,552] INFO in routes: testuser authenticated
+[2025-06-22 20:57:12,554] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:12,557] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:12,557] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 20:57:13,050] INFO in routes: testuser authenticated
+[2025-06-22 20:57:13,053] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:13,409] INFO in routes: New user created: form.username
+[2025-06-22 20:57:13,754] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 20:57:46,650] INFO in routes: testuser authenticated
+[2025-06-22 20:57:46,655] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:46,777] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 20:57:47,177] INFO in routes: testuser authenticated
+[2025-06-22 20:57:47,179] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:47,180] INFO in routes: testuser successfully logged out.
+[2025-06-22 20:57:47,598] INFO in routes: testuser authenticated
+[2025-06-22 20:57:47,599] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:47,608] INFO in routes: New ticket created successfully 1
+[2025-06-22 20:57:47,610] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:48,030] INFO in routes: testuser authenticated
+[2025-06-22 20:57:48,032] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:48,449] INFO in routes: testuser authenticated
+[2025-06-22 20:57:48,451] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:48,453] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:48,831] INFO in routes: testuser authenticated
+[2025-06-22 20:57:48,833] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:48,836] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:48,836] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 20:57:49,330] INFO in routes: testuser authenticated
+[2025-06-22 20:57:49,332] INFO in routes: testuser accessed home page
+[2025-06-22 20:57:49,579] INFO in routes: New user created: form.username
+[2025-06-22 20:57:49,743] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 21:00:38,885] INFO in routes: testuser authenticated
+[2025-06-22 21:00:38,889] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:38,977] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 21:00:39,307] INFO in routes: testuser authenticated
+[2025-06-22 21:00:39,309] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:39,311] INFO in routes: testuser successfully logged out.
+[2025-06-22 21:00:39,670] INFO in routes: testuser authenticated
+[2025-06-22 21:00:39,672] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:39,682] INFO in routes: New ticket created successfully 1
+[2025-06-22 21:00:39,684] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:40,006] INFO in routes: testuser authenticated
+[2025-06-22 21:00:40,008] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:40,339] INFO in routes: testuser authenticated
+[2025-06-22 21:00:40,341] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:40,689] INFO in routes: testuser authenticated
+[2025-06-22 21:00:40,691] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:40,693] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:41,014] INFO in routes: testuser authenticated
+[2025-06-22 21:00:41,016] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:41,018] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:41,018] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 21:00:41,344] INFO in routes: testuser authenticated
+[2025-06-22 21:00:41,347] INFO in routes: testuser accessed home page
+[2025-06-22 21:00:41,597] INFO in routes: New user created: form.username
+[2025-06-22 21:00:41,758] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-22 21:02:36,493] INFO in routes: testuser authenticated
+[2025-06-22 21:02:36,498] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:36,587] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 21:02:36,914] INFO in routes: testuser authenticated
+[2025-06-22 21:02:36,916] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:36,918] INFO in routes: testuser successfully logged out.
+[2025-06-22 21:02:37,245] INFO in routes: testuser authenticated
+[2025-06-22 21:02:37,247] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:37,257] INFO in routes: New ticket created successfully 1
+[2025-06-22 21:02:37,260] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:37,589] INFO in routes: testuser authenticated
+[2025-06-22 21:02:37,592] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:37,922] INFO in routes: testuser authenticated
+[2025-06-22 21:02:37,924] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:37,927] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-22 21:02:38,265] INFO in routes: testuser authenticated
+[2025-06-22 21:02:38,267] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:38,269] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:38,604] INFO in routes: testuser authenticated
+[2025-06-22 21:02:38,606] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:38,608] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:38,608] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 21:02:38,929] INFO in routes: testuser authenticated
+[2025-06-22 21:02:38,931] INFO in routes: testuser accessed home page
+[2025-06-22 21:02:39,174] INFO in routes: New user created: form.username
+[2025-06-22 21:02:39,342] ERROR in routes: Error creating new user: Simulated DB failure
