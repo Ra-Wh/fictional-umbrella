@@ -54,7 +54,5 @@ def test_register_failure(client):
             'password2': '!LongPassword1'
         }, follow_redirects=True)
 
-    print(response.data.decode())
-
     assert response.status_code == 200
     assert b"An error occurred while creating your account" in response.data
