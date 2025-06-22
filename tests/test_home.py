@@ -73,8 +73,14 @@ def test_db_error_shows_error_flash(client, test_user):
     with patch('app.routes.tickets.query') as mock_query:
         mock_query.filter.return_value.limit.return_value.all.side_effect = Exception("Simulated DB failure")
         response = client.get('/', follow_redirects=True)
-        print(response.data.decode())  # Optional: for debugging if the test fails
+        print(response.data.decode())
 
         assert response.status_code == 200
         assert b"There was a problem loading ticket data. Please try again later." in response.data
         
+def test_create_ticket_page_loads(client, test_user):
+    login_helper(client)
+    response = client.get('/ticket/create')
+
+    assert response.status_code == 200
+    assert b"Create" in response.data 
