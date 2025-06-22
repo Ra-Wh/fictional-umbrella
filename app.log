@@ -512,3 +512,815 @@ WHERE user_accounts.user_account_id = ?]
 [parameters: (2,)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 [2025-06-21 23:17:03,926] INFO in routes: User1 accessed home page
+[2025-06-21 23:26:20,125] INFO in routes: testuser authenticated
+[2025-06-21 23:26:20,130] INFO in routes: testuser accessed home page
+[2025-06-21 23:26:20,227] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:26:20,565] INFO in routes: testuser authenticated
+[2025-06-21 23:26:20,567] INFO in routes: testuser accessed home page
+[2025-06-21 23:26:20,568] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:26:20,910] INFO in routes: testuser authenticated
+[2025-06-21 23:26:20,912] INFO in routes: testuser accessed home page
+[2025-06-21 23:26:20,914] INFO in routes: testuser accessed home page
+[2025-06-21 23:26:21,246] INFO in routes: testuser authenticated
+[2025-06-21 23:26:21,248] INFO in routes: testuser accessed home page
+[2025-06-21 23:26:21,250] INFO in routes: testuser accessed home page
+[2025-06-21 23:28:18,234] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: user_accounts
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\models.py", line 122, in load_user
+    return db.session.get(user_accounts, int(id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1058, in get
+    return self._proxied.get(
+           ~~~~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<6 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3694, in get
+    return self._get_impl(
+           ~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<7 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3873, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user_accounts
+[SQL: SELECT user_accounts.user_account_id AS user_accounts_user_account_id, user_accounts.first_name AS user_accounts_first_name, user_accounts.last_name AS user_accounts_last_name, user_accounts.phone_number AS user_accounts_phone_number, user_accounts.account_created_date AS user_accounts_account_created_date, user_accounts.last_login AS user_accounts_last_login, user_accounts.is_deleted AS user_accounts_is_deleted, user_accounts.account_deleted_date AS user_accounts_account_deleted_date, user_accounts.is_admin AS user_accounts_is_admin 
+FROM user_accounts 
+WHERE user_accounts.user_account_id = ?]
+[parameters: (2,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-21 23:28:38,608] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: user_accounts
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\models.py", line 122, in load_user
+    return db.session.get(user_accounts, int(id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1058, in get
+    return self._proxied.get(
+           ~~~~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<6 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3694, in get
+    return self._get_impl(
+           ~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<7 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3873, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user_accounts
+[SQL: SELECT user_accounts.user_account_id AS user_accounts_user_account_id, user_accounts.first_name AS user_accounts_first_name, user_accounts.last_name AS user_accounts_last_name, user_accounts.phone_number AS user_accounts_phone_number, user_accounts.account_created_date AS user_accounts_account_created_date, user_accounts.last_login AS user_accounts_last_login, user_accounts.is_deleted AS user_accounts_is_deleted, user_accounts.account_deleted_date AS user_accounts_account_deleted_date, user_accounts.is_admin AS user_accounts_is_admin 
+FROM user_accounts 
+WHERE user_accounts.user_account_id = ?]
+[parameters: (2,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-21 23:29:26,487] WARNING in routes: Failed login attempt: User1. Validation errors: {}
+[2025-06-21 23:30:30,698] INFO in routes: User1 accessed home page
+[2025-06-21 23:30:46,632] INFO in routes: testuser authenticated
+[2025-06-21 23:30:46,637] INFO in routes: testuser accessed home page
+[2025-06-21 23:30:46,722] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:30:47,054] INFO in routes: testuser authenticated
+[2025-06-21 23:30:47,056] INFO in routes: testuser accessed home page
+[2025-06-21 23:30:47,057] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:30:47,399] INFO in routes: testuser authenticated
+[2025-06-21 23:30:47,401] INFO in routes: testuser accessed home page
+[2025-06-21 23:30:47,402] INFO in routes: testuser accessed home page
+[2025-06-21 23:30:47,731] INFO in routes: testuser authenticated
+[2025-06-21 23:30:47,733] INFO in routes: testuser accessed home page
+[2025-06-21 23:30:47,735] INFO in routes: testuser accessed home page
+[2025-06-21 23:32:01,762] INFO in routes: testuser authenticated
+[2025-06-21 23:32:01,767] INFO in routes: testuser accessed home page
+[2025-06-21 23:32:01,860] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:32:02,200] INFO in routes: testuser authenticated
+[2025-06-21 23:32:02,202] INFO in routes: testuser accessed home page
+[2025-06-21 23:32:02,203] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:32:02,534] INFO in routes: testuser authenticated
+[2025-06-21 23:32:02,536] INFO in routes: testuser accessed home page
+[2025-06-21 23:32:02,538] INFO in routes: testuser accessed home page
+[2025-06-21 23:32:02,866] INFO in routes: testuser authenticated
+[2025-06-21 23:32:02,868] INFO in routes: testuser accessed home page
+[2025-06-21 23:32:02,870] INFO in routes: testuser accessed home page
+[2025-06-21 23:35:37,893] INFO in routes: testuser authenticated
+[2025-06-21 23:35:37,898] INFO in routes: testuser accessed home page
+[2025-06-21 23:35:37,997] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:35:38,327] INFO in routes: testuser authenticated
+[2025-06-21 23:35:38,329] INFO in routes: testuser accessed home page
+[2025-06-21 23:35:38,330] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:35:38,666] INFO in routes: testuser authenticated
+[2025-06-21 23:35:38,668] INFO in routes: testuser accessed home page
+[2025-06-21 23:35:38,670] INFO in routes: testuser accessed home page
+[2025-06-21 23:35:39,002] INFO in routes: testuser authenticated
+[2025-06-21 23:35:39,005] INFO in routes: testuser accessed home page
+[2025-06-21 23:35:39,006] INFO in routes: testuser accessed home page
+[2025-06-21 23:37:37,364] INFO in routes: testuser authenticated
+[2025-06-21 23:37:37,369] INFO in routes: testuser accessed home page
+[2025-06-21 23:37:37,451] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:37:37,783] INFO in routes: testuser authenticated
+[2025-06-21 23:37:37,786] INFO in routes: testuser accessed home page
+[2025-06-21 23:37:37,787] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:37:38,129] INFO in routes: testuser authenticated
+[2025-06-21 23:37:38,131] INFO in routes: testuser accessed home page
+[2025-06-21 23:37:38,133] INFO in routes: testuser accessed home page
+[2025-06-21 23:37:38,473] INFO in routes: testuser authenticated
+[2025-06-21 23:37:38,475] INFO in routes: testuser accessed home page
+[2025-06-21 23:37:38,477] INFO in routes: testuser accessed home page
+[2025-06-21 23:38:30,649] INFO in routes: testuser authenticated
+[2025-06-21 23:38:30,654] INFO in routes: testuser accessed home page
+[2025-06-21 23:38:30,745] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:38:31,086] INFO in routes: testuser authenticated
+[2025-06-21 23:38:31,088] INFO in routes: testuser accessed home page
+[2025-06-21 23:38:31,089] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:38:31,427] INFO in routes: testuser authenticated
+[2025-06-21 23:38:31,429] INFO in routes: testuser accessed home page
+[2025-06-21 23:38:31,431] INFO in routes: testuser accessed home page
+[2025-06-21 23:38:31,756] INFO in routes: testuser authenticated
+[2025-06-21 23:38:31,758] INFO in routes: testuser accessed home page
+[2025-06-21 23:38:31,759] INFO in routes: testuser accessed home page
+[2025-06-21 23:39:52,035] INFO in routes: testuser authenticated
+[2025-06-21 23:39:52,039] INFO in routes: testuser accessed home page
+[2025-06-21 23:39:52,124] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:39:52,463] INFO in routes: testuser authenticated
+[2025-06-21 23:39:52,465] INFO in routes: testuser accessed home page
+[2025-06-21 23:39:52,467] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:39:52,822] INFO in routes: testuser authenticated
+[2025-06-21 23:39:52,825] INFO in routes: testuser accessed home page
+[2025-06-21 23:39:52,826] INFO in routes: testuser accessed home page
+[2025-06-21 23:39:53,162] INFO in routes: testuser authenticated
+[2025-06-21 23:39:53,164] INFO in routes: testuser accessed home page
+[2025-06-21 23:39:53,167] INFO in routes: testuser accessed home page
+[2025-06-21 23:39:53,167] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-21 23:40:29,879] INFO in routes: testuser authenticated
+[2025-06-21 23:40:29,884] INFO in routes: testuser accessed home page
+[2025-06-21 23:40:29,968] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:40:30,306] INFO in routes: testuser authenticated
+[2025-06-21 23:40:30,308] INFO in routes: testuser accessed home page
+[2025-06-21 23:40:30,310] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:40:30,652] INFO in routes: testuser authenticated
+[2025-06-21 23:40:30,654] INFO in routes: testuser accessed home page
+[2025-06-21 23:40:30,655] INFO in routes: testuser accessed home page
+[2025-06-21 23:40:30,989] INFO in routes: testuser authenticated
+[2025-06-21 23:40:30,991] INFO in routes: testuser accessed home page
+[2025-06-21 23:40:30,993] INFO in routes: testuser accessed home page
+[2025-06-21 23:40:30,994] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-21 23:40:30,994] INFO in routes: testuser accessed home page
+[2025-06-21 23:40:30,994] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-21 23:41:11,201] INFO in routes: testuser authenticated
+[2025-06-21 23:41:11,205] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:11,292] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:41:11,646] INFO in routes: testuser authenticated
+[2025-06-21 23:41:11,648] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:11,649] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:41:11,989] INFO in routes: testuser authenticated
+[2025-06-21 23:41:11,992] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:11,994] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:12,328] INFO in routes: testuser authenticated
+[2025-06-21 23:41:12,330] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:12,332] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:12,332] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-21 23:41:55,738] INFO in routes: testuser authenticated
+[2025-06-21 23:41:55,743] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:55,828] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:41:56,162] INFO in routes: testuser authenticated
+[2025-06-21 23:41:56,165] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:56,166] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:41:56,505] INFO in routes: testuser authenticated
+[2025-06-21 23:41:56,508] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:56,510] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:56,849] INFO in routes: testuser authenticated
+[2025-06-21 23:41:56,851] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:56,853] INFO in routes: testuser accessed home page
+[2025-06-21 23:41:56,854] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-21 23:45:56,651] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: user_accounts
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\models.py", line 122, in load_user
+    return db.session.get(user_accounts, int(id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1058, in get
+    return self._proxied.get(
+           ~~~~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<6 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3694, in get
+    return self._get_impl(
+           ~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<7 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3873, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user_accounts
+[SQL: SELECT user_accounts.user_account_id AS user_accounts_user_account_id, user_accounts.first_name AS user_accounts_first_name, user_accounts.last_name AS user_accounts_last_name, user_accounts.phone_number AS user_accounts_phone_number, user_accounts.account_created_date AS user_accounts_account_created_date, user_accounts.last_login AS user_accounts_last_login, user_accounts.is_deleted AS user_accounts_is_deleted, user_accounts.account_deleted_date AS user_accounts_account_deleted_date, user_accounts.is_admin AS user_accounts_is_admin 
+FROM user_accounts 
+WHERE user_accounts.user_account_id = ?]
+[parameters: (2,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-21 23:49:34,122] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: user_accounts
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\models.py", line 122, in load_user
+    return db.session.get(user_accounts, int(id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1058, in get
+    return self._proxied.get(
+           ~~~~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<6 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3694, in get
+    return self._get_impl(
+           ~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<7 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3873, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user_accounts
+[SQL: SELECT user_accounts.user_account_id AS user_accounts_user_account_id, user_accounts.first_name AS user_accounts_first_name, user_accounts.last_name AS user_accounts_last_name, user_accounts.phone_number AS user_accounts_phone_number, user_accounts.account_created_date AS user_accounts_account_created_date, user_accounts.last_login AS user_accounts_last_login, user_accounts.is_deleted AS user_accounts_is_deleted, user_accounts.account_deleted_date AS user_accounts_account_deleted_date, user_accounts.is_admin AS user_accounts_is_admin 
+FROM user_accounts 
+WHERE user_accounts.user_account_id = ?]
+[parameters: (2,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-21 23:56:37,893] INFO in routes: User1 accessed home page
+[2025-06-21 23:56:47,827] INFO in routes: testuser authenticated
+[2025-06-21 23:56:47,832] INFO in routes: testuser accessed home page
+[2025-06-21 23:56:47,919] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-21 23:56:48,298] INFO in routes: testuser authenticated
+[2025-06-21 23:56:48,300] INFO in routes: testuser accessed home page
+[2025-06-21 23:56:48,302] INFO in routes: testuser successfully logged out.
+[2025-06-21 23:56:48,654] INFO in routes: testuser authenticated
+[2025-06-21 23:56:48,657] INFO in routes: testuser accessed home page
+[2025-06-21 23:56:48,659] INFO in routes: testuser accessed home page
+[2025-06-21 23:56:48,987] INFO in routes: testuser authenticated
+[2025-06-21 23:56:48,989] INFO in routes: testuser accessed home page
+[2025-06-21 23:56:48,991] INFO in routes: testuser accessed home page
+[2025-06-21 23:56:48,992] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-21 23:57:00,363] ERROR in routes: Error retrieving login details for User1: (sqlite3.OperationalError) no such table: login_details
+[SQL: SELECT login_details.login_id, login_details.user_account_id, login_details.username, login_details.email_address, login_details.password_hash 
+FROM login_details 
+WHERE login_details.username = ?]
+[parameters: ('User1',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-21 23:57:06,063] ERROR in routes: Error retrieving login details for User1: (sqlite3.OperationalError) no such table: login_details
+[SQL: SELECT login_details.login_id, login_details.user_account_id, login_details.username, login_details.email_address, login_details.password_hash 
+FROM login_details 
+WHERE login_details.username = ?]
+[parameters: ('User1',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-21 23:57:56,913] ERROR in routes: Error retrieving login details for User1: (sqlite3.OperationalError) no such table: login_details
+[SQL: SELECT login_details.login_id, login_details.user_account_id, login_details.username, login_details.email_address, login_details.password_hash 
+FROM login_details 
+WHERE login_details.username = ?]
+[parameters: ('User1',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-22 00:08:32,697] ERROR in routes: Error retrieving login details for User1: (sqlite3.OperationalError) no such table: login_details
+[SQL: SELECT login_details.login_id, login_details.user_account_id, login_details.username, login_details.email_address, login_details.password_hash 
+FROM login_details 
+WHERE login_details.username = ?]
+[parameters: ('User1',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-22 00:10:09,270] INFO in routes: User1 authenticated
+[2025-06-22 00:10:09,280] INFO in routes: User1 accessed home page
+[2025-06-22 00:10:12,040] INFO in routes: User1 successfully logged out.
+[2025-06-22 00:10:24,040] INFO in routes: testuser authenticated
+[2025-06-22 00:10:24,046] INFO in routes: testuser accessed home page
+[2025-06-22 00:10:24,133] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-22 00:10:24,472] INFO in routes: testuser authenticated
+[2025-06-22 00:10:24,474] INFO in routes: testuser accessed home page
+[2025-06-22 00:10:24,476] INFO in routes: testuser successfully logged out.
+[2025-06-22 00:10:24,811] INFO in routes: testuser authenticated
+[2025-06-22 00:10:24,814] INFO in routes: testuser accessed home page
+[2025-06-22 00:10:24,816] INFO in routes: testuser accessed home page
+[2025-06-22 00:10:25,144] INFO in routes: testuser authenticated
+[2025-06-22 00:10:25,146] INFO in routes: testuser accessed home page
+[2025-06-22 00:10:25,148] INFO in routes: testuser accessed home page
+[2025-06-22 00:10:25,149] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-22 00:10:34,613] ERROR in routes: Error retrieving login details for User1: (sqlite3.OperationalError) no such table: login_details
+[SQL: SELECT login_details.login_id, login_details.user_account_id, login_details.username, login_details.email_address, login_details.password_hash 
+FROM login_details 
+WHERE login_details.username = ?]
+[parameters: ('User1',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)

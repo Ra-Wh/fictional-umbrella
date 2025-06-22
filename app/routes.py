@@ -109,7 +109,13 @@ def index():
     except Exception as e:
         app.logger.error(f"Error retrieving ticket summary stats: {e}")
         flash("There was a problem loading ticket data. Please try again later.", "danger")
-        return redirect(url_for('error'))
+        recent_tickets = []
+        return render_template(
+            'index.html',
+            tickets=recent_tickets,
+            base_template=get_base_template()
+        )
+
 
     return render_template(
         'index.html',
