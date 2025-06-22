@@ -258,7 +258,7 @@ def view(ticket_id):
             #Log failed ticket creation and inform user
             db.session.rollback()
             app.logger.error(f"Error adding comment: {e}")
-            flash("An error occurred while edding comment. Please try again later.", "danger")
+            flash("An error occurred while editing comment. Please try again later.", "danger")
 
         #Reload page so show updated comments
         return redirect(url_for('view', ticket_id=ticket_id))

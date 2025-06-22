@@ -64,3 +64,7 @@ new_login = login_details(user_account_id=new_user.user_account_id, username="Us
 new_login.set_password('1234')
 db.session.add(new_login)
 db.session.commit()
+
+## Run test
+
+python -m pytest
