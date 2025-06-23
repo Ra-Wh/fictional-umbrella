@@ -84,72 +84,24 @@ def create_tickets(test_user):
         db.session.add(ticket)
     db.session.commit()
 
-def test_correct_ticket_returned(client, test_user, create_tickets):
+def test_user_cant_delete_tickets(client, test_user, create_tickets):
     login_helper(client)
-
-    response = client.get('/ticket/view/2', follow_redirects=True)
+    response = client.get('/ticket/delete/2', follow_redirects=True)
     assert response.status_code == 200
-    assert b"Ticket 1" in response.data
+    assert b'You do not have permission to perform this action.' in response.data
 
-def test_add_comment(client, test_user, create_tickets):
-    login_helper(client)
-
-    response = client.post('/ticket/view/2', data={
-         'ticket_id' : 2,
-         'user_account_id' : test_user.user_account_id,
-         'comment' : 'Test comment'
-    }, follow_redirects=True)
-
+def test_admin_can_delete_ticket(client, test_admin, create_tickets):
+    login_as_admin(client)
+    response = client.get('/ticket/delete/2', follow_redirects=True)
     assert response.status_code == 200
-    assert b"Test comment" in response.data
+    print(response.data.decode())
+    assert b'Ticket deleted successfully!' in response.data
 
-def test_error_if_no_comment_data(client, test_user, create_tickets):
-    login_helper(client)
-
-    response = client.post('/ticket/view/2', data={
-        'ticket_id' : 2,
-        'user_account_id' : test_user.user_account_id,
-        'comment' : ''
-    }, follow_redirects=True)
-
-    assert response.status_code == 200
-    assert b"This field is required." in response.data
-
-def test_db_error(client, test_user, create_tickets):
-    login_helper(client)
-
-    with patch('app.routes.db.session.commit', side_effect=Exception("Simulated DB failure")):
-        response = client.post('/ticket/view/2', data={
-            'ticket_id' : 2,
-            'user_account_id' : test_user.user_account_id,
-            'comment' : 'Test comment'
-        }, follow_redirects=True)
-
-    assert response.status_code == 200
-    assert b"An error occurred while editing comment. Please try again later." in response.data
-
-def test_close_ticket(client, test_admin, create_tickets):
+def test_db_error(client, test_admin, create_tickets):
     login_as_admin(client)
 
-    response = client.post(f'/ticket/view/2', data={
-        'comment': 'Closing this ticket.',
-        'action': 'closed'
-    }, follow_redirects=True)
+    with patch('app.routes.db.session.commit', side_effect=Exception("Simulated DB failure")):
+        response = client.get('/ticket/delete/2', follow_redirects=True)
 
     assert response.status_code == 200
-    updated_ticket = db.session.get(tickets, 2)
-    assert updated_ticket.status.value == 'Closed'
-
-def test_user_cant_close_ticket(client, test_user, create_tickets):
-    login_helper(client)
-
-    response = client.post('/ticket/view/2', data={
-        'ticket_id' : 2,
-        'user_account_id' : test_user.user_account_id,
-        'comment' : ''
-    }, follow_redirects=True)
-
-    assert response.status_code == 200
-    assert b"Comment and Close Ticket" not in response.data
-
-
+    assert b"An error occurred deleting the ticket. Please try again later." in response.data

@@ -2199,3 +2199,989 @@ WHERE login_details.username = ?]
 [2025-06-22 22:09:46,354] INFO in routes: testuser authenticated
 [2025-06-22 22:09:46,357] INFO in routes: testuser accessed home page
 [2025-06-22 22:09:46,359] INFO in routes: testuser view ticket 2
+[2025-06-23 20:53:18,527] INFO in routes: User1 authenticated
+[2025-06-23 20:53:18,538] INFO in routes: User1 accessed home page
+[2025-06-23 20:54:15,575] INFO in routes: testuser authenticated
+[2025-06-23 20:54:15,580] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:15,960] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 20:54:16,689] INFO in routes: testuser authenticated
+[2025-06-23 20:54:16,691] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:16,692] INFO in routes: testuser successfully logged out.
+[2025-06-23 20:54:17,109] INFO in routes: testuser authenticated
+[2025-06-23 20:54:17,111] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:17,127] INFO in routes: New ticket created successfully 1
+[2025-06-23 20:54:17,130] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:17,541] INFO in routes: testuser authenticated
+[2025-06-23 20:54:17,543] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:17,968] INFO in routes: testuser authenticated
+[2025-06-23 20:54:17,970] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:17,973] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 20:54:18,398] INFO in routes: testuser authenticated
+[2025-06-23 20:54:18,400] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:18,402] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:18,813] INFO in routes: testuser authenticated
+[2025-06-23 20:54:18,815] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:18,817] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:18,817] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 20:54:19,246] INFO in routes: testuser authenticated
+[2025-06-23 20:54:19,248] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:19,665] INFO in routes: New user created: form.username
+[2025-06-23 20:54:20,005] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 20:54:20,436] INFO in routes: testuser authenticated
+[2025-06-23 20:54:20,438] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:20,440] INFO in routes: testuser view ticket 2
+[2025-06-23 20:54:20,890] INFO in routes: testuser authenticated
+[2025-06-23 20:54:20,892] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:20,894] INFO in routes: testuser view ticket 2
+[2025-06-23 20:54:20,908] INFO in routes: Comment added successfully
+[2025-06-23 20:54:20,910] INFO in routes: testuser view ticket 2
+[2025-06-23 20:54:21,334] INFO in routes: testuser authenticated
+[2025-06-23 20:54:21,336] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:21,338] INFO in routes: testuser view ticket 2
+[2025-06-23 20:54:21,766] INFO in routes: testuser authenticated
+[2025-06-23 20:54:21,768] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:21,770] INFO in routes: testuser view ticket 2
+[2025-06-23 20:54:21,771] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 20:54:21,773] INFO in routes: testuser view ticket 2
+[2025-06-23 20:54:22,358] INFO in routes: testadmin authenticated
+[2025-06-23 20:54:22,360] INFO in routes: testadmin accessed home page
+[2025-06-23 20:54:22,376] INFO in routes: testadmin view ticket 2
+[2025-06-23 20:54:22,404] INFO in routes: Comment added successfully
+[2025-06-23 20:54:22,407] INFO in routes: testadmin view ticket 2
+[2025-06-23 20:54:22,837] INFO in routes: testuser authenticated
+[2025-06-23 20:54:22,839] INFO in routes: testuser accessed home page
+[2025-06-23 20:54:22,841] INFO in routes: testuser view ticket 2
+[2025-06-23 20:54:29,338] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: user_accounts
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\models.py", line 122, in load_user
+    return db.session.get(user_accounts, int(id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1058, in get
+    return self._proxied.get(
+           ~~~~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<6 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3694, in get
+    return self._get_impl(
+           ~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<7 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3873, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user_accounts
+[SQL: SELECT user_accounts.user_account_id AS user_accounts_user_account_id, user_accounts.first_name AS user_accounts_first_name, user_accounts.last_name AS user_accounts_last_name, user_accounts.phone_number AS user_accounts_phone_number, user_accounts.account_created_date AS user_accounts_account_created_date, user_accounts.last_login AS user_accounts_last_login, user_accounts.is_deleted AS user_accounts_is_deleted, user_accounts.account_deleted_date AS user_accounts_account_deleted_date, user_accounts.is_admin AS user_accounts_is_admin 
+FROM user_accounts 
+WHERE user_accounts.user_account_id = ?]
+[parameters: (2,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-23 21:00:04,257] INFO in routes: testuser authenticated
+[2025-06-23 21:00:04,262] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:04,433] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 21:00:04,869] INFO in routes: testuser authenticated
+[2025-06-23 21:00:04,871] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:04,872] INFO in routes: testuser successfully logged out.
+[2025-06-23 21:00:05,299] INFO in routes: testuser authenticated
+[2025-06-23 21:00:05,301] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:05,317] INFO in routes: New ticket created successfully 1
+[2025-06-23 21:00:05,320] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:05,761] INFO in routes: testuser authenticated
+[2025-06-23 21:00:05,763] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:06,193] INFO in routes: testuser authenticated
+[2025-06-23 21:00:06,195] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:06,198] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 21:00:06,624] INFO in routes: testuser authenticated
+[2025-06-23 21:00:06,626] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:06,628] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:07,052] INFO in routes: testuser authenticated
+[2025-06-23 21:00:07,054] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:07,056] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:07,056] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 21:00:07,468] INFO in routes: testuser authenticated
+[2025-06-23 21:00:07,470] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:07,811] INFO in routes: New user created: form.username
+[2025-06-23 21:00:08,148] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 21:00:08,597] INFO in routes: testuser authenticated
+[2025-06-23 21:00:08,600] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:08,601] INFO in routes: testuser view ticket 2
+[2025-06-23 21:00:09,045] INFO in routes: testuser authenticated
+[2025-06-23 21:00:09,048] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:09,050] INFO in routes: testuser view ticket 2
+[2025-06-23 21:00:09,064] INFO in routes: Comment added successfully
+[2025-06-23 21:00:09,066] INFO in routes: testuser view ticket 2
+[2025-06-23 21:00:09,494] INFO in routes: testuser authenticated
+[2025-06-23 21:00:09,496] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:09,498] INFO in routes: testuser view ticket 2
+[2025-06-23 21:00:09,941] INFO in routes: testuser authenticated
+[2025-06-23 21:00:09,943] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:09,945] INFO in routes: testuser view ticket 2
+[2025-06-23 21:00:09,946] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 21:00:09,947] INFO in routes: testuser view ticket 2
+[2025-06-23 21:00:10,581] INFO in routes: testadmin authenticated
+[2025-06-23 21:00:10,583] INFO in routes: testadmin accessed home page
+[2025-06-23 21:00:10,588] INFO in routes: testadmin view ticket 2
+[2025-06-23 21:00:10,616] INFO in routes: Comment added successfully
+[2025-06-23 21:00:10,618] INFO in routes: testadmin view ticket 2
+[2025-06-23 21:00:11,052] INFO in routes: testuser authenticated
+[2025-06-23 21:00:11,054] INFO in routes: testuser accessed home page
+[2025-06-23 21:00:11,056] INFO in routes: testuser view ticket 2
+[2025-06-23 21:00:18,077] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: user_accounts
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\app\models.py", line 122, in load_user
+    return db.session.get(user_accounts, int(id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1058, in get
+    return self._proxied.get(
+           ~~~~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<6 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3694, in get
+    return self._get_impl(
+           ~~~~~~~~~~~~~~^
+        entity,
+        ^^^^^^^
+    ...<7 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3873, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rache\OneDrive\Desktop\SEA\fictional-umbrella\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user_accounts
+[SQL: SELECT user_accounts.user_account_id AS user_accounts_user_account_id, user_accounts.first_name AS user_accounts_first_name, user_accounts.last_name AS user_accounts_last_name, user_accounts.phone_number AS user_accounts_phone_number, user_accounts.account_created_date AS user_accounts_account_created_date, user_accounts.last_login AS user_accounts_last_login, user_accounts.is_deleted AS user_accounts_is_deleted, user_accounts.account_deleted_date AS user_accounts_account_deleted_date, user_accounts.is_admin AS user_accounts_is_admin 
+FROM user_accounts 
+WHERE user_accounts.user_account_id = ?]
+[parameters: (2,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-23 21:28:03,349] WARNING in routes: Failed login attempt: User1. Validation errors: {}
+[2025-06-23 21:28:42,212] INFO in routes: User1 accessed home page
+[2025-06-23 21:28:59,900] INFO in routes: testuser authenticated
+[2025-06-23 21:28:59,904] INFO in routes: testuser accessed home page
+[2025-06-23 21:28:59,984] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 21:29:00,358] INFO in routes: testuser authenticated
+[2025-06-23 21:29:00,360] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:00,361] INFO in routes: testuser successfully logged out.
+[2025-06-23 21:29:00,687] INFO in routes: testuser authenticated
+[2025-06-23 21:29:00,689] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:00,699] INFO in routes: New ticket created successfully 1
+[2025-06-23 21:29:00,701] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:01,025] INFO in routes: testuser authenticated
+[2025-06-23 21:29:01,027] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:01,367] INFO in routes: testuser authenticated
+[2025-06-23 21:29:01,369] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:01,371] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 21:29:01,723] INFO in routes: testuser authenticated
+[2025-06-23 21:29:01,725] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:01,727] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:02,072] INFO in routes: testuser authenticated
+[2025-06-23 21:29:02,074] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:02,076] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:02,076] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 21:29:02,406] INFO in routes: testuser authenticated
+[2025-06-23 21:29:02,408] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:02,694] INFO in routes: New user created: form.username
+[2025-06-23 21:29:02,870] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 21:29:03,202] INFO in routes: testuser authenticated
+[2025-06-23 21:29:03,204] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:03,205] INFO in routes: testuser view ticket 2
+[2025-06-23 21:29:03,546] INFO in routes: testuser authenticated
+[2025-06-23 21:29:03,548] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:03,550] INFO in routes: testuser view ticket 2
+[2025-06-23 21:29:03,578] INFO in routes: Comment added successfully
+[2025-06-23 21:29:03,580] INFO in routes: testuser view ticket 2
+[2025-06-23 21:29:03,913] INFO in routes: testuser authenticated
+[2025-06-23 21:29:03,914] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:03,916] INFO in routes: testuser view ticket 2
+[2025-06-23 21:29:04,296] INFO in routes: testuser authenticated
+[2025-06-23 21:29:04,298] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:04,299] INFO in routes: testuser view ticket 2
+[2025-06-23 21:29:04,300] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 21:29:04,302] INFO in routes: testuser view ticket 2
+[2025-06-23 21:29:04,777] INFO in routes: testadmin authenticated
+[2025-06-23 21:29:04,779] INFO in routes: testadmin accessed home page
+[2025-06-23 21:29:04,785] INFO in routes: testadmin view ticket 2
+[2025-06-23 21:29:04,800] INFO in routes: Comment added successfully
+[2025-06-23 21:29:04,802] INFO in routes: testadmin view ticket 2
+[2025-06-23 21:29:05,147] INFO in routes: testuser authenticated
+[2025-06-23 21:29:05,149] INFO in routes: testuser accessed home page
+[2025-06-23 21:29:05,150] INFO in routes: testuser view ticket 2
+[2025-06-23 21:29:28,539] ERROR in routes: Error retrieving login details for User1: (sqlite3.OperationalError) no such table: login_details
+[SQL: SELECT login_details.login_id, login_details.user_account_id, login_details.username, login_details.email_address, login_details.password_hash 
+FROM login_details 
+WHERE login_details.username = ?]
+[parameters: ('User1',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-23 21:36:13,191] INFO in routes: User1 authenticated
+[2025-06-23 21:36:13,202] INFO in routes: User1 accessed home page
+[2025-06-23 21:37:55,499] INFO in routes: testuser authenticated
+[2025-06-23 21:37:55,503] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:55,596] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 21:37:55,935] INFO in routes: testuser authenticated
+[2025-06-23 21:37:55,937] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:55,938] INFO in routes: testuser successfully logged out.
+[2025-06-23 21:37:56,267] INFO in routes: testuser authenticated
+[2025-06-23 21:37:56,269] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:56,279] INFO in routes: New ticket created successfully 1
+[2025-06-23 21:37:56,281] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:56,601] INFO in routes: testuser authenticated
+[2025-06-23 21:37:56,602] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:56,931] INFO in routes: testuser authenticated
+[2025-06-23 21:37:56,933] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:56,935] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 21:37:57,265] INFO in routes: testuser authenticated
+[2025-06-23 21:37:57,267] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:57,268] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:57,612] INFO in routes: testuser authenticated
+[2025-06-23 21:37:57,614] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:57,616] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:57,616] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 21:37:57,955] INFO in routes: testuser authenticated
+[2025-06-23 21:37:57,957] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:58,204] INFO in routes: New user created: form.username
+[2025-06-23 21:37:58,369] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 21:37:58,698] INFO in routes: testuser authenticated
+[2025-06-23 21:37:58,700] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:58,701] INFO in routes: testuser view ticket 2
+[2025-06-23 21:37:59,041] INFO in routes: testuser authenticated
+[2025-06-23 21:37:59,043] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:59,045] INFO in routes: testuser view ticket 2
+[2025-06-23 21:37:59,051] INFO in routes: Comment added successfully
+[2025-06-23 21:37:59,052] INFO in routes: testuser view ticket 2
+[2025-06-23 21:37:59,387] INFO in routes: testuser authenticated
+[2025-06-23 21:37:59,389] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:59,390] INFO in routes: testuser view ticket 2
+[2025-06-23 21:37:59,725] INFO in routes: testuser authenticated
+[2025-06-23 21:37:59,727] INFO in routes: testuser accessed home page
+[2025-06-23 21:37:59,729] INFO in routes: testuser view ticket 2
+[2025-06-23 21:37:59,731] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 21:37:59,733] INFO in routes: testuser view ticket 2
+[2025-06-23 21:38:00,200] INFO in routes: testadmin authenticated
+[2025-06-23 21:38:00,201] INFO in routes: testadmin accessed home page
+[2025-06-23 21:38:00,206] INFO in routes: testadmin view ticket 2
+[2025-06-23 21:38:00,221] INFO in routes: Comment added successfully
+[2025-06-23 21:38:00,223] INFO in routes: testadmin view ticket 2
+[2025-06-23 21:38:00,558] INFO in routes: testuser authenticated
+[2025-06-23 21:38:00,560] INFO in routes: testuser accessed home page
+[2025-06-23 21:38:00,562] INFO in routes: testuser view ticket 2
+[2025-06-23 21:41:27,798] ERROR in routes: Error retrieving login details for User1: (sqlite3.OperationalError) no such table: login_details
+[SQL: SELECT login_details.login_id, login_details.user_account_id, login_details.username, login_details.email_address, login_details.password_hash 
+FROM login_details 
+WHERE login_details.username = ?]
+[parameters: ('User1',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-23 21:48:10,519] INFO in routes: testuser authenticated
+[2025-06-23 21:48:10,524] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:10,612] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 21:48:10,948] INFO in routes: testuser authenticated
+[2025-06-23 21:48:10,950] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:10,951] INFO in routes: testuser successfully logged out.
+[2025-06-23 21:48:11,275] INFO in routes: testuser authenticated
+[2025-06-23 21:48:11,277] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:11,287] INFO in routes: New ticket created successfully 1
+[2025-06-23 21:48:11,289] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:11,626] INFO in routes: testuser authenticated
+[2025-06-23 21:48:11,628] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:11,959] INFO in routes: testuser authenticated
+[2025-06-23 21:48:11,961] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:11,963] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 21:48:12,301] INFO in routes: testuser authenticated
+[2025-06-23 21:48:12,303] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:12,305] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:12,626] INFO in routes: testuser authenticated
+[2025-06-23 21:48:12,628] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:12,630] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:12,631] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 21:48:12,951] INFO in routes: testuser authenticated
+[2025-06-23 21:48:12,953] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:13,190] INFO in routes: New user created: form.username
+[2025-06-23 21:48:13,339] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 21:48:13,665] INFO in routes: testuser authenticated
+[2025-06-23 21:48:13,667] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:13,669] INFO in routes: testuser view ticket 2
+[2025-06-23 21:48:14,015] INFO in routes: testuser authenticated
+[2025-06-23 21:48:14,017] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:14,019] INFO in routes: testuser view ticket 2
+[2025-06-23 21:48:14,027] INFO in routes: Comment added successfully
+[2025-06-23 21:48:14,029] INFO in routes: testuser view ticket 2
+[2025-06-23 21:48:14,359] INFO in routes: testuser authenticated
+[2025-06-23 21:48:14,361] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:14,363] INFO in routes: testuser view ticket 2
+[2025-06-23 21:48:14,697] INFO in routes: testuser authenticated
+[2025-06-23 21:48:14,699] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:14,701] INFO in routes: testuser view ticket 2
+[2025-06-23 21:48:14,702] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 21:48:14,703] INFO in routes: testuser view ticket 2
+[2025-06-23 21:48:15,216] INFO in routes: testadmin authenticated
+[2025-06-23 21:48:15,218] INFO in routes: testadmin accessed home page
+[2025-06-23 21:48:15,223] INFO in routes: testadmin view ticket 2
+[2025-06-23 21:48:15,240] INFO in routes: Comment added successfully
+[2025-06-23 21:48:15,242] INFO in routes: testadmin view ticket 2
+[2025-06-23 21:48:15,586] INFO in routes: testuser authenticated
+[2025-06-23 21:48:15,589] INFO in routes: testuser accessed home page
+[2025-06-23 21:48:15,590] INFO in routes: testuser view ticket 2
+[2025-06-23 21:48:36,958] ERROR in routes: Error retrieving login details for User1: (sqlite3.OperationalError) no such table: login_details
+[SQL: SELECT login_details.login_id, login_details.user_account_id, login_details.username, login_details.email_address, login_details.password_hash 
+FROM login_details 
+WHERE login_details.username = ?]
+[parameters: ('User1',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-06-23 21:49:22,776] INFO in routes: User1 authenticated
+[2025-06-23 21:49:22,786] INFO in routes: User1 accessed home page
+[2025-06-23 22:14:24,872] INFO in routes: testuser authenticated
+[2025-06-23 22:14:24,878] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:25,049] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 22:14:25,517] INFO in routes: testuser authenticated
+[2025-06-23 22:14:25,519] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:25,521] INFO in routes: testuser successfully logged out.
+[2025-06-23 22:14:25,948] INFO in routes: testuser authenticated
+[2025-06-23 22:14:25,950] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:25,966] INFO in routes: New ticket created successfully 1
+[2025-06-23 22:14:25,969] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:26,396] INFO in routes: testuser authenticated
+[2025-06-23 22:14:26,398] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:26,824] INFO in routes: testuser authenticated
+[2025-06-23 22:14:26,828] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:26,831] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 22:14:27,261] INFO in routes: testuser authenticated
+[2025-06-23 22:14:27,263] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:27,265] WARNING in routes: testuser tried to delete a ticket without permission
+[2025-06-23 22:14:27,266] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:27,858] INFO in routes: testuser authenticated
+[2025-06-23 22:14:27,862] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:27,864] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:28,281] INFO in routes: testuser authenticated
+[2025-06-23 22:14:28,283] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:28,285] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:28,286] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 22:14:28,702] INFO in routes: testuser authenticated
+[2025-06-23 22:14:28,704] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:29,055] INFO in routes: New user created: form.username
+[2025-06-23 22:14:29,376] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 22:14:29,810] INFO in routes: testuser authenticated
+[2025-06-23 22:14:29,812] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:29,814] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:30,267] INFO in routes: testuser authenticated
+[2025-06-23 22:14:30,269] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:30,271] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:30,283] INFO in routes: Comment added successfully
+[2025-06-23 22:14:30,285] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:30,739] INFO in routes: testuser authenticated
+[2025-06-23 22:14:30,741] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:30,744] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:31,206] INFO in routes: testuser authenticated
+[2025-06-23 22:14:31,210] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:31,212] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:31,213] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 22:14:31,215] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:31,787] INFO in routes: testadmin authenticated
+[2025-06-23 22:14:31,789] INFO in routes: testadmin accessed home page
+[2025-06-23 22:14:31,796] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:14:31,822] INFO in routes: Comment added successfully
+[2025-06-23 22:14:31,824] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:14:32,289] INFO in routes: testuser authenticated
+[2025-06-23 22:14:32,295] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:32,297] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:52,746] INFO in routes: testuser authenticated
+[2025-06-23 22:14:52,751] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:52,912] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 22:14:53,342] INFO in routes: testuser authenticated
+[2025-06-23 22:14:53,344] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:53,346] INFO in routes: testuser successfully logged out.
+[2025-06-23 22:14:53,780] INFO in routes: testuser authenticated
+[2025-06-23 22:14:53,783] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:53,800] INFO in routes: New ticket created successfully 1
+[2025-06-23 22:14:53,803] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:54,226] INFO in routes: testuser authenticated
+[2025-06-23 22:14:54,228] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:54,660] INFO in routes: testuser authenticated
+[2025-06-23 22:14:54,661] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:54,664] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 22:14:55,127] INFO in routes: testuser authenticated
+[2025-06-23 22:14:55,129] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:55,131] WARNING in routes: testuser tried to delete a ticket without permission
+[2025-06-23 22:14:55,132] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:55,729] INFO in routes: testuser authenticated
+[2025-06-23 22:14:55,732] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:55,733] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:56,144] INFO in routes: testuser authenticated
+[2025-06-23 22:14:56,146] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:56,148] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:56,149] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 22:14:56,566] INFO in routes: testuser authenticated
+[2025-06-23 22:14:56,568] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:56,897] INFO in routes: New user created: form.username
+[2025-06-23 22:14:57,206] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 22:14:57,634] INFO in routes: testuser authenticated
+[2025-06-23 22:14:57,637] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:57,638] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:58,075] INFO in routes: testuser authenticated
+[2025-06-23 22:14:58,077] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:58,079] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:58,092] INFO in routes: Comment added successfully
+[2025-06-23 22:14:58,094] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:58,524] INFO in routes: testuser authenticated
+[2025-06-23 22:14:58,526] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:58,527] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:58,978] INFO in routes: testuser authenticated
+[2025-06-23 22:14:58,980] INFO in routes: testuser accessed home page
+[2025-06-23 22:14:58,982] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:58,983] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 22:14:58,985] INFO in routes: testuser view ticket 2
+[2025-06-23 22:14:59,561] INFO in routes: testadmin authenticated
+[2025-06-23 22:14:59,563] INFO in routes: testadmin accessed home page
+[2025-06-23 22:14:59,569] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:14:59,599] INFO in routes: Comment added successfully
+[2025-06-23 22:14:59,602] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:15:00,038] INFO in routes: testuser authenticated
+[2025-06-23 22:15:00,040] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:00,042] INFO in routes: testuser view ticket 2
+[2025-06-23 22:15:48,035] INFO in routes: testuser authenticated
+[2025-06-23 22:15:48,041] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:48,208] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 22:15:48,636] INFO in routes: testuser authenticated
+[2025-06-23 22:15:48,638] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:48,641] INFO in routes: testuser successfully logged out.
+[2025-06-23 22:15:49,083] INFO in routes: testuser authenticated
+[2025-06-23 22:15:49,086] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:49,106] INFO in routes: New ticket created successfully 1
+[2025-06-23 22:15:49,109] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:49,555] INFO in routes: testuser authenticated
+[2025-06-23 22:15:49,558] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:49,979] INFO in routes: testuser authenticated
+[2025-06-23 22:15:49,981] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:49,983] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 22:15:50,426] INFO in routes: testuser authenticated
+[2025-06-23 22:15:50,429] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:50,430] WARNING in routes: testuser tried to delete a ticket without permission
+[2025-06-23 22:15:50,431] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:50,861] INFO in routes: testuser authenticated
+[2025-06-23 22:15:50,863] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:50,865] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:51,279] INFO in routes: testuser authenticated
+[2025-06-23 22:15:51,281] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:51,283] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:51,283] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 22:15:51,703] INFO in routes: testuser authenticated
+[2025-06-23 22:15:51,706] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:52,046] INFO in routes: New user created: form.username
+[2025-06-23 22:15:52,347] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 22:15:52,780] INFO in routes: testuser authenticated
+[2025-06-23 22:15:52,782] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:52,784] INFO in routes: testuser view ticket 2
+[2025-06-23 22:15:53,233] INFO in routes: testuser authenticated
+[2025-06-23 22:15:53,235] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:53,236] INFO in routes: testuser view ticket 2
+[2025-06-23 22:15:53,250] INFO in routes: Comment added successfully
+[2025-06-23 22:15:53,252] INFO in routes: testuser view ticket 2
+[2025-06-23 22:15:53,681] INFO in routes: testuser authenticated
+[2025-06-23 22:15:53,683] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:53,685] INFO in routes: testuser view ticket 2
+[2025-06-23 22:15:54,144] INFO in routes: testuser authenticated
+[2025-06-23 22:15:54,146] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:54,148] INFO in routes: testuser view ticket 2
+[2025-06-23 22:15:54,149] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 22:15:54,151] INFO in routes: testuser view ticket 2
+[2025-06-23 22:15:54,742] INFO in routes: testadmin authenticated
+[2025-06-23 22:15:54,744] INFO in routes: testadmin accessed home page
+[2025-06-23 22:15:54,750] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:15:54,776] INFO in routes: Comment added successfully
+[2025-06-23 22:15:54,778] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:15:55,212] INFO in routes: testuser authenticated
+[2025-06-23 22:15:55,215] INFO in routes: testuser accessed home page
+[2025-06-23 22:15:55,216] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:00,637] INFO in routes: testuser authenticated
+[2025-06-23 22:18:00,643] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:00,811] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 22:18:01,243] INFO in routes: testuser authenticated
+[2025-06-23 22:18:01,246] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:01,247] INFO in routes: testuser successfully logged out.
+[2025-06-23 22:18:01,669] INFO in routes: testuser authenticated
+[2025-06-23 22:18:01,671] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:01,687] INFO in routes: New ticket created successfully 1
+[2025-06-23 22:18:01,690] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:02,112] INFO in routes: testuser authenticated
+[2025-06-23 22:18:02,114] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:02,548] INFO in routes: testuser authenticated
+[2025-06-23 22:18:02,550] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:02,553] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 22:18:03,028] INFO in routes: testuser authenticated
+[2025-06-23 22:18:03,030] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:03,032] WARNING in routes: testuser tried to delete a ticket without permission
+[2025-06-23 22:18:03,032] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:03,605] INFO in routes: testuser authenticated
+[2025-06-23 22:18:03,609] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:03,610] WARNING in routes: testuser tried to delete a ticket without permission
+[2025-06-23 22:18:03,611] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:04,201] INFO in routes: testuser authenticated
+[2025-06-23 22:18:04,203] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:04,205] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:04,630] INFO in routes: testuser authenticated
+[2025-06-23 22:18:04,632] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:04,634] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:04,634] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 22:18:05,049] INFO in routes: testuser authenticated
+[2025-06-23 22:18:05,051] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:05,390] INFO in routes: New user created: form.username
+[2025-06-23 22:18:05,705] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 22:18:06,143] INFO in routes: testuser authenticated
+[2025-06-23 22:18:06,145] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:06,146] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:06,599] INFO in routes: testuser authenticated
+[2025-06-23 22:18:06,601] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:06,603] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:06,616] INFO in routes: Comment added successfully
+[2025-06-23 22:18:06,619] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:07,061] INFO in routes: testuser authenticated
+[2025-06-23 22:18:07,063] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:07,064] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:07,490] INFO in routes: testuser authenticated
+[2025-06-23 22:18:07,492] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:07,494] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:07,495] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 22:18:07,496] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:08,094] INFO in routes: testadmin authenticated
+[2025-06-23 22:18:08,096] INFO in routes: testadmin accessed home page
+[2025-06-23 22:18:08,102] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:18:08,130] INFO in routes: Comment added successfully
+[2025-06-23 22:18:08,133] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:18:08,568] INFO in routes: testuser authenticated
+[2025-06-23 22:18:08,571] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:08,574] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:48,281] INFO in routes: testuser authenticated
+[2025-06-23 22:18:48,285] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:48,451] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 22:18:48,879] INFO in routes: testuser authenticated
+[2025-06-23 22:18:48,882] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:48,883] INFO in routes: testuser successfully logged out.
+[2025-06-23 22:18:49,315] INFO in routes: testuser authenticated
+[2025-06-23 22:18:49,317] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:49,332] INFO in routes: New ticket created successfully 1
+[2025-06-23 22:18:49,335] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:49,763] INFO in routes: testuser authenticated
+[2025-06-23 22:18:49,765] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:50,209] INFO in routes: testuser authenticated
+[2025-06-23 22:18:50,211] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:50,214] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 22:18:50,679] INFO in routes: testuser authenticated
+[2025-06-23 22:18:50,681] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:50,683] WARNING in routes: testuser tried to delete a ticket without permission
+[2025-06-23 22:18:50,683] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:51,260] INFO in routes: testuser authenticated
+[2025-06-23 22:18:51,263] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:51,265] WARNING in routes: testuser tried to delete a ticket without permission
+[2025-06-23 22:18:51,266] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:51,859] INFO in routes: testuser authenticated
+[2025-06-23 22:18:51,862] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:51,864] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:52,326] INFO in routes: testuser authenticated
+[2025-06-23 22:18:52,329] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:52,333] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:52,333] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 22:18:52,756] INFO in routes: testuser authenticated
+[2025-06-23 22:18:52,758] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:53,100] INFO in routes: New user created: form.username
+[2025-06-23 22:18:53,413] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 22:18:53,841] INFO in routes: testuser authenticated
+[2025-06-23 22:18:53,843] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:53,845] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:54,282] INFO in routes: testuser authenticated
+[2025-06-23 22:18:54,284] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:54,286] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:54,300] INFO in routes: Comment added successfully
+[2025-06-23 22:18:54,302] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:54,741] INFO in routes: testuser authenticated
+[2025-06-23 22:18:54,744] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:54,746] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:55,181] INFO in routes: testuser authenticated
+[2025-06-23 22:18:55,184] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:55,186] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:55,187] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 22:18:55,189] INFO in routes: testuser view ticket 2
+[2025-06-23 22:18:55,763] INFO in routes: testadmin authenticated
+[2025-06-23 22:18:55,765] INFO in routes: testadmin accessed home page
+[2025-06-23 22:18:55,771] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:18:55,798] INFO in routes: Comment added successfully
+[2025-06-23 22:18:55,800] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:18:56,259] INFO in routes: testuser authenticated
+[2025-06-23 22:18:56,262] INFO in routes: testuser accessed home page
+[2025-06-23 22:18:56,265] INFO in routes: testuser view ticket 2
+[2025-06-23 22:21:38,110] INFO in routes: testuser authenticated
+[2025-06-23 22:21:38,114] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:38,290] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 22:21:38,716] INFO in routes: testuser authenticated
+[2025-06-23 22:21:38,718] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:38,719] INFO in routes: testuser successfully logged out.
+[2025-06-23 22:21:39,145] INFO in routes: testuser authenticated
+[2025-06-23 22:21:39,147] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:39,162] INFO in routes: New ticket created successfully 1
+[2025-06-23 22:21:39,165] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:39,601] INFO in routes: testuser authenticated
+[2025-06-23 22:21:39,603] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:40,056] INFO in routes: testuser authenticated
+[2025-06-23 22:21:40,058] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:40,060] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 22:21:40,495] INFO in routes: testuser authenticated
+[2025-06-23 22:21:40,497] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:40,499] WARNING in routes: testuser tried to delete a ticket without permission
+[2025-06-23 22:21:40,499] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:41,075] INFO in routes: testadmin authenticated
+[2025-06-23 22:21:41,077] INFO in routes: testadmin accessed home page
+[2025-06-23 22:21:41,094] INFO in routes: Ticket: 2: deleted successfully
+[2025-06-23 22:21:41,098] INFO in routes: testadmin accessed home page
+[2025-06-23 22:21:41,688] INFO in routes: testuser authenticated
+[2025-06-23 22:21:41,690] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:41,692] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:42,121] INFO in routes: testuser authenticated
+[2025-06-23 22:21:42,124] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:42,126] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:42,126] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 22:21:42,570] INFO in routes: testuser authenticated
+[2025-06-23 22:21:42,572] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:42,904] INFO in routes: New user created: form.username
+[2025-06-23 22:21:43,212] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 22:21:43,635] INFO in routes: testuser authenticated
+[2025-06-23 22:21:43,638] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:43,640] INFO in routes: testuser view ticket 2
+[2025-06-23 22:21:44,073] INFO in routes: testuser authenticated
+[2025-06-23 22:21:44,075] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:44,077] INFO in routes: testuser view ticket 2
+[2025-06-23 22:21:44,089] INFO in routes: Comment added successfully
+[2025-06-23 22:21:44,091] INFO in routes: testuser view ticket 2
+[2025-06-23 22:21:44,520] INFO in routes: testuser authenticated
+[2025-06-23 22:21:44,522] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:44,524] INFO in routes: testuser view ticket 2
+[2025-06-23 22:21:44,948] INFO in routes: testuser authenticated
+[2025-06-23 22:21:44,950] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:44,952] INFO in routes: testuser view ticket 2
+[2025-06-23 22:21:44,954] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 22:21:44,956] INFO in routes: testuser view ticket 2
+[2025-06-23 22:21:45,534] INFO in routes: testadmin authenticated
+[2025-06-23 22:21:45,537] INFO in routes: testadmin accessed home page
+[2025-06-23 22:21:45,539] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:21:45,564] INFO in routes: Comment added successfully
+[2025-06-23 22:21:45,566] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:21:45,991] INFO in routes: testuser authenticated
+[2025-06-23 22:21:45,993] INFO in routes: testuser accessed home page
+[2025-06-23 22:21:45,995] INFO in routes: testuser view ticket 2
+[2025-06-23 22:26:28,358] INFO in routes: testuser authenticated
+[2025-06-23 22:26:28,362] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:28,526] WARNING in routes: Failed login attempt: wronguser. Validation errors: {}
+[2025-06-23 22:26:28,952] INFO in routes: testuser authenticated
+[2025-06-23 22:26:28,955] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:28,956] INFO in routes: testuser successfully logged out.
+[2025-06-23 22:26:29,383] INFO in routes: testuser authenticated
+[2025-06-23 22:26:29,386] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:29,402] INFO in routes: New ticket created successfully 1
+[2025-06-23 22:26:29,405] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:29,824] INFO in routes: testuser authenticated
+[2025-06-23 22:26:29,826] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:30,258] INFO in routes: testuser authenticated
+[2025-06-23 22:26:30,260] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:30,262] ERROR in routes: Error creating new ticket: Simulated DB failure
+[2025-06-23 22:26:30,697] INFO in routes: testuser authenticated
+[2025-06-23 22:26:30,699] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:30,702] WARNING in routes: testuser tried to delete a ticket without permission
+[2025-06-23 22:26:30,702] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:31,271] INFO in routes: testadmin authenticated
+[2025-06-23 22:26:31,273] INFO in routes: testadmin accessed home page
+[2025-06-23 22:26:31,292] INFO in routes: Ticket: 2: deleted successfully
+[2025-06-23 22:26:31,294] INFO in routes: testadmin accessed home page
+[2025-06-23 22:26:31,880] INFO in routes: testadmin authenticated
+[2025-06-23 22:26:31,882] INFO in routes: testadmin accessed home page
+[2025-06-23 22:26:31,885] ERROR in routes: Error retrieving comments: Simulated DB failure
+[2025-06-23 22:26:31,887] INFO in routes: testadmin accessed home page
+[2025-06-23 22:26:32,279] INFO in routes: testuser authenticated
+[2025-06-23 22:26:32,281] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:32,284] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:32,618] INFO in routes: testuser authenticated
+[2025-06-23 22:26:32,620] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:32,622] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:32,623] ERROR in routes: Error retrieving ticket summary stats: Simulated DB failure
+[2025-06-23 22:26:32,962] INFO in routes: testuser authenticated
+[2025-06-23 22:26:32,964] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:33,208] INFO in routes: New user created: form.username
+[2025-06-23 22:26:33,356] ERROR in routes: Error creating new user: Simulated DB failure
+[2025-06-23 22:26:33,689] INFO in routes: testuser authenticated
+[2025-06-23 22:26:33,691] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:33,693] INFO in routes: testuser view ticket 2
+[2025-06-23 22:26:34,042] INFO in routes: testuser authenticated
+[2025-06-23 22:26:34,044] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:34,046] INFO in routes: testuser view ticket 2
+[2025-06-23 22:26:34,054] INFO in routes: Comment added successfully
+[2025-06-23 22:26:34,055] INFO in routes: testuser view ticket 2
+[2025-06-23 22:26:34,395] INFO in routes: testuser authenticated
+[2025-06-23 22:26:34,397] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:34,400] INFO in routes: testuser view ticket 2
+[2025-06-23 22:26:34,738] INFO in routes: testuser authenticated
+[2025-06-23 22:26:34,740] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:34,742] INFO in routes: testuser view ticket 2
+[2025-06-23 22:26:34,743] ERROR in routes: Error adding comment: Simulated DB failure
+[2025-06-23 22:26:34,745] INFO in routes: testuser view ticket 2
+[2025-06-23 22:26:35,224] INFO in routes: testadmin authenticated
+[2025-06-23 22:26:35,226] INFO in routes: testadmin accessed home page
+[2025-06-23 22:26:35,228] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:26:35,240] INFO in routes: Comment added successfully
+[2025-06-23 22:26:35,242] INFO in routes: testadmin view ticket 2
+[2025-06-23 22:26:35,581] INFO in routes: testuser authenticated
+[2025-06-23 22:26:35,584] INFO in routes: testuser accessed home page
+[2025-06-23 22:26:35,586] INFO in routes: testuser view ticket 2

@@ -1,4 +1,4 @@
-
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -6,9 +6,15 @@ from flask_login import LoginManager
 from sqlalchemy import event
 from sqlalchemy.engine import Engine
 from config import DevConfig, TestConfig
-import os
+
+app = Flask(__name__)
 
 env = os.getenv('FLASK_ENV', 'development')
+
+if env == 'testing':
+    app.config.from_object(TestConfig)
+else:
+    app.config.from_object(DevConfig)
 
 @event.listens_for(Engine, "connect")
 def set_sqlite_pragma(dbapi_connection, connection_record):
@@ -16,9 +22,6 @@ def set_sqlite_pragma(dbapi_connection, connection_record):
     cursor = dbapi_connection.cursor()
     cursor.execute("PRAGMA foreign_keys=ON")
     cursor.close()
-
-
-app = Flask(__name__)
 
 import logging
 from logging import FileHandler
@@ -31,10 +34,6 @@ file_handler.setFormatter(logging.Formatter(
 app.logger.addHandler(file_handler)
 app.logger.setLevel(logging.INFO)
 
-if env == 'testing':
-    app.config.from_object(TestConfig)
-else:
-    app.config.from_object(DevConfig)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)

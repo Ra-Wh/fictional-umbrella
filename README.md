@@ -67,4 +67,11 @@ db.session.commit()
 
 ## Run test
 
+$env:FLASK_ENV = "testing"
 python -m pytest
+
+Without the FLASK_ENV the prod database will be deleted!!
+
+Remove-Item Env:FLASK_ENV
+
+Run this once testing is complete!!

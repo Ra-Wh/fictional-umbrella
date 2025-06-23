@@ -306,7 +306,7 @@ def delete(ticket_id):
         #Log failed ticket creation and inform user
         db.session.rollback()
         app.logger.error(f"Error retrieving comments: {e}")
-        flash("An error occurred while retrieving comments. Please try again later.", "danger")
+        flash("An error occurred deleting the ticket. Please try again later.", "danger")
 
     if not ticket:
 

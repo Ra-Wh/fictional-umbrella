@@ -1,16 +1,23 @@
 import pytest
 from app import app, db
 from unittest.mock import patch
+from config import TestConfig
+
 
 @pytest.fixture
 def client():
-    app.config['TESTING'] = True
-    app.config['WTF_CSRF_ENABLED'] = False
+    app.config.from_object(TestConfig)
     with app.test_client() as client:
         with app.app_context():
             db.create_all()
             yield client
+            assert 'test' in app.config['SQLALCHEMY_DATABASE_URI']
             db.drop_all()
+
+
+app.config['TESTING'] = True
+app.config['WTF_CSRF_ENABLED'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 
 def test_register_success(client):
     response = client.post('/register', data={
