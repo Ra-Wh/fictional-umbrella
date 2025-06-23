@@ -6,10 +6,9 @@ class BaseConfig:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class DevConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'sqlite:///' + os.path.join(basedir, 'app.db'))
-    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
 
 class TestConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
     TESTING = True
     WTF_CSRF_ENABLED = False
