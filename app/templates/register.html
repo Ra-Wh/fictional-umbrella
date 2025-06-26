@@ -67,6 +67,7 @@
                     <span style="color: red">[{{ error }}]</span>
                     {% endfor %}
                 </div>
+                <p>Password must be longer than 8 characters long and include the follow: one upper case letter, one lower case letter, one number and one special character</p>
                 <div class="mb-1">
                     {{ form.password2.label(class="form-label") }}<br>
                     {{ form.password2(class="form-control", size=32) }}<br>
