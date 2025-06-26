@@ -19,8 +19,8 @@
             {% for ticket in tickets %}
             <tr>
             <th scope="row">{{ ticket.ticket_id }}</th>
-            <td>{{ ticket.closed_date }}</td>
-            <td>{{ ticket.issue_type }}</td>
+            <td>{{ ticket.closed_date.value }}</td>
+            <td>{{ ticket.issue_type.value }}</td>
             <td>{{ ticket.ticket_summary }}</td>
             <td>{{ buttons.view_button(ticket.ticket_id) }}</td>
             </tr>

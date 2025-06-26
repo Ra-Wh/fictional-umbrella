@@ -27,12 +27,6 @@ class StatusType(enum.Enum):
 
 # Tables
 
-class error_logging(db.Model):
-    error_id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    error_timestamp: so.Mapped[sa.DateTime] = so.mapped_column(sa.DateTime, default=sa.func.now(), nullable=False)
-    error_message: so.Mapped[str] = so.mapped_column(sa.TEXT)
-    error_severity: so.Mapped[str] = so.mapped_column(sa.Enum('INFO', 'WARNING', 'ERROR', 'CRITICAL'))
-
 class tickets(db.Model):
     ticket_id: so.Mapped[int] = so.mapped_column(primary_key=True)
     user_account_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('user_accounts.user_account_id', ondelete='CASCADE'), nullable=False)
@@ -43,7 +37,6 @@ class tickets(db.Model):
     closed_date: so.Mapped[sa.DateTime] = so.mapped_column(sa.DateTime, default=None, nullable=True)
     ticket_summary: so.Mapped[str] = so.mapped_column(sa.String(40), nullable=False)
     status: so.Mapped[sa.Enum] = so.mapped_column(sa.Enum(StatusType), nullable=False, default=StatusType.open)
-    needs_attention: so.Mapped[bool] = so.mapped_column(sa.Boolean, nullable=False, default=False)
 
     comments = db.relationship(
         "ticket_comments",
