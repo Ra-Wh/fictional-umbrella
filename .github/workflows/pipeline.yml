@@ -1,8 +1,5 @@
 name: CI/CD Pipeline
 
-env:
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
-
 #Define when pipeline is run
 on:
   push:
@@ -14,6 +11,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
+    env:
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     steps:
 
