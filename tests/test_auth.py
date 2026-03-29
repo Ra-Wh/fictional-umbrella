@@ -1,5 +1,5 @@
 import pytest
-from app import create_app, db
+from app import app, db
 from app.models import user_accounts, login_details
 from config import TestConfig
 

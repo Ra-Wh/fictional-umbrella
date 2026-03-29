@@ -27,7 +27,7 @@ jobs:
         python-version: '3.11'
 
     - name: Addproject root to PYTHONPATH
-      run: echo "PYTHONPATH=$(ped)" >> $GITHUB_ENV
+      run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
     
     - name: Install dependencies
       run: |
