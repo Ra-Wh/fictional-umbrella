@@ -1,9 +1,5 @@
 name: CI/CD Pipeline
 
-permissions:
-  contents: read
-  checks: write
-
 on:
   push:
     branches: ["*"]
@@ -12,6 +8,9 @@ on:
 
 jobs:
   build-and-test:
+    permissions:
+      contents: read
+      checks: write
     name: build-and-test
     runs-on: ubuntu-latest
 
