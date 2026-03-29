@@ -88,7 +88,7 @@ def test_correct_ticket_returned(client, test_user, create_tickets):
     login_helper(client)
 
     response = client.get('/ticket/view/2', follow_redirects=True)
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert b"Ticket 1" in response.data
 
 def test_add_comment(client, test_user, create_tickets):
