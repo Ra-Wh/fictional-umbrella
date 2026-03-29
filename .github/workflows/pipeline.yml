@@ -4,7 +4,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches: ["*"]
-  pull-requests:
+  pull-request:
     branches: ["main"]
 
 #Define what jobs are being completed
