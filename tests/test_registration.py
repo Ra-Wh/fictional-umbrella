@@ -94,8 +94,8 @@ def test_very_secure_password(client):
         'phone_number': loginDetails['phone_number'],
         'username': loginDetails['username'],
         'email': loginDetails['email'],
-        'password': loginDetails'TIAV5Pn0wgi!hh',
-        'password2': loginDetails'TIAV5Pn0wgi!hh'
+        'password': 'TIAV5Pn0wgi!hh',
+        'password2': 'TIAV5Pn0wgi!hh'
     }, follow_redirects=True)
 
     assert response.status_code == 200
@@ -108,8 +108,8 @@ def test_password_with_no_capital_letter(client):
         'phone_number': loginDetails['phone_number'],
         'username': loginDetails['username'],
         'email': loginDetails['email'],
-        'password': loginDetails'!longpassword1',
-        'password2': loginDetails'!longpassword1'
+        'password': '!longpassword1',
+        'password2': '!longpassword1'
     }, follow_redirects=True)
 
     assert response.status_code == 200
@@ -122,8 +122,8 @@ def test_password_with_no_lowercase_letter(client):
         'phone_number': loginDetails['phone_number'],
         'username': loginDetails['username'],
         'email': loginDetails['email'],
-        'password': loginDetails'!LONGPASSWORD1',
-        'password2': loginDetails'!LONGPASSWORD1'
+        'password': '!LONGPASSWORD1',
+        'password2': '!LONGPASSWORD1'
     }, follow_redirects=True)
 
     assert response.status_code == 200
@@ -136,8 +136,8 @@ def test_password_with_no_number(client):
         'phone_number': loginDetails['phone_number'],
         'username': loginDetails['username'],
         'email': loginDetails['email'],
-        'password': loginDetails'!LongPasswords',
-        'password2': loginDetails'!LongPasswords'
+        'password': '!LongPasswords',
+        'password2': '!LongPasswords'
     }, follow_redirects=True)
 
     assert response.status_code == 200
@@ -150,8 +150,8 @@ def test_password_with_no_special_character(client):
         'phone_number': loginDetails['phone_number'],
         'username': loginDetails['username'],
         'email': loginDetails['email'],
-        'password': loginDetails'LongPassword11',
-        'password2': loginDetails'LongPassword11'
+        'password': 'LongPassword11',
+        'password2': 'LongPassword11'
     }, follow_redirects=True)
 
     assert response.status_code == 200
