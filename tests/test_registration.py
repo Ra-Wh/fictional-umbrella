@@ -169,7 +169,7 @@ def test_no_password_entered(client):
     }, follow_redirects=True)
 
     assert response.status_code == 200
-    assert b"Password must include at least one uppercase letter, one lowercase letter, one number, and one special character." in response.data
+    assert b"This field is required." in response.data
 
 def test_blank_password(client):
     response = client.post('/register', data={
@@ -183,7 +183,7 @@ def test_blank_password(client):
     }, follow_redirects=True)
 
     assert response.status_code == 200
-    assert b"Password must include at least one uppercase letter, one lowercase letter, one number, and one special character." in response.data
+    assert b"This field is required." in response.data
 
 def test_too_short_password(client):
     response = client.post('/register', data={
