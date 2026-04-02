@@ -157,3 +157,61 @@ def test_password_with_no_special_character(client):
     assert response.status_code == 200
     assert b"Password must include at least one uppercase letter, one lowercase letter, one number, and one special character." in response.data
 
+def test_no_password_entered(client):
+    response = client.post('/register', data={
+        'first_name': loginDetails['first_name'],
+        'last_name': loginDetails['last_name'],
+        'phone_number': loginDetails['phone_number'],
+        'username': loginDetails['username'],
+        'email': loginDetails['email'],
+        'password': '',
+        'password2': ''
+    }, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"Password must include at least one uppercase letter, one lowercase letter, one number, and one special character." in response.data
+
+def test_blank_password(client):
+    response = client.post('/register', data={
+        'first_name': loginDetails['first_name'],
+        'last_name': loginDetails['last_name'],
+        'phone_number': loginDetails['phone_number'],
+        'username': loginDetails['username'],
+        'email': loginDetails['email'],
+        'password': '                 ',
+        'password2': '                 '
+    }, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"Password must include at least one uppercase letter, one lowercase letter, one number, and one special character." in response.data
+
+def test_too_short_password(client):
+    response = client.post('/register', data={
+        'first_name': loginDetails['first_name'],
+        'last_name': loginDetails['last_name'],
+        'phone_number': loginDetails['phone_number'],
+        'username': loginDetails['username'],
+        'email': loginDetails['email'],
+        'password': 'aB1!',
+        'password2': 'aB1!'
+    }, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"Password must include at least one uppercase letter, one lowercase letter, one number, and one special character." in response.data
+
+def test_passwords_do_not_match(client):
+    response = client.post('/register', data={
+        'first_name': loginDetails['first_name'],
+        'last_name': loginDetails['last_name'],
+        'phone_number': loginDetails['phone_number'],
+        'username': loginDetails['username'],
+        'email': loginDetails['email'],
+        'password': 'aB1!',
+        'password2': 'ab1!'
+    }, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"Password must include at least one uppercase letter, one lowercase letter, one number, and one special character." in response.data
+
+
+
