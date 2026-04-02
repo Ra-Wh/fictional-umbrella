@@ -197,7 +197,7 @@ def test_too_short_password(client):
     }, follow_redirects=True)
 
     assert response.status_code == 200
-    assert b"Field must be at least 8 characters long." in response.data
+    assert b"Field must be between 12 and 64 characters long." in response.data
 
 def test_passwords_do_not_match(client):
     response = client.post('/register', data={
@@ -206,12 +206,12 @@ def test_passwords_do_not_match(client):
         'phone_number': loginDetails['phone_number'],
         'username': loginDetails['username'],
         'email': loginDetails['email'],
-        'password': 'aB1!',
-        'password2': 'ab1!'
+        'password': loginDetails['password'],
+        'password2': '!LongPassword2'
     }, follow_redirects=True)
 
     assert response.status_code == 200
-    assert b"Passwords must match." in response.data
+    assert b"Field must be equal to password." in response.data
 
 
 
