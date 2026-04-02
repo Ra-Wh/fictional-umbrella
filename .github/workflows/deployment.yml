@@ -1,0 +1,27 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_run:
+    workflows: ["Build and Test Pipeline"]
+    types: [completed]
+  
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' &&
+            github.event.workflow_run.event == 'pull_request' &&
+            github.event.workflow_run.pull_requests[0].base.ref == 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to PythonAnywhere
+        run: |
+          curl -X POST \
+            -H "Authorization: Token ${{ secrets.PA_API_KEY }}" \
+            https://www.pythonanywhere.com/api/v0/user/RachelW/webapps/rachelw.pythonanywhere.com/reload/
+
+
+          
+
