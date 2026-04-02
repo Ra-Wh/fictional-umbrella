@@ -197,7 +197,7 @@ def test_too_short_password(client):
     }, follow_redirects=True)
 
     assert response.status_code == 200
-    assert b"Password must include at least one uppercase letter, one lowercase letter, one number, and one special character." in response.data
+    assert b"Field must be at least 8 characters long." in response.data
 
 def test_passwords_do_not_match(client):
     response = client.post('/register', data={
@@ -211,7 +211,7 @@ def test_passwords_do_not_match(client):
     }, follow_redirects=True)
 
     assert response.status_code == 200
-    assert b"Password must include at least one uppercase letter, one lowercase letter, one number, and one special character." in response.data
+    assert b"Passwords must match." in response.data
 
 
 
