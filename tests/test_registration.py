@@ -4,6 +4,15 @@ from unittest.mock import patch
 from config import TestConfig
 
 
+var loginDetails = {
+    'first_name': 'Test',
+    'last_name':'User',
+    'phone_number': '1234567890',
+    'username': 'testuser',
+    'email': 'test@example.com',
+    'password': '!LongPassword1',
+}
+
 @pytest.fixture
 def client():
     app.config.from_object(TestConfig)
@@ -21,13 +30,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 
 def test_register_success(client):
     response = client.post('/register', data={
-        'first_name': 'Test',
-        'last_name': 'User',
-        'phone_number': '1234567890',
-        'username': 'testuser',
-        'email': 'test@example.com',
-        'password': '!LongPassword1',
-        'password2': '!LongPassword1'
+        'first_name': loginDetails['first_name'],
+        'last_name': loginDetails['last_name'],
+        'phone_number': loginDetails['phone_number'],
+        'username': loginDetails['username'],
+        'email': loginDetails['email'],
+        'password': loginDetails['password'],
+        'password2': loginDetails['password']
     }, follow_redirects=True)
 
     assert response.status_code == 200
@@ -35,13 +44,13 @@ def test_register_success(client):
 
 def test_register_missing_field(client):
     response = client.post('/register', data={
-        'first_name': 'Test',
-        'last_name': 'User',
-        'phone_number': '1234567890',
+        'first_name': loginDetails['first_name'],
+        'last_name': loginDetails['last_name'],
+        'phone_number': loginDetails['phone_number'],
         'username': '',
-        'email': 'test@example.com',
-        'password': '!LongPassword1',
-        'password2': '!LongPassword1'
+        'email': loginDetails['email'],
+        'password': loginDetails['password'],
+        'password2': loginDetails['password']
     }, follow_redirects=True)
 
     assert response.status_code == 200
@@ -52,13 +61,13 @@ from unittest.mock import patch
 def test_register_failure(client):
     with patch('app.routes.db.session.commit', side_effect=Exception("Simulated DB failure")):
         response = client.post('/register', data={
-            'first_name': 'Test',
-            'last_name': 'User',
-            'phone_number': '1234567890',
-            'username': 'testuser',
-            'email': 'test@example.com',
-            'password': '!LongPassword1',
-            'password2': '!LongPassword1'
+            'first_name': loginDetails['first_name'],
+            'last_name': loginDetails['last_name'],
+            'phone_number': loginDetails['phone_number'],
+            'username': loginDetails['username'],
+            'email': loginDetails['email'],
+            'password': loginDetails['password'],
+            'password2': loginDetails['password']
         }, follow_redirects=True)
 
     assert response.status_code == 200
