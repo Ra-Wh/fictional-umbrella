@@ -4,7 +4,7 @@ from unittest.mock import patch
 from config import TestConfig
 
 
-var loginDetails = {
+loginDetails = {
     'first_name': 'Test',
     'last_name':'User',
     'phone_number': '1234567890',
