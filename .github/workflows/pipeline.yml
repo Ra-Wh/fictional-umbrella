@@ -39,3 +39,24 @@ jobs:
     - name: Run pytest
       run: pytest
 
+  vulnerability-testing:
+    permissions:
+      contents: read
+      checks: write
+    name: vulnerability testing
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: setup trivy
+      uses: aquasecurity/setup-trivy@e07451d2e059ed86c2870430ea286b3a9e0bf241
+      with:
+        version: v0.68.2
+
+    - name: run test
+      run: trivy fs --exit-code 1 --severity HIGH,CRITICAL .
+
+
+
